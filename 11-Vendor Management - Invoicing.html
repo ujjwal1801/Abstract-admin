@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoicing / Self-Bill Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+        
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
+
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <a id="nav-vacancy-detail" href="5-Vendor Management - Vacancy De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-lines text-white/40 w-4 text-center"></i>
+                <span>Vacancy Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Agency</p>
+
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+
+            <a id="nav-candidate-submission" href="7-Vendor Management - Agency Can.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-user-plus text-white/40 w-4 text-center"></i>
+                <span>Agency Candidate Submission</span>
+            </a>
+
+            <a id="nav-proposal-review" href="8-Vendor Management - Proposal R.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-check text-white/40 w-4 text-center"></i>
+                <span>Proposal Review</span>
+            </a>
+
+            <a id="nav-booking-detail" href="9-Vendor Management - Booking De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-calendar-check text-white/40 w-4 text-center"></i>
+                <span>Booking Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Finance</p>
+
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Client Weekly Timesheet</span>
+            </a>
+
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-file-invoice-dollar text-blue-400 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+        </nav>
+
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">MSP Admin</p>
+                </div>
+                <i class="fa-solid fa-ellipsis-vertical text-white/30 text-xs"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <nav class="flex items-center gap-1.5 text-xs text-slate-400">
+                                <a href="#" class="hover:text-blue-600 transition-colors">Finance</a>
+                                <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
+                                <span class="text-slate-700 font-semibold">Invoicing / Self-Bill Overview</span>
+                            </nav>
+                        </div>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <h1 class="text-lg font-bold text-slate-900">Invoicing / Self-Bill Overview</h1>
+                            <span class="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
+                                June 2026
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
+                    <span class="text-xs font-medium text-slate-600">Jun 2026</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 w-48 xl:w-56">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Search invoices..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                </div>
+
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-bell text-slate-600 text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+                </button>
+
+                <button class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-gear text-slate-600 text-sm"></i>
+                </button>
+
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">Sarah Mitchell</p>
+                        <p class="text-xs text-slate-400">MSP Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main id="invoicing-main" class="flex-1 overflow-y-auto bg-slate-100">
+
+            <!-- Action Bar -->
+            <div id="invoicing-action-bar" class="bg-white border-b border-slate-200 px-6 xl:px-8 py-3 flex items-center justify-between flex-shrink-0 flex-wrap gap-2">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <!-- Period Filters -->
+                    <div class="flex items-center gap-1 bg-slate-100 rounded-xl p-1">
+                        <button id="filter-week" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">Weekly</button>
+                        <button id="filter-month" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-white transition-colors" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">Monthly</button>
+                        <button id="filter-quarter" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">Quarterly</button>
+                        <button id="filter-ytd" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">YTD</button>
+                    </div>
+                    <div class="w-px h-4 bg-slate-200 mx-1"></div>
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium cursor-pointer hover:border-blue-300 transition-colors">
+                        <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
+                        <span>01 Jun – 30 Jun 2026</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium cursor-pointer hover:border-blue-300 transition-colors">
+                        <i class="fa-solid fa-warehouse text-slate-400 text-xs"></i>
+                        <span>All Sites</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium cursor-pointer hover:border-blue-300 transition-colors">
+                        <i class="fa-solid fa-building-user text-slate-400 text-xs"></i>
+                        <span>All Agencies</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="export-csv-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-file-csv text-xs"></i>
+                        <span>Export CSV</span>
+                    </button>
+                    <button id="export-pdf-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-file-pdf text-xs"></i>
+                        <span>Export PDF</span>
+                    </button>
+                    <button id="generate-invoice-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                        <i class="fa-solid fa-plus text-xs"></i>
+                        <span>Generate Invoice</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPI Strip -->
+            <div id="invoicing-kpi-strip" class="px-6 xl:px-8 pt-5 pb-0 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+                <div id="kpi-total-invoiced" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.12), rgba(91,46,145,0.1));">
+                        <i class="fa-solid fa-file-invoice-dollar text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Total Invoiced</p>
+                        <p class="text-base font-bold text-slate-900">£284,750</p>
+                        <p class="text-xs text-emerald-600 font-medium">+8.3% vs last period</p>
+                    </div>
+                </div>
+                <div id="kpi-self-bills" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-purple-50">
+                        <i class="fa-solid fa-hand-holding-dollar text-purple-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Self-Bills Issued</p>
+                        <p class="text-base font-bold text-slate-900">£241,830</p>
+                        <p class="text-xs text-purple-600 font-medium">34 self-bills</p>
+                    </div>
+                </div>
+                <div id="kpi-margin" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
+                        <i class="fa-solid fa-percent text-amber-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Total Margin</p>
+                        <p class="text-base font-bold text-amber-700">£42,920</p>
+                        <p class="text-xs text-amber-600 font-medium">15.07% avg</p>
+                    </div>
+                </div>
+                <div id="kpi-outstanding" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-red-50">
+                        <i class="fa-solid fa-clock text-red-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Outstanding</p>
+                        <p class="text-base font-bold text-red-600">£68,400</p>
+                        <p class="text-xs text-red-500 font-medium">12 invoices</p>
+                    </div>
+                </div>
+                <div id="kpi-reconciled" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-emerald-50">
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Reconciled</p>
+                        <p class="text-base font-bold text-emerald-700">£216,350</p>
+                        <p class="text-xs text-emerald-600 font-medium">76% match rate</p>
+                    </div>
+                </div>
+                <div id="kpi-disputes" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-orange-50">
+                        <i class="fa-solid fa-triangle-exclamation text-orange-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Disputes</p>
+                        <p class="text-base font-bold text-orange-600">3</p>
+                        <p class="text-xs text-orange-500 font-medium">£14,200 at risk</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="px-6 xl:px-8 py-4 flex gap-5">
+
+                <!-- Left: Tables and Charts -->
+                <div id="invoicing-content-left" class="flex-1 min-w-0 flex flex-col gap-4">
+
+                    <!-- Invoice Status Table -->
+                    <div id="invoice-table-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-file-invoice text-blue-300 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-white">Client Invoice Register</p>
+                                    <p class="text-xs text-white/40">June 2026 · 28 invoices · All Sites</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-1 bg-white/10 rounded-lg p-1">
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-white bg-white/20 transition-colors">All</button>
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-white/60 hover:text-white hover:bg-white/10 transition-colors">Paid</button>
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-white/60 hover:text-white hover:bg-white/10 transition-colors">Pending</button>
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-white/60 hover:text-white hover:bg-white/10 transition-colors">Overdue</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.05), rgba(23,37,84,0.04));">
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Invoice Ref</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Site / Warehouse</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Worker</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Shift / Week</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Invoice Amt</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Self-Bill Amt</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Margin</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Due Date</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Status</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Reconciled</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="invoice-table-body">
+                                    <tr id="inv-row-1" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg">#INV-2026-0184</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">A</div>
+                                                <span class="font-semibold text-slate-700">Amazon FC Coventry</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Dean Okafor</td>
+                                        <td class="px-4 py-3 text-slate-500">W23 · Morning Shift</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,729</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-purple-700">£2,385</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£344</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">11 Jul 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-xmark text-slate-300 text-sm"></i>
+                                                <span class="text-xs text-slate-400">Unmatched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="inv-row-2" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg">#INV-2026-0183</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-emerald-600">D</div>
+                                                <span class="font-semibold text-slate-700">DHL Logistics Hub</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Priya Sharma</td>
+                                        <td class="px-4 py-3 text-slate-500">W23 · Late Shift</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£3,100</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-purple-700">£2,720</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£380</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">02 Jul 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Paid</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+                                                <span class="text-xs text-emerald-600 font-semibold">Matched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="inv-row-3" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-red-700 bg-red-50 border border-red-100 px-2 py-0.5 rounded-lg">#INV-2026-0179</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-red-600">X</div>
+                                                <span class="font-semibold text-slate-700">XPO Logistics</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Marcus Webb</td>
+                                        <td class="px-4 py-3 text-slate-500">W22 · Night Shift</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£4,250</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-purple-700">£3,680</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£570</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-red-600 font-semibold">25 Jun 2026</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full flex items-center gap-1 justify-center whitespace-nowrap"><i class="fa-solid fa-triangle-exclamation text-xs"></i> Overdue</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-triangle-exclamation text-orange-400 text-sm"></i>
+                                                <span class="text-xs text-orange-600 font-semibold">Disputed</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center hover:bg-red-100 transition-colors" title="Resolve Dispute">
+                                                    <i class="fa-solid fa-flag text-red-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="inv-row-4" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg">#INV-2026-0178</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style="background: #0066CC;">G</div>
+                                                <span class="font-semibold text-slate-700">Gazeley Warehouse</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Sophie Turner</td>
+                                        <td class="px-4 py-3 text-slate-500">W22 · Morning Shift</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,575</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-purple-700">£2,250</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£325</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">25 Jun 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Paid</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+                                                <span class="text-xs text-emerald-600 font-semibold">Matched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="inv-row-5" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg">#INV-2026-0175</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0" style="background: #5B2E91;">E</div>
+                                                <span class="font-semibold text-slate-700">Evri Distribution</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">James Chen</td>
+                                        <td class="px-4 py-3 text-slate-500">W21 · Late Shift</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£5,160</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-purple-700">£4,500</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£660</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">18 Jun 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-full">Processing</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-xmark text-slate-300 text-sm"></i>
+                                                <span class="text-xs text-slate-400">Unmatched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="inv-row-6" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg">#INV-2026-0171</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-slate-600">R</div>
+                                                <span class="font-semibold text-slate-700">Royal Mail Depot</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Aisha Okonkwo</td>
+                                        <td class="px-4 py-3 text-slate-500">W20 · Night Shift</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,060</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-purple-700">£1,800</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£260</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">11 Jun 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Paid</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+                                                <span class="text-xs text-emerald-600 font-semibold">Matched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <!-- Totals Row -->
+                                <tfoot id="invoice-totals-row">
+                                    <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.06), rgba(23,37,84,0.04));">
+                                        <td colspan="4" class="px-4 py-3 text-right">
+                                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Period Totals (showing 6 of 28)</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-sm font-bold text-blue-800">£19,874</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-sm font-bold text-purple-700">£17,335</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-sm font-bold text-amber-700">£2,539</span>
+                                        </td>
+                                        <td colspan="4" class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-slate-500">3 paid · 1 pending · 1 overdue · 1 processing</span>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        <div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs text-slate-400">Showing 6 of 28 invoices</span>
+                            <div class="flex items-center gap-1">
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                                    <i class="fa-solid fa-chevron-left text-slate-500" style="font-size: 9px;"></i>
+                                </button>
+                                <button class="w-7 h-7 rounded-lg border border-blue-200 text-white flex items-center justify-center text-xs font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">1</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-xs text-slate-600 hover:bg-slate-100 transition-colors">2</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-xs text-slate-600 hover:bg-slate-100 transition-colors">3</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-xs text-slate-600 hover:bg-slate-100 transition-colors">4</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                                    <i class="fa-solid fa-chevron-right text-slate-500" style="font-size: 9px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Self-Bill Register Table -->
+                    <div id="selfbill-table-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-purple-100">
+                                    <i class="fa-solid fa-hand-holding-dollar text-purple-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">Agency Self-Bill Register</p>
+                                    <p class="text-xs text-slate-400">June 2026 · 34 self-bills · All Agencies</p>
+                                </div>
+                            </div>
+                            <button class="text-xs text-blue-600 font-medium hover:text-blue-700 transition-colors flex items-center gap-1">
+                                <span>View All</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200">
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Self-Bill Ref</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Agency</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Worker</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Shift / Week</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Amount</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">VAT</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Total Payable</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Pay Date</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Status</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Reconciled</th>
+                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="sb-row-1" class="border-b border-slate-100 hover:bg-purple-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-lg">#SB-2026-0184</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-blue-600">W</div>
+                                                <span class="font-semibold text-slate-700">Workforce Direct</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Dean Okafor</td>
+                                        <td class="px-4 py-3 text-slate-500">W23 · Morning Shift</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£2,385</td>
+                                        <td class="px-4 py-3 text-right text-slate-500">£477</td>
+                                        <td class="px-4 py-3 text-right font-bold text-purple-700">£2,862</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">25 Jun 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-xmark text-slate-300 text-sm"></i>
+                                                <span class="text-xs text-slate-400">Unmatched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center hover:bg-purple-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-purple-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="sb-row-2" class="border-b border-slate-100 hover:bg-purple-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg">#SB-2026-0183</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-emerald-600">F</div>
+                                                <span class="font-semibold text-slate-700">FlexStaff Logistics</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Priya Sharma</td>
+                                        <td class="px-4 py-3 text-slate-500">W23 · Late Shift</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£2,720</td>
+                                        <td class="px-4 py-3 text-right text-slate-500">£544</td>
+                                        <td class="px-4 py-3 text-right font-bold text-purple-700">£3,264</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">18 Jun 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Paid</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+                                                <span class="text-xs text-emerald-600 font-semibold">Matched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center hover:bg-purple-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-purple-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="sb-row-3" class="border-b border-slate-100 hover:bg-purple-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-red-700 bg-red-50 border border-red-100 px-2 py-0.5 rounded-lg">#SB-2026-0179</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-orange-600">P</div>
+                                                <span class="font-semibold text-slate-700">PeakTime Staffing</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Marcus Webb</td>
+                                        <td class="px-4 py-3 text-slate-500">W22 · Night Shift</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£3,680</td>
+                                        <td class="px-4 py-3 text-right text-slate-500">£736</td>
+                                        <td class="px-4 py-3 text-right font-bold text-purple-700">£4,416</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-red-600 font-semibold">10 Jun 2026</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full flex items-center gap-1 justify-center whitespace-nowrap"><i class="fa-solid fa-triangle-exclamation text-xs"></i> Overdue</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-triangle-exclamation text-orange-400 text-sm"></i>
+                                                <span class="text-xs text-orange-600 font-semibold">Disputed</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center hover:bg-purple-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-purple-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center hover:bg-red-100 transition-colors" title="Resolve">
+                                                    <i class="fa-solid fa-flag text-red-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr id="sb-row-4" class="hover:bg-purple-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <span class="font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-lg">#SB-2026-0175</span>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold text-xs flex-shrink-0 bg-indigo-600">W</div>
+                                                <span class="font-semibold text-slate-700">WareForce Group</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">James Chen</td>
+                                        <td class="px-4 py-3 text-slate-500">W21 · Late Shift</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£4,500</td>
+                                        <td class="px-4 py-3 text-right text-slate-500">£900</td>
+                                        <td class="px-4 py-3 text-right font-bold text-purple-700">£5,400</td>
+                                        <td class="px-4 py-3 text-center text-slate-500">04 Jun 2026</td>
+                                        <td class="px-4 py-3 text-center">
+                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Paid</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <i class="fa-solid fa-circle-check text-emerald-500 text-sm"></i>
+                                                <span class="text-xs text-emerald-600 font-semibold">Matched</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-center">
+                                            <div class="flex items-center justify-center gap-1">
+                                                <button class="w-6 h-6 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center hover:bg-purple-100 transition-colors" title="View">
+                                                    <i class="fa-solid fa-eye text-purple-500" style="font-size: 9px;"></i>
+                                                </button>
+                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
+                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Revenue Chart -->
+                    <div id="revenue-chart-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-chart-line text-blue-600 text-sm"></i>
+                                Invoice vs Self-Bill vs Margin · Monthly Trend
+                            </h3>
+                            <div class="flex items-center gap-3">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-blue-600 inline-block"></span>
+                                    <span class="text-xs text-slate-500">Client Invoice</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-purple-600 inline-block"></span>
+                                    <span class="text-xs text-slate-500">Self-Bill</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                    <span class="text-xs text-slate-500">Margin</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="revenue-chart" style="height: 260px;" class="px-2"></div>
+                    </div>
+
+                    <div class="h-4"></div>
+                </div>
+
+                <!-- Right Panel -->
+                <div id="invoicing-right-panel" class="w-72 xl:w-80 flex-shrink-0 flex flex-col gap-4">
+
+                    <!-- Reconciliation Summary -->
+                    <div id="reconciliation-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-scale-balanced text-blue-300 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Reconciliation Status</p>
+                                    <p class="text-xs text-white/40">June 2026 · All entities</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 flex flex-col gap-3">
+                            <!-- Reconciliation Donut -->
+                            <div id="reconcile-donut" style="height: 180px;"></div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="flex flex-col items-center p-2.5 rounded-xl bg-emerald-50 border border-emerald-100 text-center">
+                                    <p class="text-base font-bold text-emerald-700">21</p>
+                                    <p class="text-xs text-slate-400 mt-0.5">Matched</p>
+                                </div>
+                                <div class="flex flex-col items-center p-2.5 rounded-xl bg-amber-50 border border-amber-100 text-center">
+                                    <p class="text-base font-bold text-amber-600">4</p>
+                                    <p class="text-xs text-slate-400 mt-0.5">Unmatched</p>
+                                </div>
+                                <div class="flex flex-col items-center p-2.5 rounded-xl bg-red-50 border border-red-100 text-center">
+                                    <p class="text-base font-bold text-red-600">3</p>
+                                    <p class="text-xs text-slate-400 mt-0.5">Disputed</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-slate-500">Match Rate</span>
+                                    <span class="font-bold text-emerald-700">75.0%</span>
+                                </div>
+                                <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full rounded-full bg-emerald-500" style="width: 75%;"></div>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-slate-400">21 of 28 reconciled</span>
+                                    <span class="text-slate-400">7 pending</span>
+                                </div>
+                            </div>
+                            <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                <i class="fa-solid fa-scale-balanced text-xs"></i>
+                                <span>Run Auto-Reconciliation</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Financial Totals Summary -->
+                    <div id="financial-totals-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-calculator text-blue-500 text-xs"></i>
+                                Period Financial Totals
+                            </h4>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2.5">
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-blue-800">Client Invoices</span>
+                                    <span class="text-sm font-bold text-blue-800">£284,750</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-blue-600">Paid</span>
+                                    <span class="font-semibold text-slate-700">£216,350</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-blue-600">Outstanding</span>
+                                    <span class="font-semibold text-red-600">£68,400</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-blue-600">Avg Days to Pay</span>
+                                    <span class="font-semibold text-slate-700">27 days</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-purple-800">Agency Self-Bills</span>
+                                    <span class="text-sm font-bold text-purple-800">£241,830</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-purple-600">Paid Out</span>
+                                    <span class="font-semibold text-slate-700">£183,440</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-purple-600">Pending Payment</span>
+                                    <span class="font-semibold text-amber-600">£58,390</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-purple-600">Avg Days to Pay</span>
+                                    <span class="font-semibold text-slate-700">13 days</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-amber-50 border border-amber-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-amber-800">Abstract Margin</span>
+                                    <span class="text-sm font-bold text-amber-800">£42,920</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-amber-700">Realised</span>
+                                    <span class="font-semibold text-emerald-700">£32,910</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-amber-700">Unrealised</span>
+                                    <span class="font-semibold text-slate-700">£10,010</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-amber-700">Avg Margin %</span>
+                                    <span class="font-semibold text-emerald-700">15.07%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dispute Alerts -->
+                    <div id="dispute-alerts-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-flag text-red-500 text-xs"></i>
+                                Active Disputes
+                            </h4>
+                            <span class="text-xs font-bold text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">3 open</span>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2.5">
+                            <div id="dispute-1" class="flex items-start gap-3 p-3 rounded-xl bg-red-50 border border-red-100">
+                                <div class="w-7 h-7 rounded-lg bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-triangle-exclamation text-red-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <p class="text-xs font-bold text-red-800">#INV-2026-0179</p>
+                                        <span class="text-xs text-red-500 font-semibold">£4,250</span>
+                                    </div>
+                                    <p class="text-xs text-red-700 mt-0.5">XPO Logistics · Marcus Webb</p>
+                                    <p class="text-xs text-red-600 mt-0.5">Shift hours discrepancy – W22</p>
+                                    <button class="mt-1.5 text-xs font-semibold text-red-700 hover:text-red-900 transition-colors px-2 py-1 rounded-lg border border-red-200 bg-red-100 hover:bg-red-200">
+                                        Resolve
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="dispute-2" class="flex items-start gap-3 p-3 rounded-xl bg-orange-50 border border-orange-100">
+                                <div class="w-7 h-7 rounded-lg bg-orange-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-triangle-exclamation text-orange-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <p class="text-xs font-bold text-orange-800">#SB-2026-0179</p>
+                                        <span class="text-xs text-orange-500 font-semibold">£3,680</span>
+                                    </div>
+                                    <p class="text-xs text-orange-700 mt-0.5">PeakTime Staffing · Marcus Webb</p>
+                                    <p class="text-xs text-orange-600 mt-0.5">Pay rate discrepancy – Night Shift W22</p>
+                                    <button class="mt-1.5 text-xs font-semibold text-orange-700 hover:text-orange-900 transition-colors px-2 py-1 rounded-lg border border-orange-200 bg-orange-100 hover:bg-orange-200">
+                                        Resolve
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="dispute-3" class="flex items-start gap-3 p-3 rounded-xl bg-amber-50 border border-amber-100">
+                                <div class="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-circle-exclamation text-amber-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="flex items-center justify-between gap-1">
+                                        <p class="text-xs font-bold text-amber-800">#INV-2026-0168</p>
+                                        <span class="text-xs text-amber-600 font-semibold">£6,270</span>
+                                    </div>
+                                    <p class="text-xs text-amber-700 mt-0.5">Amazon FC Coventry · Kenji Tanaka</p>
+                                    <p class="text-xs text-amber-600 mt-0.5">Missing shift sign-off approval</p>
+                                    <button class="mt-1.5 text-xs font-semibold text-amber-700 hover:text-amber-900 transition-colors px-2 py-1 rounded-lg border border-amber-200 bg-amber-100 hover:bg-amber-200">
+                                        Resolve
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Payments -->
+                    <div id="upcoming-payments-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-calendar-check text-emerald-500 text-xs"></i>
+                                Upcoming Payments
+                            </h4>
+                            <span class="text-xs text-slate-400">Next 14 days</span>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2">
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors cursor-pointer">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-lg bg-purple-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-hand-holding-dollar text-purple-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-700">Workforce Direct</p>
+                                        <p class="text-xs text-slate-400">Self-Bill · #SB-0184</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs font-bold text-purple-700">£2,862</p>
+                                    <p class="text-xs text-slate-400">25 Jun</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors cursor-pointer">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-lg bg-blue-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-file-invoice-dollar text-blue-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-700">Gazeley Warehouse</p>
+                                        <p class="text-xs text-slate-400">Invoice · #INV-0178</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs font-bold text-blue-700">£2,575</p>
+                                    <p class="text-xs text-slate-400">25 Jun</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors cursor-pointer">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-lg bg-blue-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-file-invoice-dollar text-blue-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-slate-700">Evri Distribution</p>
+                                        <p class="text-xs text-slate-400">Invoice · #INV-0175</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs font-bold text-blue-700">£5,160</p>
+                                    <p class="text-xs text-slate-400">18 Jun</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between p-2.5 rounded-xl bg-red-50 border border-red-200 cursor-pointer">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-lg bg-red-100 flex items-center justify-center">
+                                        <i class="fa-solid fa-hand-holding-dollar text-red-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-red-700">PeakTime Staffing</p>
+                                        <p class="text-xs text-red-400">Self-Bill · #SB-0179</p>
+                                    </div>
+                                </div>
+                                <div class="text-right">
+                                    <p class="text-xs font-bold text-red-700">£4,416</p>
+                                    <p class="text-xs text-red-500 font-semibold">Overdue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div id="invoicing-quick-actions" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-amber-500 text-xs"></i>
+                                Quick Actions
+                            </h4>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2">
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                                <span>Generate Bulk Invoices</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-purple-200 bg-purple-50 text-xs text-purple-700 font-medium hover:border-purple-300 hover:bg-purple-100 transition-colors">
+                                <i class="fa-solid fa-hand-holding-dollar text-xs"></i>
+                                <span>Issue Self-Bills</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                <i class="fa-solid fa-scale-balanced text-xs"></i>
+                                <span>Reconcile Period</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-emerald-200 bg-emerald-50 text-xs text-emerald-700 font-medium hover:border-emerald-300 hover:bg-emerald-100 transition-colors">
+                                <i class="fa-solid fa-chart-bar text-xs"></i>
+                                <span>View Backing Report</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                <i class="fa-solid fa-arrow-down-to-bracket text-xs"></i>
+                                <span>Export Period Report</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="h-4"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+    try {
+        // Revenue Trend Chart
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+        var invoiceData = [198000, 215000, 232000, 248000, 261000, 284750];
+        var selfBillData = [168000, 183000, 197000, 210000, 221000, 241830];
+        var marginData = [30000, 32000, 35000, 38000, 40000, 42920];
+
+        var trace1 = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Client Invoice',
+            x: months,
+            y: invoiceData,
+            line: { color: '#1D4ED8', width: 2.5 },
+            marker: { color: '#1D4ED8', size: 5 },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(29,78,216,0.06)',
+            hovertemplate: 'Invoice: £%{y:,.0f}<extra></extra>'
+        };
+
+        var trace2 = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Self-Bill',
+            x: months,
+            y: selfBillData,
+            line: { color: '#5B2E91', width: 2.5 },
+            marker: { color: '#5B2E91', size: 5 },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(91,46,145,0.05)',
+            hovertemplate: 'Self-Bill: £%{y:,.0f}<extra></extra>'
+        };
+
+        var trace3 = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Margin',
+            x: months,
+            y: marginData,
+            line: { color: '#F59E0B', width: 2.5, dash: 'dot' },
+            marker: { color: '#F59E0B', size: 5 },
+            yaxis: 'y2',
+            hovertemplate: 'Margin: £%{y:,.0f}<extra></extra>'
+        };
+
+        var layout = {
+            margin: { t: 20, r: 60, b: 40, l: 70 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            xaxis: {
+                showgrid: false,
+                tickfont: { size: 11, color: '#94a3b8', family: 'Inter' },
+                tickcolor: 'transparent',
+                linecolor: '#e2e8f0'
+            },
+            yaxis: {
+                showgrid: true,
+                gridcolor: '#f1f5f9',
+                tickfont: { size: 10, color: '#94a3b8', family: 'Inter' },
+                tickprefix: '£',
+                tickformat: ',.0f',
+                linecolor: '#e2e8f0',
+                title: { text: 'Invoice / Self-Bill (£)', font: { size: 10, color: '#94a3b8', family: 'Inter' } }
+            },
+            yaxis2: {
+                overlaying: 'y',
+                side: 'right',
+                showgrid: false,
+                tickfont: { size: 10, color: '#F59E0B', family: 'Inter' },
+                tickprefix: '£',
+                tickformat: ',.0f',
+                title: { text: 'Margin (£)', font: { size: 10, color: '#F59E0B', family: 'Inter' } }
+            },
+            showlegend: false,
+            hovermode: 'x unified'
+        };
+
+        Plotly.newPlot('revenue-chart', [trace1, trace2, trace3], layout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('revenue-chart').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs">Chart unavailable</div>';
+    }
+
+    try {
+        // Reconciliation Donut
+        var donutData = [{
+            type: 'pie',
+            labels: ['Matched', 'Unmatched', 'Disputed'],
+            values: [21, 4, 3],
+            hole: 0.65,
+            marker: { colors: ['#10B981', '#94a3b8', '#EF4444'] },
+            textinfo: 'none',
+            hovertemplate: '%{label}: %{value} invoices<extra></extra>'
+        }];
+
+        var donutLayout = {
+            margin: { t: 10, r: 10, b: 10, l: 10 },
+            plot_bgcolor: 'transparent',
+            paper_bgcolor: 'transparent',
+            showlegend: false,
+            annotations: [{
+                text: '75%',
+                x: 0.5,
+                y: 0.55,
+                font: { size: 20, color: '#1e293b', family: 'Inter', weight: 'bold' },
+                showarrow: false
+            }, {
+                text: 'matched',
+                x: 0.5,
+                y: 0.38,
+                font: { size: 10, color: '#94a3b8', family: 'Inter' },
+                showarrow: false
+            }]
+        };
+
+        Plotly.newPlot('reconcile-donut', donutData, donutLayout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('reconcile-donut').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs">Chart unavailable</div>';
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-brand': 'linear-gradient(135deg, #172554 0%, #1D4ED8 50%, #5B2E91 100%)',
+                        'gradient-panel': 'linear-gradient(160deg, #0f1a3e 0%, #172554 40%, #1e1a4a 70%, #2d1a5e 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(160deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+        
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
+
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <a id="nav-vacancy-detail" href="5-Vendor Management - Vacancy De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-lines text-white/40 w-4 text-center"></i>
+                <span>Vacancy Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Agency</p>
+
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+
+            <a id="nav-candidate-submission" href="7-Vendor Management - Agency Can.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-user-plus text-white/40 w-4 text-center"></i>
+                <span>Agency Candidate Submission</span>
+            </a>
+
+            <a id="nav-proposal-review" href="8-Vendor Management - Proposal R.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-clipboard-check text-blue-400 w-4 text-center"></i>
+                <span>Proposal Review</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+
+            <a id="nav-booking-detail" href="9-Vendor Management - Booking De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-calendar-check text-white/40 w-4 text-center"></i>
+                <span>Booking Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Finance</p>
+
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Client Weekly Timesheet</span>
+            </a>
+
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+        </nav>
+
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">MSP Admin</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <nav class="flex items-center gap-1.5 text-xs text-slate-400">
+                                <a href="#" class="hover:text-blue-600 transition-colors">Vacancy List</a>
+                                <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
+                                <a href="#" class="hover:text-blue-600 transition-colors">#VAC-2087</a>
+                                <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
+                                <span class="text-slate-700 font-semibold">Proposal Review</span>
+                            </nav>
+                        </div>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <h1 class="text-lg font-bold text-slate-900">Proposal Review</h1>
+                            <span class="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-purple-400 inline-block"></span>
+                                4 Proposals Pending
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
+                    <span class="text-xs font-medium text-slate-600">May 2026</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 w-48 xl:w-56">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Search workers..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                </div>
+
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-bell text-slate-600 text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+                </button>
+
+                <button class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-gear text-slate-600 text-sm"></i>
+                </button>
+
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">Sarah Mitchell</p>
+                        <p class="text-xs text-slate-400">MSP Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main id="proposal-main" class="flex-1 overflow-y-auto bg-slate-100">
+
+            <!-- Sub-header / Vacancy Context Bar -->
+            <div id="proposal-action-bar" class="bg-white border-b border-slate-200 px-6 xl:px-8 py-3 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center gap-2 flex-wrap">
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium" style="background: linear-gradient(135deg, rgba(15,26,62,0.08), rgba(23,37,84,0.06)); border: 1px solid rgba(23,37,84,0.12);">
+                        <i class="fa-solid fa-warehouse text-blue-600 text-xs"></i>
+                        <span class="text-slate-800 font-semibold">#VAC-2087 · Forklift Driver (Reach/Counterbalance)</span>
+                    </div>
+                    <div class="w-px h-4 bg-slate-200 mx-1"></div>
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium">
+                        <i class="fa-solid fa-building text-slate-400 text-xs"></i>
+                        <span>Amazon Logistics</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 border border-red-100 text-xs text-red-600 font-medium">
+                        <i class="fa-solid fa-clock text-xs"></i>
+                        <span>Deadline: 30 May · 2 days left</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-100 text-xs text-blue-700 font-medium">
+                        <i class="fa-solid fa-users text-xs"></i>
+                        <span>4 proposals · 2 agencies</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="export-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-arrow-down-to-bracket text-xs"></i>
+                        <span>Export</span>
+                    </button>
+                    <button id="send-to-client-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>Send Shortlist to Client</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- KPI Summary Strip -->
+            <div id="kpi-strip" class="px-6 xl:px-8 pt-5 pb-0 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3">
+                <div id="kpi-total" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.1), rgba(91,46,145,0.1));">
+                        <i class="fa-solid fa-users text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Total Proposals</p>
+                        <p class="text-lg font-bold text-slate-900">4</p>
+                    </div>
+                </div>
+                <div id="kpi-agencies" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-purple-50">
+                        <i class="fa-solid fa-building-user text-purple-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Agencies</p>
+                        <p class="text-lg font-bold text-slate-900">2</p>
+                    </div>
+                </div>
+                <div id="kpi-shortlisted" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-emerald-50">
+                        <i class="fa-solid fa-star text-emerald-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Shortlisted</p>
+                        <p class="text-lg font-bold text-emerald-600">1</p>
+                    </div>
+                </div>
+                <div id="kpi-pending" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
+                        <i class="fa-solid fa-hourglass-half text-amber-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Pending Review</p>
+                        <p class="text-lg font-bold text-amber-600">3</p>
+                    </div>
+                </div>
+                <div id="kpi-avg-rate" class="hidden xl:flex bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-blue-50">
+                        <i class="fa-solid fa-sterling-sign text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Avg. Rate</p>
+                        <p class="text-lg font-bold text-slate-900">£14.80<span class="text-xs text-slate-400 font-normal">/hr</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="px-6 xl:px-8 py-4 flex gap-5">
+
+                <!-- Left: Candidate Comparison Panel -->
+                <div id="comparison-panel" class="flex-1 min-w-0 flex flex-col gap-4">
+
+                    <!-- Filter / View Controls -->
+                    <div id="filter-controls" class="flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                <i class="fa-solid fa-table-columns text-xs"></i>
+                                <span>Side-by-Side</span>
+                            </button>
+                            <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-600 font-medium hover:border-blue-300 transition-colors">
+                                <i class="fa-solid fa-list text-xs"></i>
+                                <span>List View</span>
+                            </button>
+                            <div class="w-px h-4 bg-slate-200 mx-1"></div>
+                            <select class="border border-slate-200 bg-white rounded-lg px-3 py-1.5 text-xs text-slate-600 outline-none focus:border-blue-400 transition-all appearance-none">
+                                <option>All Proposals</option>
+                                <option>Pending Only</option>
+                                <option>Shortlisted</option>
+                                <option>Rejected</option>
+                            </select>
+                            <select class="border border-slate-200 bg-white rounded-lg px-3 py-1.5 text-xs text-slate-600 outline-none focus:border-blue-400 transition-all appearance-none">
+                                <option>Sort: Score ↓</option>
+                                <option>Sort: Rate ↑</option>
+                                <option>Sort: Rate ↓</option>
+                                <option>Sort: Submitted ↓</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-xs text-slate-400">Showing 4 of 4 proposals</span>
+                            <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-xs text-slate-600 font-medium hover:border-blue-300 transition-colors">
+                                <i class="fa-solid fa-sliders text-xs"></i>
+                                <span>Filters</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Side-by-Side Worker Comparison -->
+                    <div id="candidate-comparison-grid" class="grid grid-cols-1 xl:grid-cols-2 gap-4">
+
+                        <!-- Worker 1: Marcus Thompson - Shortlisted -->
+                        <div id="candidate-card-1" class="bg-white rounded-2xl border-2 border-emerald-300 shadow-sm overflow-hidden relative">
+                            <div class="absolute top-3 right-3 z-10">
+                                <span class="text-xs font-bold text-emerald-700 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <i class="fa-solid fa-star text-xs"></i> Shortlisted
+                                </span>
+                            </div>
+                            <!-- Card Header -->
+                            <div class="px-4 py-4 border-b border-slate-100" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7);">
+                                <div class="flex items-start gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" class="w-12 h-12 rounded-xl object-cover border-2 border-emerald-300" alt="Marcus Thompson"/>
+                                        <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center">
+                                            <i class="fa-solid fa-check text-white" style="font-size: 8px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="flex-1 min-w-0 pr-16">
+                                        <p class="text-sm font-bold text-slate-900">Marcus Thompson</p>
+                                        <p class="text-xs text-slate-500 mt-0.5">Forklift Driver (Reach/Counterbalance) · 6 yrs exp.</p>
+                                        <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-building-user text-slate-400 text-xs"></i> Swift Staffing</span>
+                                            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-slate-400 text-xs"></i> Coventry</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scorecard -->
+                            <div id="scorecard-1" class="px-4 py-3 border-b border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-xs font-bold text-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-chart-simple text-blue-500 text-xs"></i> Scorecard</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-base font-bold text-emerald-600">91</span>
+                                        <span class="text-xs text-slate-400">/100</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Licence Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">100</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Rate Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 90%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">90</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Experience</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500 rounded-full" style="width: 88%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">88</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Availability</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">100</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Details -->
+                            <div id="details-1" class="px-4 py-3 border-b border-slate-100">
+                                <div class="grid grid-cols-2 gap-y-2 gap-x-3">
+                                    <div>
+                                        <p class="text-xs text-slate-400">Pay Rate</p>
+                                        <p class="text-sm font-bold text-slate-900">£14.50<span class="text-xs font-normal text-slate-400">/hr</span></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Available From</p>
+                                        <p class="text-xs font-semibold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-circle-check text-xs"></i> Immediate</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Shift Preference</p>
+                                        <p class="text-xs font-semibold text-blue-700">Morning / Late</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">RTW Status</p>
+                                        <p class="text-xs font-semibold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-shield-check text-xs"></i> Verified</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Notice Period</p>
+                                        <p class="text-xs font-semibold text-slate-700">Immediate</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Site Preference</p>
+                                        <p class="text-xs font-semibold text-slate-700">Coventry DC</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skills / Competencies Match -->
+                            <div id="skills-1" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-700 mb-2">Competency Match</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Reach Truck Lic.</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Counterbalance Lic.</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Manual Handling</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Health &amp; Safety</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Scanner Operation</span>
+                                    <span class="text-xs font-medium text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-minus text-xs"></i> LLOP</span>
+                                </div>
+                            </div>
+
+                            <!-- Internal Comment -->
+                            <div id="comment-1" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-700 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-comment-dots text-purple-500 text-xs"></i> Internal Notes</p>
+                                <div class="p-2.5 rounded-lg bg-purple-50 border border-purple-100">
+                                    <p class="text-xs text-slate-700 leading-relaxed">Strong warehousing background at DHL. Immediate availability is a major plus. Both licences valid and in-date. Recommend for client placement.</p>
+                                    <p class="text-xs text-purple-500 mt-1.5 flex items-center gap-1"><i class="fa-solid fa-user text-xs"></i> S. Mitchell · 28 May</p>
+                                </div>
+                                <div class="mt-2 flex items-center gap-1.5">
+                                    <input type="text" placeholder="Add a note..." class="flex-1 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 placeholder-slate-400 outline-none focus:border-purple-400 transition-all"/>
+                                    <button class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white" style="background: linear-gradient(135deg, #5B2E91, #1D4ED8);">Post</button>
+                                </div>
+                            </div>
+
+                            <!-- Decision Actions -->
+                            <div id="actions-1" class="px-4 py-3 flex items-center gap-2">
+                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border-2 border-emerald-400 bg-emerald-50 text-xs font-bold text-emerald-700 hover:bg-emerald-100 transition-colors">
+                                    <i class="fa-solid fa-star text-xs"></i> Shortlisted
+                                </button>
+                                <button class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-500 hover:border-red-300 hover:text-red-500 hover:bg-red-50 transition-colors">
+                                    <i class="fa-solid fa-xmark text-xs"></i> Reject
+                                </button>
+                                <button class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-500 hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                    <i class="fa-solid fa-eye text-xs"></i> Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Worker 2: Priya Sharma - Pending -->
+                        <div id="candidate-card-2" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative">
+                            <div class="absolute top-3 right-3 z-10">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <i class="fa-solid fa-hourglass-half text-xs"></i> Pending Review
+                                </span>
+                            </div>
+                            <!-- Card Header -->
+                            <div class="px-4 py-4 border-b border-slate-100 bg-slate-50">
+                                <div class="flex items-start gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-12 h-12 rounded-xl object-cover border-2 border-slate-200" alt="Priya Sharma"/>
+                                    </div>
+                                    <div class="flex-1 min-w-0 pr-16">
+                                        <p class="text-sm font-bold text-slate-900">Priya Sharma</p>
+                                        <p class="text-xs text-slate-500 mt-0.5">Picker/Packer · 3 yrs exp.</p>
+                                        <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-building-user text-slate-400 text-xs"></i> Swift Staffing</span>
+                                            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-slate-400 text-xs"></i> Birmingham</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scorecard -->
+                            <div id="scorecard-2" class="px-4 py-3 border-b border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-xs font-bold text-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-chart-simple text-blue-500 text-xs"></i> Scorecard</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-base font-bold text-blue-600">76</span>
+                                        <span class="text-xs text-slate-400">/100</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Licence Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-amber-500 rounded-full" style="width: 60%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">60</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Rate Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500 rounded-full" style="width: 82%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">82</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Experience</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">75</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Availability</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500 rounded-full" style="width: 80%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">80</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Details -->
+                            <div id="details-2" class="px-4 py-3 border-b border-slate-100">
+                                <div class="grid grid-cols-2 gap-y-2 gap-x-3">
+                                    <div>
+                                        <p class="text-xs text-slate-400">Pay Rate</p>
+                                        <p class="text-sm font-bold text-amber-600">£13.00<span class="text-xs font-normal text-slate-400">/hr</span></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Available From</p>
+                                        <p class="text-xs font-semibold text-slate-700">2 Jun 2026</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Shift Preference</p>
+                                        <p class="text-xs font-semibold text-blue-700">Morning Only</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">RTW Status</p>
+                                        <p class="text-xs font-semibold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-shield-check text-xs"></i> Verified</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Notice Period</p>
+                                        <p class="text-xs font-semibold text-slate-700">1 week</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Site Preference</p>
+                                        <p class="text-xs font-semibold text-slate-700">Birmingham NEC</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Competency Match -->
+                            <div id="skills-2" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-700 mb-2">Competency Match</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Manual Handling</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Health &amp; Safety</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Scanner Operation</span>
+                                    <span class="text-xs font-medium text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-minus text-xs"></i> LLOP</span>
+                                    <span class="text-xs font-medium text-red-500 bg-red-50 border border-red-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-xmark text-xs"></i> Reach Truck Lic.</span>
+                                    <span class="text-xs font-medium text-red-500 bg-red-50 border border-red-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-xmark text-xs"></i> Counterbalance Lic.</span>
+                                </div>
+                            </div>
+
+                            <!-- Internal Comment -->
+                            <div id="comment-2" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-700 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-comment-dots text-purple-500 text-xs"></i> Internal Notes</p>
+                                <div class="p-2.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-400 italic">No notes yet. Add one below.</div>
+                                <div class="mt-2 flex items-center gap-1.5">
+                                    <input type="text" placeholder="Add a note..." class="flex-1 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 placeholder-slate-400 outline-none focus:border-purple-400 transition-all"/>
+                                    <button class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white" style="background: linear-gradient(135deg, #5B2E91, #1D4ED8);">Post</button>
+                                </div>
+                            </div>
+
+                            <!-- Decision Actions -->
+                            <div id="actions-2" class="px-4 py-3 flex items-center gap-2">
+                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-emerald-300 bg-white text-xs font-semibold text-emerald-600 hover:bg-emerald-50 hover:border-emerald-400 transition-colors">
+                                    <i class="fa-regular fa-star text-xs"></i> Shortlist
+                                </button>
+                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-red-200 bg-white text-xs font-semibold text-red-500 hover:bg-red-50 hover:border-red-400 transition-colors">
+                                    <i class="fa-solid fa-xmark text-xs"></i> Reject
+                                </button>
+                                <button class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-500 hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                    <i class="fa-solid fa-eye text-xs"></i> Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Worker 3: Dean Walsh - Pending -->
+                        <div id="candidate-card-3" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative">
+                            <div class="absolute top-3 right-3 z-10">
+                                <span class="text-xs font-bold text-amber-700 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <i class="fa-solid fa-hourglass-half text-xs"></i> Pending Review
+                                </span>
+                            </div>
+                            <!-- Card Header -->
+                            <div class="px-4 py-4 border-b border-slate-100 bg-slate-50">
+                                <div class="flex items-start gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-12 h-12 rounded-xl object-cover border-2 border-slate-200" alt="Dean Walsh"/>
+                                    </div>
+                                    <div class="flex-1 min-w-0 pr-16">
+                                        <p class="text-sm font-bold text-slate-900">Dean Walsh</p>
+                                        <p class="text-xs text-slate-500 mt-0.5">Warehouse Operative · 8 yrs exp.</p>
+                                        <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-building-user text-slate-400 text-xs"></i> Apex Workforce</span>
+                                            <span class="text-xs text-slate-500 flex items-center gap-1"><i class="fa-solid fa-location-dot text-slate-400 text-xs"></i> Leicester</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scorecard -->
+                            <div id="scorecard-3" class="px-4 py-3 border-b border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-xs font-bold text-slate-700 flex items-center gap-1.5"><i class="fa-solid fa-chart-simple text-blue-500 text-xs"></i> Scorecard</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-base font-bold text-blue-600">84</span>
+                                        <span class="text-xs text-slate-400">/100</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Licence Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">100</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Rate Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 88%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">88</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Experience</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500 rounded-full" style="width: 85%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">85</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-500 w-28 flex-shrink-0">Availability</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-amber-500 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-700 w-6 text-right">65</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Details -->
+                            <div id="details-3" class="px-4 py-3 border-b border-slate-100">
+                                <div class="grid grid-cols-2 gap-y-2 gap-x-3">
+                                    <div>
+                                        <p class="text-xs text-slate-400">Pay Rate</p>
+                                        <p class="text-sm font-bold text-slate-900">£15.00<span class="text-xs font-normal text-slate-400">/hr</span></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Available From</p>
+                                        <p class="text-xs font-semibold text-slate-700">9 Jun 2026</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Shift Preference</p>
+                                        <p class="text-xs font-semibold text-blue-700">Night Shift</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">RTW Status</p>
+                                        <p class="text-xs font-semibold text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-shield-check text-xs"></i> Verified</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Notice Period</p>
+                                        <p class="text-xs font-semibold text-slate-700">2 weeks</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-400">Site Preference</p>
+                                        <p class="text-xs font-semibold text-slate-700">Leicester Depot</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Competency Match -->
+                            <div id="skills-3" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-700 mb-2">Competency Match</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Reach Truck Lic.</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Manual Handling</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Health &amp; Safety</span>
+                                    <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> LLOP</span>
+                                    <span class="text-xs font-medium text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-minus text-xs"></i> Scanner Operation</span>
+                                    <span class="text-xs font-medium text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-minus text-xs"></i> Counterbalance Lic.</span>
+                                </div>
+                            </div>
+
+                            <!-- Internal Comment -->
+                            <div id="comment-3" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-700 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-comment-dots text-purple-500 text-xs"></i> Internal Notes</p>
+                                <div class="p-2.5 rounded-lg bg-purple-50 border border-purple-100">
+                                    <p class="text-xs text-slate-700 leading-relaxed">Good warehouse background. Night shift preference works for the client. 2-week notice may be tight for start date. Worth considering as backup.</p>
+                                    <p class="text-xs text-purple-500 mt-1.5 flex items-center gap-1"><i class="fa-solid fa-user text-xs"></i> S. Mitchell · 29 May</p>
+                                </div>
+                                <div class="mt-2 flex items-center gap-1.5">
+                                    <input type="text" placeholder="Add a note..." class="flex-1 border border-slate-200 rounded-lg px-2.5 py-1.5 text-xs text-slate-700 placeholder-slate-400 outline-none focus:border-purple-400 transition-all"/>
+                                    <button class="px-2.5 py-1.5 rounded-lg text-xs font-semibold text-white" style="background: linear-gradient(135deg, #5B2E91, #1D4ED8);">Post</button>
+                                </div>
+                            </div>
+
+                            <!-- Decision Actions -->
+                            <div id="actions-3" class="px-4 py-3 flex items-center gap-2">
+                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-emerald-300 bg-white text-xs font-semibold text-emerald-600 hover:bg-emerald-50 hover:border-emerald-400 transition-colors">
+                                    <i class="fa-regular fa-star text-xs"></i> Shortlist
+                                </button>
+                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-red-200 bg-white text-xs font-semibold text-red-500 hover:bg-red-50 hover:border-red-400 transition-colors">
+                                    <i class="fa-solid fa-xmark text-xs"></i> Reject
+                                </button>
+                                <button class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-500 hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                    <i class="fa-solid fa-eye text-xs"></i> Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Worker 4: Tony Obi - Rejected -->
+                        <div id="candidate-card-4" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden relative opacity-70">
+                            <div class="absolute top-3 right-3 z-10">
+                                <span class="text-xs font-bold text-red-600 bg-red-50 border border-red-300 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <i class="fa-solid fa-xmark text-xs"></i> Rejected
+                                </span>
+                            </div>
+                            <!-- Card Header -->
+                            <div class="px-4 py-4 border-b border-slate-100 bg-slate-50">
+                                <div class="flex items-start gap-3">
+                                    <div class="relative flex-shrink-0">
+                                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-12 h-12 rounded-xl object-cover border-2 border-slate-200 grayscale" alt="Tony Obi"/>
+                                    </div>
+                                    <div class="flex-1 min-w-0 pr-16">
+                                        <p class="text-sm font-bold text-slate-500">Tony Obi</p>
+                                        <p class="text-xs text-slate-400 mt-0.5">Loader · 2 yrs exp.</p>
+                                        <div class="flex items-center gap-2 mt-1.5 flex-wrap">
+                                            <span class="text-xs text-slate-400 flex items-center gap-1"><i class="fa-solid fa-building-user text-slate-300 text-xs"></i> Swift Staffing</span>
+                                            <span class="text-xs text-slate-400 flex items-center gap-1"><i class="fa-solid fa-location-dot text-slate-300 text-xs"></i> Wolverhampton</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Scorecard -->
+                            <div id="scorecard-4" class="px-4 py-3 border-b border-slate-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-xs font-bold text-slate-500 flex items-center gap-1.5"><i class="fa-solid fa-chart-simple text-slate-400 text-xs"></i> Scorecard</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-base font-bold text-slate-400">58</span>
+                                        <span class="text-xs text-slate-300">/100</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-400 w-28 flex-shrink-0">Licence Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-slate-300 rounded-full" style="width: 40%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-400 w-6 text-right">40</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-400 w-28 flex-shrink-0">Rate Match</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-slate-300 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-400 w-6 text-right">65</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-400 w-28 flex-shrink-0">Experience</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-slate-300 rounded-full" style="width: 55%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-400 w-6 text-right">55</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-xs text-slate-400 w-28 flex-shrink-0">Availability</span>
+                                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-slate-300 rounded-full" style="width: 70%"></div>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-400 w-6 text-right">70</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Key Details -->
+                            <div id="details-4" class="px-4 py-3 border-b border-slate-100">
+                                <div class="grid grid-cols-2 gap-y-2 gap-x-3">
+                                    <div>
+                                        <p class="text-xs text-slate-300">Pay Rate</p>
+                                        <p class="text-sm font-bold text-slate-400">£12.50<span class="text-xs font-normal text-slate-300">/hr</span></p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-300">Available From</p>
+                                        <p class="text-xs font-semibold text-slate-400">16 Jun 2026</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-300">Shift Preference</p>
+                                        <p class="text-xs font-semibold text-slate-400">Morning Only</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-300">RTW Status</p>
+                                        <p class="text-xs font-semibold text-slate-400">Verified</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-300">Notice Period</p>
+                                        <p class="text-xs font-semibold text-slate-400">1 month</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs text-slate-300">Site Preference</p>
+                                        <p class="text-xs font-semibold text-slate-400">Any</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Competency Match -->
+                            <div id="skills-4" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-400 mb-2">Competency Match</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Manual Handling</span>
+                                    <span class="text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Health &amp; Safety</span>
+                                    <span class="text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-xmark text-xs"></i> Scanner Operation</span>
+                                    <span class="text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-xmark text-xs"></i> LLOP</span>
+                                    <span class="text-xs font-medium text-slate-400 bg-slate-50 border border-slate-200 px-1.5 py-0.5 rounded-md flex items-center gap-1"><i class="fa-solid fa-xmark text-xs"></i> Reach Truck Lic.</span>
+                                </div>
+                            </div>
+
+                            <!-- Rejection Note -->
+                            <div id="rejection-note-4" class="px-4 py-3 border-b border-slate-100">
+                                <p class="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-comment-dots text-slate-400 text-xs"></i> Rejection Reason</p>
+                                <div class="p-2.5 rounded-lg bg-red-50 border border-red-100">
+                                    <p class="text-xs text-slate-500 leading-relaxed">No forklift licence. Insufficient warehouse experience for this role level. Rate acceptable but competency gap too significant.</p>
+                                    <p class="text-xs text-red-400 mt-1.5 flex items-center gap-1"><i class="fa-solid fa-user text-xs"></i> S. Mitchell · 28 May</p>
+                                </div>
+                            </div>
+
+                            <!-- Decision Actions -->
+                            <div id="actions-4" class="px-4 py-3 flex items-center gap-2">
+                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-400 hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50 transition-colors">
+                                    <i class="fa-solid fa-rotate-left text-xs"></i> Reconsider
+                                </button>
+                                <span class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-red-200 bg-red-50 text-xs font-semibold text-red-400 cursor-default">
+                                    <i class="fa-solid fa-ban text-xs"></i> Rejected
+                                </span>
+                                <button class="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-medium text-slate-400 hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                    <i class="fa-solid fa-eye text-xs"></i> Profile
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Bottom Spacer -->
+                    <div class="h-4"></div>
+                </div>
+
+                <!-- Right: Decision Summary Panel -->
+                <div id="decision-panel" class="w-72 xl:w-80 flex-shrink-0 flex flex-col gap-4">
+
+                    <!-- Vacancy Summary -->
+                    <div id="vacancy-summary-right" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between" style="background: linear-gradient(160deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-warehouse text-blue-300 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Forklift Driver (Reach/CB)</p>
+                                    <p class="text-xs text-white/40 font-mono">#VAC-2087 · Amazon Logistics</p>
+                                </div>
+                            </div>
+                            <span class="text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-1.5 py-0.5 rounded-full">Released</span>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sterling-sign text-slate-300 text-xs"></i> Max Rate</span>
+                                <span class="text-xs font-bold text-slate-800">£15.50/hr</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-moon text-slate-300 text-xs"></i> Shifts</span>
+                                <span class="text-xs font-semibold text-blue-700">Morning / Night</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-clock text-slate-300 text-xs"></i> Deadline</span>
+                                <span class="text-xs font-semibold text-red-600">30 May 2026</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-slate-300 text-xs"></i> Site / Warehouse</span>
+                                <span class="text-xs font-semibold text-slate-700">Coventry DC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shortlist Summary -->
+                    <div id="shortlist-summary" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-star text-emerald-500 text-xs"></i>
+                                Shortlist
+                            </h4>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full">1 worker</span>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2">
+                            <div class="flex items-center gap-2.5 p-2.5 rounded-xl border-2 border-emerald-200 bg-emerald-50">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-emerald-300 flex-shrink-0" alt="Marcus"/>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-bold text-slate-800">Marcus Thompson</p>
+                                    <p class="text-xs text-slate-500">£14.50/hr · Score: 91</p>
+                                </div>
+                                <i class="fa-solid fa-star text-emerald-500 text-xs flex-shrink-0"></i>
+                            </div>
+                            <div class="p-2.5 rounded-xl border border-dashed border-slate-200 bg-slate-50 flex items-center justify-center gap-2 text-xs text-slate-400">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                                <span>Add another to shortlist</span>
+                            </div>
+                            <button id="send-shortlist-btn" class="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm mt-1" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                                Send Shortlist to Client
+                            </button>
+                            <p class="text-xs text-slate-400 text-center">Client will receive an email with shortlisted profiles</p>
+                        </div>
+                    </div>
+
+                    <!-- Agency Breakdown -->
+                    <div id="agency-breakdown" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-building-user text-blue-500 text-xs"></i>
+                                Agency Submissions
+                            </h4>
+                        </div>
+                        <div class="p-4 flex flex-col gap-3">
+                            <div id="agency-row-1" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.12), rgba(91,46,145,0.12));">
+                                    <i class="fa-solid fa-building-user text-blue-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-bold text-slate-800">Swift Staffing</p>
+                                    <p class="text-xs text-slate-400">3 workers submitted</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-0.5">
+                                    <span class="text-xs font-semibold text-emerald-600">1 shortlisted</span>
+                                    <span class="text-xs text-slate-400">1 rejected</span>
+                                </div>
+                            </div>
+                            <div id="agency-row-2" class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 bg-purple-50">
+                                    <i class="fa-solid fa-building-user text-purple-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-bold text-slate-800">Apex Workforce</p>
+                                    <p class="text-xs text-slate-400">1 worker submitted</p>
+                                </div>
+                                <div class="flex flex-col items-end gap-0.5">
+                                    <span class="text-xs font-semibold text-amber-600">Pending</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audit Trail -->
+                    <div id="audit-trail" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-clock-rotate-left text-blue-500 text-xs"></i>
+                                Activity Log
+                            </h4>
+                            <button class="text-xs text-blue-600 font-medium hover:text-blue-700 transition-colors">View all</button>
+                        </div>
+                        <div class="p-4 flex flex-col gap-3">
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-star text-emerald-600" style="font-size: 9px;"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs text-slate-700"><span class="font-semibold">Marcus Thompson</span> shortlisted</p>
+                                    <p class="text-xs text-slate-400">S. Mitchell · 29 May, 14:32</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-6 h-6 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-xmark text-red-500" style="font-size: 9px;"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs text-slate-700"><span class="font-semibold">Tony Obi</span> rejected</p>
+                                    <p class="text-xs text-slate-400">S. Mitchell · 28 May, 11:15</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-user-plus text-blue-600" style="font-size: 9px;"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs text-slate-700"><span class="font-semibold">Dean Walsh</span> submitted by Apex Workforce</p>
+                                    <p class="text-xs text-slate-400">System · 28 May, 09:42</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <div class="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-user-plus text-blue-600" style="font-size: 9px;"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs text-slate-700"><span class="font-semibold">Priya Sharma</span> submitted by Swift Staffing</p>
+                                    <p class="text-xs text-slate-400">System · 27 May, 16:05</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div id="quick-actions" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                        <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-bolt text-amber-500 text-xs"></i>
+                            Quick Actions
+                        </h4>
+                        <div class="flex flex-col gap-2">
+                            <button class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                <i class="fa-solid fa-envelope text-slate-400 text-xs w-4 text-center"></i>
+                                <span>Notify All Agencies of Outcome</span>
+                            </button>
+                            <button class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                <i class="fa-solid fa-calendar-plus text-slate-400 text-xs w-4 text-center"></i>
+                                <span>Schedule Site Inductions</span>
+                            </button>
+                            <button class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50 transition-colors">
+                                <i class="fa-solid fa-file-export text-slate-400 text-xs w-4 text-center"></i>
+                                <span>Export Comparison Report</span>
+                            </button>
+                            <button class="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl border border-red-100 bg-red-50 text-xs text-red-600 font-medium hover:border-red-300 hover:bg-red-100 transition-colors">
+                                <i class="fa-solid fa-ban text-red-400 text-xs w-4 text-center"></i>
+                                <span>Reject All Remaining</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>

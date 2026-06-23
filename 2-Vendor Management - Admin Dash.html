@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+        
+        <!-- Logo -->
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <!-- Nav -->
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
+
+            <!-- Admin Dashboard - ACTIVE -->
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-gauge-high text-blue-400 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+
+            <!-- Vacancy List -->
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+
+            <!-- Create Vacancy Wizard -->
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <!-- Vacancy Detail -->
+            <a id="nav-vacancy-detail" href="5-Vendor Management - Vacancy De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-lines text-white/40 w-4 text-center"></i>
+                <span>Vacancy Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Agency</p>
+
+            <!-- Agency Dashboard -->
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+
+            <!-- Agency Candidate Submission -->
+            <a id="nav-candidate-submission" href="7-Vendor Management - Agency Can.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-user-plus text-white/40 w-4 text-center"></i>
+                <span>Agency Candidate Submission</span>
+            </a>
+
+            <!-- Proposal Review -->
+            <a id="nav-proposal-review" href="8-Vendor Management - Proposal R.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-check text-white/40 w-4 text-center"></i>
+                <span>Proposal Review</span>
+            </a>
+
+            <!-- Booking Detail -->
+            <a id="nav-booking-detail" href="9-Vendor Management - Booking De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-calendar-check text-white/40 w-4 text-center"></i>
+                <span>Booking Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Finance</p>
+
+            <!-- Client Weekly Timesheet Entry -->
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Client Weekly Timesheet</span>
+            </a>
+
+            <!-- Invoicing/Self-Bill Overview -->
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+
+            <!-- Abstract Backing Report -->
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">Super Admin</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <!-- Mobile menu toggle -->
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900">Admin Dashboard</h1>
+                    <p class="text-xs text-slate-500 hidden sm:block">Overview of vacancy pipeline & margin performance</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <!-- Date range -->
+                <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
+                    <span class="text-xs font-medium text-slate-600">May 2026</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+
+                <!-- Search -->
+                <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 w-48 xl:w-56">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Search..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                </div>
+
+                <!-- Notifications -->
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-bell text-slate-600 text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+                </button>
+
+                <!-- Settings -->
+                <button class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-gear text-slate-600 text-sm"></i>
+                </button>
+
+                <!-- Avatar -->
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">Sarah M.</p>
+                        <p class="text-xs text-slate-400">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Body -->
+        <main id="dashboard-main" class="flex-1 overflow-y-auto px-6 xl:px-8 py-6 bg-slate-100">
+
+            <!-- Welcome Banner -->
+            <div id="welcome-banner" class="rounded-2xl p-5 xl:p-6 mb-6 flex items-center justify-between flex-wrap gap-4" style="background: linear-gradient(135deg, #172554 0%, #1D4ED8 55%, #5B2E91 100%);">
+                <div>
+                    <p class="text-white/60 text-xs font-medium mb-1">Good morning, Sarah 👋</p>
+                    <h2 class="text-white font-bold text-xl xl:text-2xl mb-1">Here's your workforce pipeline snapshot</h2>
+                    <p class="text-white/60 text-sm">30 May 2026 · Week 22 · FY2026 Q2</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-center">
+                        <p class="text-white font-bold text-lg">£2.4M</p>
+                        <p class="text-white/60 text-xs">Revenue MTD</p>
+                    </div>
+                    <div class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-center">
+                        <p class="text-white font-bold text-lg">18.3%</p>
+                        <p class="text-white/60 text-xs">Avg Margin</p>
+                    </div>
+                    <div class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-center">
+                        <p class="text-white font-bold text-lg">94</p>
+                        <p class="text-white/60 text-xs">Active Shifts</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KPI Cards Row -->
+            <div id="kpi-cards" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+
+                <!-- KPI 1: Open Vacancies -->
+                <div id="kpi-vacancies" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(29,78,216,0.1);">
+                            <i class="fa-solid fa-warehouse text-blue-600 text-base"></i>
+                        </div>
+                        <span class="flex items-center gap-1 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <i class="fa-solid fa-arrow-up text-xs"></i> 12%
+                        </span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-900 mb-1">47</p>
+                    <p class="text-sm text-slate-500 font-medium">Open Vacancies</p>
+                    <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
+                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full bg-blue-500" style="width: 68%"></div>
+                        </div>
+                        <span class="text-xs text-slate-400">68% filled</span>
+                    </div>
+                </div>
+
+                <!-- KPI 2: Proposals Pending -->
+                <div id="kpi-proposals" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(245,158,11,0.1);">
+                            <i class="fa-solid fa-clipboard-list text-amber-500 text-base"></i>
+                        </div>
+                        <span class="flex items-center gap-1 text-xs font-semibold text-red-500 bg-red-50 px-2 py-1 rounded-full">
+                            <i class="fa-solid fa-arrow-up text-xs"></i> 5
+                        </span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-900 mb-1">23</p>
+                    <p class="text-sm text-slate-500 font-medium">Proposals Pending</p>
+                    <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-amber-400"></div>
+                        <span class="text-xs text-slate-400">8 require urgent review</span>
+                    </div>
+                </div>
+
+                <!-- KPI 3: Active Shifts -->
+                <div id="kpi-placements" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(16,185,129,0.1);">
+                            <i class="fa-solid fa-person-digging text-emerald-600 text-base"></i>
+                        </div>
+                        <span class="flex items-center gap-1 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <i class="fa-solid fa-arrow-up text-xs"></i> 8%
+                        </span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-900 mb-1">94</p>
+                    <p class="text-sm text-slate-500 font-medium">Active Shifts</p>
+                    <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
+                        <div class="w-2 h-2 rounded-full bg-emerald-400"></div>
+                        <span class="text-xs text-slate-400">Across 12 sites</span>
+                    </div>
+                </div>
+
+                <!-- KPI 4: Avg Margin % -->
+                <div id="kpi-margin" class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background: rgba(91,46,145,0.1);">
+                            <i class="fa-solid fa-chart-line text-purple-600 text-base"></i>
+                        </div>
+                        <span class="flex items-center gap-1 text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">
+                            <i class="fa-solid fa-arrow-up text-xs"></i> 1.2pp
+                        </span>
+                    </div>
+                    <p class="text-3xl font-bold text-slate-900 mb-1">18.3%</p>
+                    <p class="text-sm text-slate-500 font-medium">Avg Margin %</p>
+                    <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
+                        <div class="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                            <div class="h-full rounded-full bg-purple-500" style="width: 73%"></div>
+                        </div>
+                        <span class="text-xs text-slate-400">Target: 25%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts + Activity Row -->
+            <div id="charts-activity-row" class="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-6">
+
+                <!-- Vacancy Pipeline Trend Chart -->
+                <div id="pipeline-chart-card" class="xl:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-800">Shift Pipeline Trend</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Last 6 months · Open vs Filled vs Cancelled</p>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="flex items-center gap-1.5 text-xs text-slate-500"><span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>Open</span>
+                            <span class="flex items-center gap-1.5 text-xs text-slate-500"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>Filled</span>
+                            <span class="flex items-center gap-1.5 text-xs text-slate-500"><span class="w-2.5 h-2.5 rounded-full bg-red-400 inline-block"></span>Cancelled</span>
+                        </div>
+                    </div>
+                    <div id="pipeline-chart" class="h-[220px]"></div>
+                </div>
+
+                <!-- Margin by Warehouse Donut -->
+                <div id="margin-chart-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-800">Margin by Warehouse</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Current month breakdown</p>
+                        </div>
+                    </div>
+                    <div id="margin-donut-chart" class="h-[160px]"></div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span><span class="text-xs text-slate-600">Site A – Coventry DC</span></div>
+                            <span class="text-xs font-semibold text-slate-700">22.1%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span><span class="text-xs text-slate-600">Site B – Luton Hub</span></div>
+                            <span class="text-xs font-semibold text-slate-700">19.4%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span><span class="text-xs text-slate-600">Site C – Milton Keynes</span></div>
+                            <span class="text-xs font-semibold text-slate-700">16.8%</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span><span class="text-xs text-slate-600">Other Sites</span></div>
+                            <span class="text-xs font-semibold text-slate-700">15.2%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Revenue Chart + Activity + Quick Actions -->
+            <div id="bottom-row" class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+
+                <!-- Revenue/Margin Line Chart -->
+                <div id="revenue-chart-card" class="xl:col-span-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-800">Revenue vs Margin</h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Weekly · FY2026 Q2</p>
+                        </div>
+                    </div>
+                    <div id="revenue-chart" class="h-[180px]"></div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div id="recent-activity-card" class="xl:col-span-1 bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-bold text-slate-800">Recent Activity</h3>
+                        <a href="#" class="text-xs font-semibold text-blue-600 hover:text-blue-700">View all</a>
+                    </div>
+                    <div id="activity-feed" class="flex flex-col gap-3">
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-blue-50 border border-blue-100 mt-0.5">
+                                <i class="fa-solid fa-warehouse text-blue-500 text-xs"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-semibold text-slate-700">New vacancy created</p>
+                                <p class="text-xs text-slate-400 truncate">Forklift Driver (Reach) · Site A – Coventry DC · Ref #VAC-1042</p>
+                                <p class="text-xs text-slate-300 mt-0.5">2 min ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-amber-50 border border-amber-100 mt-0.5">
+                                <i class="fa-solid fa-clipboard-check text-amber-500 text-xs"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-semibold text-slate-700">Proposal submitted</p>
+                                <p class="text-xs text-slate-400 truncate">TechForce Agency · Priya Sharma · Picker/Packer · #VAC-1038</p>
+                                <p class="text-xs text-slate-300 mt-0.5">18 min ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-emerald-50 border border-emerald-100 mt-0.5">
+                                <i class="fa-solid fa-circle-check text-emerald-500 text-xs"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-semibold text-slate-700">Shift booking confirmed</p>
+                                <p class="text-xs text-slate-400 truncate">James Okafor · Warehouse Operative · Morning Shift · Start 2 Jun</p>
+                                <p class="text-xs text-slate-300 mt-0.5">1 hr ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-purple-50 border border-purple-100 mt-0.5">
+                                <i class="fa-solid fa-file-invoice-dollar text-purple-500 text-xs"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-semibold text-slate-700">Invoice generated</p>
+                                <p class="text-xs text-slate-400 truncate">INV-2026-0891 · Site B – Luton Hub · £14,200</p>
+                                <p class="text-xs text-slate-300 mt-0.5">3 hr ago</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 bg-red-50 border border-red-100 mt-0.5">
+                                <i class="fa-solid fa-triangle-exclamation text-red-400 text-xs"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-semibold text-slate-700">Timesheet overdue</p>
+                                <p class="text-xs text-slate-400 truncate">Week 21 · Night Shift · 3 operatives pending approval</p>
+                                <p class="text-xs text-slate-300 mt-0.5">5 hr ago</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Quick Actions + Agency Leaderboard -->
+                <div id="quick-actions-col" class="xl:col-span-1 flex flex-col gap-4">
+
+                    <!-- Quick Actions -->
+                    <div id="quick-actions-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5">
+                        <h3 class="text-sm font-bold text-slate-800 mb-3">Quick Actions</h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="flex flex-col items-center gap-2 p-3 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-blue-50 transition-all group">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-blue-50 group-hover:bg-blue-100 transition-colors">
+                                    <i class="fa-solid fa-plus text-blue-600 text-sm"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-600 group-hover:text-blue-700 text-center leading-tight" onclick="window.location.href='4-Vendor Management - Create Vac.html'">New Vacancy</span>
+                            </button>
+                            <button class="flex flex-col items-center gap-2 p-3 rounded-xl border border-slate-200 hover:border-purple-300 hover:bg-purple-50 transition-all group">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-purple-50 group-hover:bg-purple-100 transition-colors">
+                                    <i class="fa-solid fa-clipboard-check text-purple-600 text-sm"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-600 group-hover:text-purple-700 text-center leading-tight" onclick="window.location.href='8-Vendor Management - Proposal R.html'">Review Proposals</span>
+                            </button>
+                            <button class="flex flex-col items-center gap-2 p-3 rounded-xl border border-slate-200 hover:border-emerald-300 hover:bg-emerald-50 transition-all group">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-emerald-50 group-hover:bg-emerald-100 transition-colors">
+                                    <i class="fa-solid fa-clock text-emerald-600 text-sm"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-600 group-hover:text-emerald-700 text-center leading-tight" onclick="window.location.href='10-Vendor Management - Client Wee.html'">Approve Timesheets</span>
+                            </button>
+                            <button class="flex flex-col items-center gap-2 p-3 rounded-xl border border-slate-200 hover:border-amber-300 hover:bg-amber-50 transition-all group">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-amber-50 group-hover:bg-amber-100 transition-colors">
+                                    <i class="fa-solid fa-file-invoice text-amber-600 text-sm"></i>
+                                </div>
+                                <span class="text-xs font-semibold text-slate-600 group-hover:text-amber-700 text-center leading-tight">Run Invoicing</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Agency Leaderboard -->
+                    <div id="agency-leaderboard-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex-1">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-slate-800">Top Agencies</h3>
+                            <span class="text-xs text-slate-400">By shifts filled · MTD</span>
+                        </div>
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs font-bold text-blue-600 w-4">1</span>
+                                <div class="w-7 h-7 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-building-user text-blue-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-700 truncate">TechForce Agency</p>
+                                    <div class="flex items-center gap-2 mt-0.5">
+                                        <div class="flex-1 h-1 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-blue-500 rounded-full" style="width: 88%"></div>
+                                        </div>
+                                        <span class="text-xs text-slate-400 flex-shrink-0">22 shifts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs font-bold text-purple-600 w-4">2</span>
+                                <div class="w-7 h-7 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-building-user text-purple-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-700 truncate">Nexus Talent</p>
+                                    <div class="flex items-center gap-2 mt-0.5">
+                                        <div class="flex-1 h-1 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-purple-500 rounded-full" style="width: 68%"></div>
+                                        </div>
+                                        <span class="text-xs text-slate-400 flex-shrink-0">17 shifts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs font-bold text-emerald-600 w-4">3</span>
+                                <div class="w-7 h-7 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-building-user text-emerald-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-700 truncate">PeopleBridge</p>
+                                    <div class="flex items-center gap-2 mt-0.5">
+                                        <div class="flex-1 h-1 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 rounded-full" style="width: 52%"></div>
+                                        </div>
+                                        <span class="text-xs text-slate-400 flex-shrink-0">13 shifts</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-xs font-bold text-amber-500 w-4">4</span>
+                                <div class="w-7 h-7 rounded-full bg-amber-100 flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-building-user text-amber-600 text-xs"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-700 truncate">Apex Staffing</p>
+                                    <div class="flex items-center gap-2 mt-0.5">
+                                        <div class="flex-1 h-1 bg-slate-100 rounded-full overflow-hidden">
+                                            <div class="h-full bg-amber-400 rounded-full" style="width: 36%"></div>
+                                        </div>
+                                        <span class="text-xs text-slate-400 flex-shrink-0">9 shifts</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+
+    // Pipeline Trend Chart
+    try {
+        var months = ['Dec', 'Jan', 'Feb', 'Mar', 'Apr', 'May'];
+        var openData = [38, 42, 45, 39, 44, 47];
+        var filledData = [29, 31, 35, 30, 38, 32];
+        var cancelledData = [4, 3, 5, 6, 3, 4];
+
+        var pipelineData = [
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Open',
+                x: months,
+                y: openData,
+                line: { color: '#1D4ED8', width: 2.5, shape: 'spline' },
+                marker: { color: '#1D4ED8', size: 6 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(29,78,216,0.06)'
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Filled',
+                x: months,
+                y: filledData,
+                line: { color: '#10B981', width: 2.5, shape: 'spline' },
+                marker: { color: '#10B981', size: 6 },
+                fill: 'tozeroy',
+                fillcolor: 'rgba(16,185,129,0.06)'
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Cancelled',
+                x: months,
+                y: cancelledData,
+                line: { color: '#F87171', width: 2, shape: 'spline', dash: 'dot' },
+                marker: { color: '#F87171', size: 5 }
+            }
+        ];
+
+        var pipelineLayout = {
+            margin: { t: 10, r: 10, b: 30, l: 35 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            xaxis: {
+                tickfont: { size: 11, color: '#94a3b8', family: 'Inter' },
+                gridcolor: '#f1f5f9',
+                showgrid: false,
+                zeroline: false
+            },
+            yaxis: {
+                tickfont: { size: 11, color: '#94a3b8', family: 'Inter' },
+                gridcolor: '#f1f5f9',
+                zeroline: false
+            },
+            showlegend: false,
+            hovermode: 'x unified'
+        };
+
+        Plotly.newPlot('pipeline-chart', pipelineData, pipelineLayout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('pipeline-chart').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-sm">Chart unavailable</div>';
+    }
+
+    // Margin Donut Chart
+    try {
+        var donutData = [{
+            type: 'pie',
+            labels: ['Accenture UK', 'HSBC Group', 'BT Enterprise', 'Others'],
+            values: [22.1, 19.4, 16.8, 15.2],
+            hole: 0.65,
+            marker: { colors: ['#1D4ED8', '#5B2E91', '#10B981', '#F59E0B'] },
+            textinfo: 'none',
+            hovertemplate: '%{label}: %{value}%<extra></extra>'
+        }];
+
+        var donutLayout = {
+            margin: { t: 5, r: 5, b: 5, l: 5 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            showlegend: false,
+            annotations: [{
+                text: '<b>18.3%</b>',
+                x: 0.5, y: 0.5,
+                font: { size: 16, color: '#1e293b', family: 'Inter' },
+                showarrow: false
+            }]
+        };
+
+        Plotly.newPlot('margin-donut-chart', donutData, donutLayout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('margin-donut-chart').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-sm">Chart unavailable</div>';
+    }
+
+    // Revenue vs Margin Chart
+    try {
+        var weeks = ['W17', 'W18', 'W19', 'W20', 'W21', 'W22'];
+        var revenue = [380, 420, 395, 450, 480, 440];
+        var margin = [16.2, 17.8, 16.9, 18.5, 19.1, 18.3];
+
+        var revenueData = [
+            {
+                type: 'bar',
+                name: 'Revenue (£k)',
+                x: weeks,
+                y: revenue,
+                marker: { color: 'rgba(29,78,216,0.15)', line: { color: '#1D4ED8', width: 1.5 } },
+                yaxis: 'y'
+            },
+            {
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: 'Margin %',
+                x: weeks,
+                y: margin,
+                line: { color: '#5B2E91', width: 2.5, shape: 'spline' },
+                marker: { color: '#5B2E91', size: 6 },
+                yaxis: 'y2'
+            }
+        ];
+
+        var revenueLayout = {
+            margin: { t: 10, r: 40, b: 30, l: 40 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            xaxis: {
+                tickfont: { size: 10, color: '#94a3b8', family: 'Inter' },
+                gridcolor: '#f1f5f9',
+                showgrid: false,
+                zeroline: false
+            },
+            yaxis: {
+                tickfont: { size: 10, color: '#94a3b8', family: 'Inter' },
+                gridcolor: '#f1f5f9',
+                zeroline: false,
+                tickprefix: '£'
+            },
+            yaxis2: {
+                tickfont: { size: 10, color: '#5B2E91', family: 'Inter' },
+                overlaying: 'y',
+                side: 'right',
+                showgrid: false,
+                zeroline: false,
+                ticksuffix: '%'
+            },
+            showlegend: false,
+            hovermode: 'x unified',
+            barmode: 'group'
+        };
+
+        Plotly.newPlot('revenue-chart', revenueData, revenueLayout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('revenue-chart').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-sm">Chart unavailable</div>';
+    }
+
+});
+</script>
+
+</body>
+</html>

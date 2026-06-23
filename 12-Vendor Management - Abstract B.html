@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abstract Backing Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+        
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
+
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <a id="nav-vacancy-detail" href="5-Vendor Management - Vacancy De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-lines text-white/40 w-4 text-center"></i>
+                <span>Vacancy Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Agency</p>
+
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+
+            <a id="nav-candidate-submission" href="7-Vendor Management - Agency Can.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-user-plus text-white/40 w-4 text-center"></i>
+                <span>Agency Candidate Submission</span>
+            </a>
+
+            <a id="nav-proposal-review" href="8-Vendor Management - Proposal R.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-check text-white/40 w-4 text-center"></i>
+                <span>Proposal Review</span>
+            </a>
+
+            <a id="nav-booking-detail" href="9-Vendor Management - Booking De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-calendar-check text-white/40 w-4 text-center"></i>
+                <span>Booking Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Finance</p>
+
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Client Weekly Timesheet</span>
+            </a>
+
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-chart-bar text-blue-400 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+        </nav>
+
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">MSP Admin</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <nav class="flex items-center gap-1.5 text-xs text-slate-400">
+                                <a href="#" class="hover:text-blue-600 transition-colors">Finance</a>
+                                <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
+                                <span class="text-slate-700 font-semibold">Abstract Backing Report</span>
+                            </nav>
+                        </div>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <h1 class="text-lg font-bold text-slate-900">Abstract Backing Report</h1>
+                            <span class="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>
+                                June 2026
+                            </span>
+                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">W23</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
+                    <span class="text-xs font-medium text-slate-600">02–06 Jun 2026</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+                <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 w-44 xl:w-52">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Search report..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                </div>
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-bell text-slate-600 text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+                </button>
+                <button class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-gear text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">Sarah Mitchell</p>
+                        <p class="text-xs text-slate-400">MSP Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Action Bar -->
+        <div id="backing-action-bar" class="bg-white border-b border-slate-200 px-6 xl:px-8 py-3 flex items-center justify-between flex-shrink-0 flex-wrap gap-2">
+            <div class="flex items-center gap-2 flex-wrap">
+                <div class="flex items-center gap-1 bg-slate-100 rounded-xl p-1">
+                    <button class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">Weekly</button>
+                    <button class="px-3 py-1.5 rounded-lg text-xs font-semibold text-white transition-colors" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">Monthly</button>
+                    <button class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">Quarterly</button>
+                    <button class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">YTD</button>
+                </div>
+                <div class="w-px h-4 bg-slate-200 mx-1"></div>
+                <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-building text-slate-400 text-xs"></i>
+                    <span>All Clients</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+                <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-building-user text-slate-400 text-xs"></i>
+                    <span>All Agencies</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+                <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-user text-slate-400 text-xs"></i>
+                    <span>All Workers</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-file-csv text-xs"></i>
+                    <span>Export CSV</span>
+                </button>
+                <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-file-pdf text-xs"></i>
+                    <span>Export PDF</span>
+                </button>
+                <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                    <i class="fa-solid fa-file-excel text-xs"></i>
+                    <span>Export XLSX</span>
+                </button>
+                <button id="print-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                    <i class="fa-solid fa-print text-xs"></i>
+                    <span>Print Report</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Body -->
+        <main id="backing-main" class="flex-1 overflow-y-auto bg-slate-100">
+
+            <!-- KPI Strip -->
+            <div id="backing-kpi-strip" class="px-6 xl:px-8 pt-5 pb-0 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3">
+                <div id="kpi-gross-bill" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.12), rgba(91,46,145,0.1));">
+                        <i class="fa-solid fa-sterling-sign text-blue-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Gross Bill Value</p>
+                        <p class="text-base font-bold text-slate-900">£284,750</p>
+                        <p class="text-xs text-emerald-600 font-medium">+8.3% vs prior</p>
+                    </div>
+                </div>
+                <div id="kpi-agency-cost" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-purple-50">
+                        <i class="fa-solid fa-hand-holding-dollar text-purple-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Agency Cost</p>
+                        <p class="text-base font-bold text-slate-900">£241,830</p>
+                        <p class="text-xs text-purple-600 font-medium">84.93% of bill</p>
+                    </div>
+                </div>
+                <div id="kpi-total-margin" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
+                        <i class="fa-solid fa-percent text-amber-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Total Margin</p>
+                        <p class="text-base font-bold text-amber-700">£42,920</p>
+                        <p class="text-xs text-amber-600 font-medium">15.07% avg</p>
+                    </div>
+                </div>
+                <div id="kpi-commission" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-indigo-50">
+                        <i class="fa-solid fa-coins text-indigo-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Commission Earned</p>
+                        <p class="text-base font-bold text-indigo-700">£8,584</p>
+                        <p class="text-xs text-indigo-500 font-medium">3.01% of bill</p>
+                    </div>
+                </div>
+                <div id="kpi-contractors" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-emerald-50">
+                        <i class="fa-solid fa-users text-emerald-600 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Active Workers</p>
+                        <p class="text-base font-bold text-emerald-700">34</p>
+                        <p class="text-xs text-emerald-600 font-medium">8 agencies · 3 shifts</p>
+                    </div>
+                </div>
+                <div id="kpi-total-hours" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-sky-50">
+                        <i class="fa-solid fa-clock text-sky-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Total Shift Hours</p>
+                        <p class="text-base font-bold text-sky-700">5,840 hrs</p>
+                        <p class="text-xs text-sky-500 font-medium">171.8 avg/wk</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="px-6 xl:px-8 py-4 flex gap-5">
+
+                <!-- Left: Main Report Content -->
+                <div id="backing-content-left" class="flex-1 min-w-0 flex flex-col gap-4">
+
+                    <!-- Rate Card Inputs Panel -->
+                    <div id="rate-card-panel" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-sliders text-blue-300 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-white">Rate Card Inputs</p>
+                                    <p class="text-xs text-white/40">Agreed rates, uplifts and charge multipliers · June 2026</p>
+                                </div>
+                            </div>
+                            <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-white/70 border border-white/20 hover:bg-white/10 transition-colors">
+                                <i class="fa-solid fa-pen text-xs"></i>
+                                <span>Edit Rates</span>
+                            </button>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.05), rgba(23,37,84,0.04));">
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Worker</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Site / Agency</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Agency</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Pay Rate</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Charge Rate</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Uplift %</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">OT Rate</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Holiday %</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">NI %</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Margin %</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <span class="font-semibold text-slate-700">Daniel Okafor</span>
+                                                    <p class="text-slate-400 text-xs">Forklift Driver (Reach)</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Amazon FC – Rugeley</td>
+                                        <td class="px-4 py-3 text-slate-600">TechForce</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£13.50/hr</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£15.45/hr</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-amber-700 font-semibold bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-lg">14.43%</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£19.31/hr</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">12.07%</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">13.8%</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="font-bold text-emerald-700">12.61%</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <span class="font-semibold text-slate-700">Priya Sharma</span>
+                                                    <p class="text-slate-400 text-xs">Picker/Packer</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">DHL – Coventry Hub</td>
+                                        <td class="px-4 py-3 text-slate-600">ProStaff</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£12.80/hr</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£14.60/hr</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-amber-700 font-semibold bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-lg">13.97%</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£18.25/hr</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">12.07%</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">13.8%</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="font-bold text-emerald-700">12.26%</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <span class="font-semibold text-slate-700">Marcus Webb</span>
+                                                    <p class="text-slate-400 text-xs">Forklift Driver (Counterbalance)</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">XPO Logistics – Walsall</td>
+                                        <td class="px-4 py-3 text-slate-600">Elite Recruiters</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£14.20/hr</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£16.40/hr</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-amber-700 font-semibold bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-lg">15.49%</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£20.50/hr</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">12.07%</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">13.8%</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="font-bold text-emerald-700">13.41%</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <span class="font-semibold text-slate-700">Sophie Turner</span>
+                                                    <p class="text-slate-400 text-xs">Warehouse Operative</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Hermes – Nuneaton DC</td>
+                                        <td class="px-4 py-3 text-slate-600">Apex Talent</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£11.80/hr</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£13.50/hr</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-amber-700 font-semibold bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-lg">14.44%</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£16.88/hr</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">12.07%</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">13.8%</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="font-bold text-emerald-700">12.62%</span>
+                                        </td>
+                                    </tr>
+                                    <tr class="hover:bg-blue-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <span class="font-semibold text-slate-700">James Chen</span>
+                                                    <p class="text-slate-400 text-xs">Loader / Night Shift Lead</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-slate-600">Evri – Birmingham NDC</td>
+                                        <td class="px-4 py-3 text-slate-600">Apex Talent</td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£14.80/hr</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£16.97/hr</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="text-amber-700 font-semibold bg-amber-50 border border-amber-100 px-2 py-0.5 rounded-lg">14.67%</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£21.21/hr</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">12.07%</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">13.8%</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <span class="font-bold text-emerald-700">12.79%</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Margin Breakdown Table -->
+                    <div id="margin-breakdown-panel" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
+                                    <i class="fa-solid fa-table-cells-large text-amber-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">Margin Breakdown by Worker</p>
+                                    <p class="text-xs text-slate-400">Cost vs Bill analysis · June 2026 · All placements</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="flex items-center gap-1 bg-slate-100 rounded-lg p-1">
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-white transition-colors" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">All</button>
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">High Margin</button>
+                                    <button class="px-2.5 py-1 rounded-md text-xs font-semibold text-slate-500 hover:text-slate-700 hover:bg-white transition-colors">Low Margin</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr class="bg-slate-50 border-b border-slate-200">
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Worker</th>
+                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Site / Agency</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Hours</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Gross Bill</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Agency Cost</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Holiday Pay</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Employer NI</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Other Costs</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Net Margin £</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Margin %</th>
+                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Commission</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="margin-table-body">
+                                    <tr class="border-b border-slate-100 hover:bg-amber-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <p class="font-semibold text-slate-700">Daniel Okafor</p>
+                                                    <p class="text-slate-400">Morning Shift · PAYE</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <p class="text-slate-700 font-medium">Amazon FC – Rugeley</p>
+                                            <p class="text-slate-400">TechForce Agency</p>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">50.0 hrs</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,729</td>
+                                        <td class="px-4 py-3 text-right text-purple-700 font-semibold">£2,385</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£168</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£120</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£56</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£344</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <div class="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div class="h-full rounded-full bg-emerald-500" style="width: 63%;"></div>
+                                                </div>
+                                                <span class="font-bold text-emerald-700">12.61%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-indigo-700">£82</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100 hover:bg-amber-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <p class="font-semibold text-slate-700">Priya Sharma</p>
+                                                    <p class="text-slate-400">Late Shift · PAYE</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <p class="text-slate-700 font-medium">DHL – Coventry Hub</p>
+                                            <p class="text-slate-400">ProStaff Solutions</p>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">50.0 hrs</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£3,100</td>
+                                        <td class="px-4 py-3 text-right text-purple-700 font-semibold">£2,720</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£191</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£136</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£73</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£380</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <div class="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div class="h-full rounded-full bg-emerald-500" style="width: 61%;"></div>
+                                                </div>
+                                                <span class="font-bold text-emerald-700">12.26%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-indigo-700">£93</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100 hover:bg-amber-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <p class="font-semibold text-slate-700">Marcus Webb</p>
+                                                    <p class="text-slate-400">Morning Shift · Ltd Co</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <p class="text-slate-700 font-medium">XPO Logistics – Walsall</p>
+                                            <p class="text-slate-400">Elite Recruiters</p>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">50.0 hrs</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£4,250</td>
+                                        <td class="px-4 py-3 text-right text-purple-700 font-semibold">£3,680</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£0</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£0</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£0</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£570</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <div class="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div class="h-full rounded-full bg-emerald-500" style="width: 67%;"></div>
+                                                </div>
+                                                <span class="font-bold text-emerald-700">13.41%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-indigo-700">£128</td>
+                                    </tr>
+                                    <tr class="border-b border-slate-100 hover:bg-amber-50/20 transition-colors bg-slate-50/30">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <p class="font-semibold text-slate-700">Sophie Turner</p>
+                                                    <p class="text-slate-400">Late Shift · PAYE</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <p class="text-slate-700 font-medium">Hermes – Nuneaton DC</p>
+                                            <p class="text-slate-400">Apex Talent Group</p>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">50.0 hrs</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,575</td>
+                                        <td class="px-4 py-3 text-right text-purple-700 font-semibold">£2,250</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£158</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£113</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£54</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£325</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <div class="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div class="h-full rounded-full bg-emerald-500" style="width: 63%;"></div>
+                                                </div>
+                                                <span class="font-bold text-emerald-700">12.62%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-indigo-700">£78</td>
+                                    </tr>
+                                    <tr class="hover:bg-amber-50/20 transition-colors">
+                                        <td class="px-4 py-3">
+                                            <div class="flex items-center gap-2">
+                                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-6 h-6 rounded-full object-cover border border-slate-200 flex-shrink-0" alt="avatar"/>
+                                                <div>
+                                                    <p class="font-semibold text-slate-700">James Chen</p>
+                                                    <p class="text-slate-400">Night Shift · Ltd Co</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3">
+                                            <p class="text-slate-700 font-medium">Evri – Birmingham NDC</p>
+                                            <p class="text-slate-400">Apex Talent Group</p>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">50.0 hrs</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£5,160</td>
+                                        <td class="px-4 py-3 text-right text-purple-700 font-semibold">£4,500</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£0</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£0</td>
+                                        <td class="px-4 py-3 text-right text-slate-600">£0</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£660</td>
+                                        <td class="px-4 py-3 text-right">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <div class="w-12 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                                                    <div class="h-full rounded-full bg-emerald-500" style="width: 64%;"></div>
+                                                </div>
+                                                <span class="font-bold text-emerald-700">12.79%</span>
+                                            </div>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-semibold text-indigo-700">£155</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.06), rgba(23,37,84,0.04));">
+                                        <td colspan="2" class="px-4 py-3">
+                                            <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Period Totals (5 of 34)</span>
+                                        </td>
+                                        <td class="px-4 py-3 text-right font-bold text-slate-700">250.0 hrs</td>
+                                        <td class="px-4 py-3 text-right font-bold text-blue-800">£17,814</td>
+                                        <td class="px-4 py-3 text-right font-bold text-purple-800">£15,535</td>
+                                        <td class="px-4 py-3 text-right font-bold text-slate-600">£517</td>
+                                        <td class="px-4 py-3 text-right font-bold text-slate-600">£369</td>
+                                        <td class="px-4 py-3 text-right font-bold text-slate-600">£183</td>
+                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£2,279</td>
+                                        <td class="px-4 py-3 text-right font-bold text-emerald-700">12.79%</td>
+                                        <td class="px-4 py-3 text-right font-bold text-indigo-700">£536</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="px-5 py-3 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs text-slate-400">Showing 5 of 34 workers</span>
+                            <div class="flex items-center gap-1">
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                                    <i class="fa-solid fa-chevron-left text-slate-500" style="font-size: 9px;"></i>
+                                </button>
+                                <button class="w-7 h-7 rounded-lg border border-blue-200 text-white flex items-center justify-center text-xs font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">1</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-xs text-slate-600 hover:bg-slate-100 transition-colors">2</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center text-xs text-slate-600 hover:bg-slate-100 transition-colors">3</button>
+                                <button class="w-7 h-7 rounded-lg border border-slate-200 bg-slate-50 flex items-center justify-center hover:bg-slate-100 transition-colors">
+                                    <i class="fa-solid fa-chevron-right text-slate-500" style="font-size: 9px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cost & Bill Analysis Chart -->
+                    <div id="cost-bill-chart-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-chart-column text-blue-600 text-sm"></i>
+                                Cost vs Bill vs Margin · By Worker
+                            </h3>
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-blue-600 inline-block"></span>
+                                    <span class="text-xs text-slate-500">Gross Bill</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-purple-600 inline-block"></span>
+                                    <span class="text-xs text-slate-500">Agency Cost</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
+                                    <span class="text-xs text-slate-500">Net Margin</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="cost-bill-chart" style="height: 240px;" class="px-2"></div>
+                    </div>
+
+                    <!-- Commission Logic Panel -->
+                    <div id="commission-panel" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(99,102,241,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-coins text-indigo-300 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-white">Commission Logic & Earned Commission</p>
+                                    <p class="text-xs text-white/40">Tiered structure · Applied to net margin · June 2026</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs font-semibold text-indigo-300 bg-indigo-900/40 border border-indigo-700/30 px-2.5 py-1 rounded-lg">Total: £8,584 earned</span>
+                            </div>
+                        </div>
+                        <div class="p-5 flex flex-col gap-4">
+                            <!-- Commission Tiers -->
+                            <div id="commission-tiers" class="grid grid-cols-3 gap-3">
+                                <div class="flex flex-col gap-2 p-3 rounded-xl border border-indigo-100 bg-indigo-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-indigo-800">Tier 1</span>
+                                        <span class="text-xs font-semibold text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded-lg">0–£10k margin</span>
+                                    </div>
+                                    <p class="text-2xl font-bold text-indigo-700">20%</p>
+                                    <p class="text-xs text-slate-500">Base commission rate on first £10,000 of margin earned per period</p>
+                                    <div class="mt-1 flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Applied to:</span>
+                                        <span class="font-bold text-indigo-700">£10,000</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Commission:</span>
+                                        <span class="font-bold text-emerald-700">£2,000</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 p-3 rounded-xl border border-purple-100 bg-purple-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-purple-800">Tier 2</span>
+                                        <span class="text-xs font-semibold text-purple-600 bg-purple-100 px-2 py-0.5 rounded-lg">£10k–£30k margin</span>
+                                    </div>
+                                    <p class="text-2xl font-bold text-purple-700">25%</p>
+                                    <p class="text-xs text-slate-500">Elevated rate on margin between £10,000 and £30,000 per period</p>
+                                    <div class="mt-1 flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Applied to:</span>
+                                        <span class="font-bold text-purple-700">£20,000</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Commission:</span>
+                                        <span class="font-bold text-emerald-700">£5,000</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-2 p-3 rounded-xl border border-blue-100 bg-blue-50">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-xs font-bold text-blue-800">Tier 3</span>
+                                        <span class="text-xs font-semibold text-blue-600 bg-blue-100 px-2 py-0.5 rounded-lg">£30k+ margin</span>
+                                    </div>
+                                    <p class="text-2xl font-bold text-blue-700">30%</p>
+                                    <p class="text-xs text-slate-500">Premium rate on all margin exceeding £30,000 per billing period</p>
+                                    <div class="mt-1 flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Applied to:</span>
+                                        <span class="font-bold text-blue-700">£12,920</span>
+                                    </div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Commission:</span>
+                                        <span class="font-bold text-emerald-700">£3,876</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Commission by Agency Table -->
+                            <div id="commission-by-agency" class="overflow-x-auto">
+                                <table class="w-full text-xs">
+                                    <thead>
+                                        <tr class="bg-slate-50 border-b border-slate-200 rounded-xl">
+                                            <th class="text-left px-4 py-2.5 text-slate-500 font-semibold rounded-tl-xl">Agency</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold">Workers</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold">Gross Bill</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold">Net Margin</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold">Margin %</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold">Comm. Tier</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold">Commission £</th>
+                                            <th class="text-right px-4 py-2.5 text-slate-500 font-semibold rounded-tr-xl">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b border-slate-100 hover:bg-indigo-50/20 transition-colors">
+                                            <td class="px-4 py-2.5">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-6 h-6 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">T</div>
+                                                    <span class="font-semibold text-slate-700">TechForce Agency</span>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-right text-slate-600">9</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-blue-700">£72,400</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-amber-700">£9,820</td>
+                                            <td class="px-4 py-2.5 text-right text-emerald-700 font-semibold">13.56%</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-lg">Tier 1</span></td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-indigo-700">£1,964</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Confirmed</span></td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100 hover:bg-indigo-50/20 transition-colors bg-slate-50/30">
+                                            <td class="px-4 py-2.5">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-6 h-6 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">P</div>
+                                                    <span class="font-semibold text-slate-700">ProStaff Solutions</span>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-right text-slate-600">8</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-blue-700">£65,200</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-amber-700">£11,430</td>
+                                            <td class="px-4 py-2.5 text-right text-emerald-700 font-semibold">17.53%</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-lg">Tier 2</span></td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-indigo-700">£2,858</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Confirmed</span></td>
+                                        </tr>
+                                        <tr class="border-b border-slate-100 hover:bg-indigo-50/20 transition-colors">
+                                            <td class="px-4 py-2.5">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-6 h-6 rounded-lg bg-orange-600 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">E</div>
+                                                    <span class="font-semibold text-slate-700">Elite Recruiters</span>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-right text-slate-600">7</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-blue-700">£58,900</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-amber-700">£12,650</td>
+                                            <td class="px-4 py-2.5 text-right text-emerald-700 font-semibold">21.48%</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-purple-700 bg-purple-50 border border-purple-100 px-2 py-0.5 rounded-lg">Tier 2</span></td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-indigo-700">£3,163</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span></td>
+                                        </tr>
+                                        <tr class="hover:bg-indigo-50/20 transition-colors bg-slate-50/30">
+                                            <td class="px-4 py-2.5">
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold text-xs flex-shrink-0">A</div>
+                                                    <span class="font-semibold text-slate-700">Apex Talent Group</span>
+                                                </div>
+                                            </td>
+                                            <td class="px-4 py-2.5 text-right text-slate-600">10</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-blue-700">£88,250</td>
+                                            <td class="px-4 py-2.5 text-right font-semibold text-amber-700">£9,020</td>
+                                            <td class="px-4 py-2.5 text-right text-emerald-700 font-semibold">10.22%</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-lg">Tier 1</span></td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-indigo-700">£599</td>
+                                            <td class="px-4 py-2.5 text-right"><span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Confirmed</span></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.06), rgba(23,37,84,0.04));">
+                                            <td class="px-4 py-2.5 font-bold text-slate-700 text-xs uppercase tracking-wider">All Agencies</td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-slate-700">34</td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-blue-800">£284,750</td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-amber-700">£42,920</td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-emerald-700">15.07%</td>
+                                            <td class="px-4 py-2.5 text-right text-slate-400">—</td>
+                                            <td class="px-4 py-2.5 text-right font-bold text-indigo-800">£8,584</td>
+                                            <td class="px-4 py-2.5 text-right text-slate-400">—</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="h-4"></div>
+                </div>
+
+                <!-- Right Panel -->
+                <div id="backing-right-panel" class="w-72 xl:w-80 flex-shrink-0 flex flex-col gap-4">
+
+                    <!-- Financial Summary Export Card -->
+                    <div id="financial-summary-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-file-export text-blue-300 text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Financial Summary</p>
+                                    <p class="text-xs text-white/40">Exportable · June 2026</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 flex flex-col gap-3">
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-blue-50 border border-blue-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-blue-800">Gross Bill Value</span>
+                                    <span class="text-sm font-bold text-blue-800">£284,750</span>
+                                </div>
+                                <div class="h-px bg-blue-100"></div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-blue-600">Total Hours (All Shifts)</span>
+                                    <span class="font-semibold text-slate-700">5,840 hrs</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-blue-600">Avg Charge Rate</span>
+                                    <span class="font-semibold text-slate-700">£48.76/hr</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-blue-600">Active Placements</span>
+                                    <span class="font-semibold text-slate-700">34 workers</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-purple-50 border border-purple-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-purple-800">Total Agency Cost</span>
+                                    <span class="text-sm font-bold text-purple-800">£241,830</span>
+                                </div>
+                                <div class="h-px bg-purple-100"></div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-purple-600">Base Pay</span>
+                                    <span class="font-semibold text-slate-700">£214,200</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-purple-600">Holiday Pay</span>
+                                    <span class="font-semibold text-slate-700">£16,330</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-purple-600">Employer NI</span>
+                                    <span class="font-semibold text-slate-700">£11,300</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-amber-50 border border-amber-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-amber-800">Net Margin</span>
+                                    <span class="text-sm font-bold text-amber-800">£42,920</span>
+                                </div>
+                                <div class="h-px bg-amber-100"></div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-amber-700">Avg Margin %</span>
+                                    <span class="font-semibold text-emerald-700">15.07%</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-amber-700">Best Margin</span>
+                                    <span class="font-semibold text-emerald-700">21.48% (Elite)</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-amber-700">Lowest Margin</span>
+                                    <span class="font-semibold text-orange-600">10.22% (Apex)</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 p-3 rounded-xl bg-indigo-50 border border-indigo-100">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-bold text-indigo-800">Commission Earned</span>
+                                    <span class="text-sm font-bold text-indigo-800">£8,584</span>
+                                </div>
+                                <div class="h-px bg-indigo-100"></div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-indigo-600">Tier 1 (20%)</span>
+                                    <span class="font-semibold text-slate-700">£2,000</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-indigo-600">Tier 2 (25%)</span>
+                                    <span class="font-semibold text-slate-700">£5,000</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-indigo-600">Tier 3 (30%)</span>
+                                    <span class="font-semibold text-slate-700">£3,876 (partial)</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                    <i class="fa-solid fa-file-pdf text-xs"></i>
+                                    <span>Export Full Report PDF</span>
+                                </button>
+                                <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                    <i class="fa-solid fa-file-csv text-xs"></i>
+                                    <span>Export CSV Data</span>
+                                </button>
+                                <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                    <i class="fa-solid fa-file-excel text-xs"></i>
+                                    <span>Export XLSX Workbook</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Margin by Client Donut -->
+                    <div id="margin-donut-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-chart-pie text-amber-500 text-xs"></i>
+                                Margin Distribution by Warehouse Site
+                            </h4>
+                        </div>
+                        <div class="p-3">
+                            <div id="margin-donut" style="height: 200px;"></div>
+                            <div class="mt-2 flex flex-col gap-1.5">
+                                <div class="flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-blue-600 inline-block"></span><span class="text-slate-600">Amazon FC – Rugeley</span></div>
+                                    <span class="font-bold text-slate-700">£9,820 (22.9%)</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-600 inline-block"></span><span class="text-slate-600">Evri – Birmingham NDC</span></div>
+                                    <span class="font-bold text-slate-700">£8,630 (20.1%)</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span><span class="text-slate-600">XPO Logistics – Walsall</span></div>
+                                    <span class="font-bold text-slate-700">£7,940 (18.5%)</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span><span class="text-slate-600">DHL – Coventry Hub</span></div>
+                                    <span class="font-bold text-slate-700">£7,310 (17.0%)</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-400 inline-block"></span><span class="text-slate-600">Other Sites</span></div>
+                                    <span class="font-bold text-slate-700">£9,220 (21.5%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Margin Trend Mini Chart -->
+                    <div id="margin-trend-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-chart-line text-emerald-500 text-xs"></i>
+                                Margin % Trend · 6 Months
+                            </h4>
+                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-lg">+1.2% YoY</span>
+                        </div>
+                        <div id="margin-trend-chart" style="height: 140px;"></div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div id="backing-quick-actions" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-amber-500 text-xs"></i>
+                                Quick Actions
+                            </h4>
+                        </div>
+                        <div class="p-4 flex flex-col gap-2">
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                <i class="fa-solid fa-file-export text-xs"></i>
+                                <span>Export Full Backing Report</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-indigo-200 bg-indigo-50 text-xs text-indigo-700 font-medium hover:border-indigo-300 hover:bg-indigo-100 transition-colors">
+                                <i class="fa-solid fa-coins text-xs"></i>
+                                <span>Confirm Commission</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-amber-200 bg-amber-50 text-xs text-amber-700 font-medium hover:border-amber-300 hover:bg-amber-100 transition-colors">
+                                <i class="fa-solid fa-sliders text-xs"></i>
+                                <span>Update Rate Cards</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                <i class="fa-solid fa-file-invoice-dollar text-xs"></i>
+                                <span>Go to Invoicing</span>
+                            </button>
+                            <button class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                                <i class="fa-solid fa-print text-xs"></i>
+                                <span>Print Summary</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="h-4"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+window.addEventListener('load', function() {
+
+    try {
+        // Cost vs Bill vs Margin Bar Chart
+        var contractors = ['D. Okafor', 'P. Sharma', 'M. Webb', 'S. Turner', 'J. Chen'];
+        var billData = [2729, 3100, 4250, 2575, 5160];
+        var costData = [2385, 2720, 3680, 2250, 4500];
+        var marginData = [344, 380, 570, 325, 660];
+
+        var trace1 = {
+            type: 'bar',
+            name: 'Gross Bill',
+            x: contractors,
+            y: billData,
+            marker: { color: '#1D4ED8' },
+            hovertemplate: 'Bill: £%{y:,.0f}<extra></extra>'
+        };
+        var trace2 = {
+            type: 'bar',
+            name: 'Agency Cost',
+            x: contractors,
+            y: costData,
+            marker: { color: '#5B2E91' },
+            hovertemplate: 'Cost: £%{y:,.0f}<extra></extra>'
+        };
+        var trace3 = {
+            type: 'bar',
+            name: 'Net Margin',
+            x: contractors,
+            y: marginData,
+            marker: { color: '#F59E0B' },
+            hovertemplate: 'Margin: £%{y:,.0f}<extra></extra>'
+        };
+
+        var layout = {
+            barmode: 'group',
+            margin: { t: 15, r: 20, b: 45, l: 65 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            xaxis: {
+                showgrid: false,
+                tickfont: { size: 10, color: '#94a3b8', family: 'Inter' },
+                tickcolor: 'transparent',
+                linecolor: '#e2e8f0'
+            },
+            yaxis: {
+                showgrid: true,
+                gridcolor: '#f1f5f9',
+                tickfont: { size: 10, color: '#94a3b8', family: 'Inter' },
+                tickprefix: '£',
+                tickformat: ',.0f',
+                linecolor: '#e2e8f0'
+            },
+            showlegend: false,
+            hovermode: 'x unified',
+            bargap: 0.2,
+            bargroupgap: 0.1
+        };
+
+        Plotly.newPlot('cost-bill-chart', [trace1, trace2, trace3], layout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('cost-bill-chart').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs">Chart unavailable</div>';
+    }
+
+    try {
+        // Margin by Client Donut
+        var donutData = [{
+            type: 'pie',
+            labels: ['Amazon FC – Rugeley', 'Evri – Birmingham NDC', 'XPO Logistics – Walsall', 'DHL – Coventry Hub', 'Other Sites'],
+            values: [9820, 8630, 7940, 7310, 9220],
+            hole: 0.60,
+            marker: { colors: ['#1D4ED8', '#5B2E91', '#F59E0B', '#10B981', '#94a3b8'] },
+            textinfo: 'none',
+            hovertemplate: '%{label}: £%{value:,.0f}<extra></extra>'
+        }];
+
+        var donutLayout = {
+            margin: { t: 5, r: 5, b: 5, l: 5 },
+            plot_bgcolor: 'transparent',
+            paper_bgcolor: 'transparent',
+            showlegend: false,
+            annotations: [{
+                text: '£42,920',
+                x: 0.5,
+                y: 0.58,
+                font: { size: 14, color: '#1e293b', family: 'Inter', weight: 'bold' },
+                showarrow: false
+            }, {
+                text: 'total margin',
+                x: 0.5,
+                y: 0.40,
+                font: { size: 9, color: '#94a3b8', family: 'Inter' },
+                showarrow: false
+            }]
+        };
+
+        Plotly.newPlot('margin-donut', donutData, donutLayout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('margin-donut').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs">Chart unavailable</div>';
+    }
+
+    try {
+        // Margin Trend Mini Chart
+        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'];
+        var marginPct = [13.2, 13.8, 14.1, 14.5, 14.9, 15.07];
+
+        var trendTrace = {
+            type: 'scatter',
+            mode: 'lines+markers',
+            x: months,
+            y: marginPct,
+            line: { color: '#10B981', width: 2.5 },
+            marker: { color: '#10B981', size: 5 },
+            fill: 'tozeroy',
+            fillcolor: 'rgba(16,185,129,0.08)',
+            hovertemplate: '%{y:.2f}%<extra></extra>'
+        };
+
+        var trendLayout = {
+            margin: { t: 10, r: 15, b: 35, l: 45 },
+            plot_bgcolor: '#ffffff',
+            paper_bgcolor: '#ffffff',
+            xaxis: {
+                showgrid: false,
+                tickfont: { size: 9, color: '#94a3b8', family: 'Inter' },
+                tickcolor: 'transparent',
+                linecolor: '#e2e8f0'
+            },
+            yaxis: {
+                showgrid: true,
+                gridcolor: '#f1f5f9',
+                tickfont: { size: 9, color: '#94a3b8', family: 'Inter' },
+                ticksuffix: '%',
+                linecolor: '#e2e8f0',
+                range: [12, 16]
+            },
+            showlegend: false,
+            hovermode: 'x unified'
+        };
+
+        Plotly.newPlot('margin-trend-chart', [trendTrace], trendLayout, { responsive: true, displayModeBar: false, displaylogo: false });
+    } catch(e) {
+        document.getElementById('margin-trend-chart').innerHTML = '<div class="flex items-center justify-center h-full text-slate-400 text-xs">Chart unavailable</div>';
+    }
+
+});
+</script>
+
+</body>
+</html>

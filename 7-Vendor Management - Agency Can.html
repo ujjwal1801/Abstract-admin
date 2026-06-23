@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agency Candidate Submission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+        
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Agency Portal</span>
+            </div>
+        </div>
+
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
+
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <a id="nav-vacancy-detail" href="5-Vendor Management - Vacancy De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-lines text-white/40 w-4 text-center"></i>
+                <span>Vacancy Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Agency</p>
+
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+
+            <a id="nav-candidate-submission" href="7-Vendor Management - Agency Can.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-user-plus text-blue-400 w-4 text-center"></i>
+                <span>Agency Candidate Submission</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+
+            <a id="nav-proposal-review" href="8-Vendor Management - Proposal R.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-check text-white/40 w-4 text-center"></i>
+                <span>Proposal Review</span>
+            </a>
+
+            <a id="nav-booking-detail" href="9-Vendor Management - Booking De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-calendar-check text-white/40 w-4 text-center"></i>
+                <span>Booking Detail</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Finance</p>
+
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Client Weekly Timesheet</span>
+            </a>
+
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+        </nav>
+
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">TechForce Agency</p>
+                    <p class="text-white/40 text-xs truncate">Agency Manager</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <nav class="flex items-center gap-1.5 text-xs text-slate-400">
+                                <a href="#" class="hover:text-blue-600 transition-colors">Agency Dashboard</a>
+                                <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
+                                <span class="text-slate-700 font-semibold">Candidate Submission</span>
+                            </nav>
+                        </div>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <h1 class="text-lg font-bold text-slate-900">Agency Candidate Submission</h1>
+                            <span class="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-blue-400 inline-block"></span>
+                                New Submission
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 cursor-pointer hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
+                    <span class="text-xs font-medium text-slate-600">May 2026</span>
+                    <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
+                </div>
+
+                <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 w-48 xl:w-56">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                    <input type="text" placeholder="Search..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                </div>
+
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-bell text-slate-600 text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+                </button>
+
+                <button class="w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-solid fa-gear text-slate-600 text-sm"></i>
+                </button>
+
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">TechForce</p>
+                        <p class="text-xs text-slate-400">Agency Manager</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Body -->
+        <main id="submission-main" class="flex-1 overflow-y-auto bg-slate-100">
+
+            <!-- Sub-header action bar -->
+            <div id="submission-action-bar" class="bg-white border-b border-slate-200 px-6 xl:px-8 py-3 flex items-center justify-between flex-shrink-0">
+                <div class="flex items-center gap-2">
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-100 text-xs text-blue-700 font-medium">
+                        <i class="fa-solid fa-building-user text-xs"></i>
+                        <span>TechForce Agency</span>
+                    </div>
+                    <div class="w-px h-4 bg-slate-200 mx-1"></div>
+                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-100 text-xs text-amber-700 font-medium">
+                        <i class="fa-solid fa-file-lines text-xs"></i>
+                        <span>#VAC-1043 · Forklift Driver (Reach/Counterbalance)</span>
+                    </div>
+                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 border border-red-100 text-xs text-red-600 font-medium">
+                        <i class="fa-solid fa-clock text-xs"></i>
+                        <span>Deadline: 30 May · 2 days left</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                        <i class="fa-solid fa-xmark text-xs"></i>
+                        <span>Cancel</span>
+                    </button>
+                    <button id="save-draft-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                        <i class="fa-regular fa-floppy-disk text-xs"></i>
+                        <span>Save Draft</span>
+                    </button>
+                    <button id="submit-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                        <span>Submit Candidate</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="px-6 xl:px-8 py-5 flex gap-5">
+
+                <!-- Left Column: Main Form -->
+                <div id="submission-left-col" class="flex-1 min-w-0 flex flex-col gap-4">
+
+                    <!-- Vacancy Context Banner -->
+                    <div id="vacancy-context-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-5 py-3 flex items-center justify-between" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                    <i class="fa-solid fa-warehouse text-blue-300 text-sm"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <p class="text-sm font-bold text-white">Forklift Driver (Reach/Counterbalance)</p>
+                                        <span class="text-xs font-mono text-white/40">#VAC-1043</span>
+                                        <span class="text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.5 rounded-full">Released</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 mt-0.5">
+                                        <span class="text-xs text-white/50 flex items-center gap-1"><i class="fa-solid fa-building text-white/30 text-xs"></i> Amazon Logistics</span>
+                                        <span class="text-xs text-white/50 flex items-center gap-1"><i class="fa-solid fa-location-dot text-white/30 text-xs"></i> Coventry · On-site</span>
+                                        <span class="text-xs text-white/50 flex items-center gap-1"><i class="fa-solid fa-sterling-sign text-white/30 text-xs"></i> Up to £14.50/hr · PAYE</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden xl:flex items-center gap-4">
+                                <div class="text-center">
+                                    <p class="text-xs text-white/40">Submissions</p>
+                                    <p class="text-sm font-bold text-white">4 <span class="text-white/40 text-xs font-normal">/ 3 max</span></p>
+                                </div>
+                                <div class="w-px h-8 bg-white/10"></div>
+                                <div class="text-center">
+                                    <p class="text-xs text-white/40">Deadline</p>
+                                    <p class="text-sm font-bold text-red-400">30 May</p>
+                                </div>
+                                <div class="w-px h-8 bg-white/10"></div>
+                                <div class="text-center">
+                                    <p class="text-xs text-white/40">Shift</p>
+                                    <p class="text-sm font-bold text-white">Morning</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-5 py-2.5 bg-amber-50 border-t border-amber-100 flex items-center gap-2">
+                            <i class="fa-solid fa-triangle-exclamation text-amber-500 text-xs"></i>
+                            <p class="text-xs text-amber-700 font-medium">This vacancy has exceeded its submission limit (4/3). You may still submit but this will require admin approval.</p>
+                        </div>
+                    </div>
+
+                    <!-- Candidate Details Form -->
+                    <div id="candidate-details-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-user text-blue-500 text-xs"></i>
+                                Candidate Details
+                            </h3>
+                            <div class="flex items-center gap-2">
+                                <button id="search-existing-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-blue-200 bg-blue-50 text-xs text-blue-700 font-medium hover:bg-blue-100 transition-colors">
+                                    <i class="fa-solid fa-magnifying-glass text-xs"></i>
+                                    <span>Search Existing Candidates</span>
+                                </button>
+                                <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 transition-colors">
+                                    <i class="fa-solid fa-user-plus text-xs"></i>
+                                    <span>New Candidate</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="p-5 flex flex-col gap-5">
+                            <!-- Search / Quick Select -->
+                            <div id="candidate-search-section" class="p-4 rounded-xl bg-blue-50 border border-blue-100">
+                                <p class="text-xs font-semibold text-blue-700 mb-2 flex items-center gap-1.5"><i class="fa-solid fa-magnifying-glass text-xs"></i> Quick Search — Link Existing Candidate</p>
+                                <div class="flex items-center gap-2">
+                                    <div class="flex-1 flex items-center gap-2 bg-white border border-blue-200 rounded-lg px-3 py-2">
+                                        <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
+                                        <input type="text" placeholder="Search by name, email or candidate ID..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                                    </div>
+                                    <button class="px-4 py-2 rounded-lg text-xs font-semibold text-white transition-all" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">Search</button>
+                                </div>
+                                <p class="text-xs text-blue-500 mt-2 flex items-center gap-1"><i class="fa-solid fa-circle-info text-xs"></i> Or fill in the form below to register a new candidate profile</p>
+                            </div>
+
+                            <!-- Name Row -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div id="field-first-name" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">First Name <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="e.g. James" class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                </div>
+                                <div id="field-last-name" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Last Name <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="e.g. Harrison" class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                </div>
+                                <div id="field-job-title" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Current Role <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="e.g. Forklift Driver (Reach)" class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                </div>
+                            </div>
+
+                            <!-- Contact Row -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div id="field-email" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Email Address <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-regular fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                        <input type="email" placeholder="candidate@email.com" class="w-full border border-slate-200 rounded-lg pl-8 pr-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                    </div>
+                                </div>
+                                <div id="field-phone" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Phone Number <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                        <input type="tel" placeholder="+44 7700 000000" class="w-full border border-slate-200 rounded-lg pl-8 pr-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Location + Right to Work -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div id="field-location" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Current Location <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-location-dot absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                        <input type="text" placeholder="e.g. Coventry, UK" class="w-full border border-slate-200 rounded-lg pl-8 pr-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                    </div>
+                                </div>
+                                <div id="field-nationality" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Nationality <span class="text-red-500">*</span></label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option value="">Select nationality...</option>
+                                        <option>British</option>
+                                        <option>Irish</option>
+                                        <option>EU National</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div id="field-rtw" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Right to Work <span class="text-red-500">*</span></label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option value="">Select status...</option>
+                                        <option>British Citizen</option>
+                                        <option>Settled Status (EU)</option>
+                                        <option>Visa / Sponsorship Required</option>
+                                        <option>Indefinite Leave to Remain</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Experience + Licence -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div id="field-experience" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Years of Warehouse Experience <span class="text-red-500">*</span></label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option value="">Select range...</option>
+                                        <option>Less than 1 year</option>
+                                        <option>1–3 years</option>
+                                        <option selected>3–5 years</option>
+                                        <option>5–8 years</option>
+                                        <option>8+ years</option>
+                                    </select>
+                                </div>
+                                <div id="field-licence" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Forklift Licence Type <span class="text-slate-400 font-normal">(if applicable)</span></label>
+                                    <div class="relative">
+                                        <i class="fa-solid fa-id-card absolute left-3 top-1/2 -translate-y-1/2 text-blue-500 text-xs"></i>
+                                        <input type="text" placeholder="e.g. Reach Truck, Counterbalance, LLOP" class="w-full border border-slate-200 rounded-lg pl-8 pr-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CV Upload Section -->
+                    <div id="cv-upload-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-file-pdf text-blue-500 text-xs"></i>
+                                CV / Resume
+                            </h3>
+                            <span class="text-xs text-slate-400">PDF, DOC, DOCX · Max 10MB</span>
+                        </div>
+                        <div class="p-5 flex flex-col gap-4">
+                            <!-- Drop Zone -->
+                            <div id="cv-dropzone" class="border-2 border-dashed border-blue-200 rounded-xl p-8 flex flex-col items-center justify-center gap-3 bg-blue-50/30 hover:border-blue-400 hover:bg-blue-50 transition-all cursor-pointer group">
+                                <div class="w-14 h-14 rounded-2xl flex items-center justify-center bg-blue-100 group-hover:bg-blue-200 transition-colors">
+                                    <i class="fa-solid fa-cloud-arrow-up text-blue-600 text-xl"></i>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-sm font-semibold text-slate-700">Drag & drop CV here</p>
+                                    <p class="text-xs text-slate-400 mt-1">or <span class="text-blue-600 font-semibold cursor-pointer hover:underline">browse files</span> from your computer</p>
+                                </div>
+                                <p class="text-xs text-slate-400">Accepted: PDF, DOC, DOCX · Maximum file size: 10MB</p>
+                            </div>
+
+                            <!-- Uploaded File (example) -->
+                            <div id="cv-uploaded-file" class="flex items-center gap-3 p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-emerald-100 flex-shrink-0">
+                                    <i class="fa-solid fa-file-pdf text-emerald-600 text-sm"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-800 truncate">James_Harrison_CV_2026.pdf</p>
+                                    <p class="text-xs text-slate-400 mt-0.5">1.8 MB · Uploaded just now</p>
+                                </div>
+                                <div class="flex items-center gap-2 flex-shrink-0">
+                                    <span class="text-xs font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                        <i class="fa-solid fa-check text-xs"></i> Ready
+                                    </span>
+                                    <button class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors">
+                                        <i class="fa-solid fa-xmark text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- CV Notes -->
+                            <div id="field-cv-notes" class="flex flex-col gap-1.5">
+                                <label class="text-xs font-semibold text-slate-600">Candidate Summary / Highlights <span class="text-slate-400 font-normal">(optional)</span></label>
+                                <textarea rows="3" placeholder="Briefly summarise the candidate's key strengths, licences held, and relevance to this warehouse role..." class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all resize-none"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Availability & Rate Section -->
+                    <div id="availability-rate-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-calendar-days text-blue-500 text-xs"></i>
+                                Availability & Rate
+                            </h3>
+                            <div class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-100 text-xs text-amber-700 font-medium">
+                                <i class="fa-solid fa-circle-info text-xs"></i>
+                                <span>Vacancy rate: up to £14.50/hr</span>
+                            </div>
+                        </div>
+
+                        <div class="p-5 flex flex-col gap-4">
+                            <!-- Availability Date -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div id="field-availability-date" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Available From <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <i class="fa-regular fa-calendar absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                                        <input type="date" value="2026-06-02" class="w-full border border-slate-200 rounded-lg pl-8 pr-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                    </div>
+                                </div>
+                                <div id="field-notice-period" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Notice Period <span class="text-red-500">*</span></label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option selected>Immediate</option>
+                                        <option>1 week</option>
+                                        <option>2 weeks</option>
+                                        <option>1 month</option>
+                                    </select>
+                                </div>
+                                <div id="field-shift-preference" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Preferred Shift <span class="text-red-500">*</span></label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option>Any Shift</option>
+                                        <option selected>Morning (06:00–14:00)</option>
+                                        <option>Late (14:00–22:00)</option>
+                                        <option>Night (22:00–06:00)</option>
+                                        <option>Days Only</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Rate Details -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div id="field-candidate-rate" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Candidate Pay Rate (£/hr) <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-semibold">£</span>
+                                        <input type="number" placeholder="13.50" value="13.50" class="w-full border border-blue-300 rounded-lg pl-7 pr-3 py-2.5 text-xs text-slate-800 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all font-semibold"/>
+                                    </div>
+                                    <p class="text-xs text-emerald-600 flex items-center gap-1"><i class="fa-solid fa-check text-xs"></i> Within vacancy rate (£14.50/hr max)</p>
+                                </div>
+                                <div id="field-charge-rate" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Agency Charge Rate (£/hr) <span class="text-red-500">*</span></label>
+                                    <div class="relative">
+                                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs font-semibold">£</span>
+                                        <input type="number" placeholder="14.50" value="14.50" class="w-full border border-slate-200 rounded-lg pl-7 pr-3 py-2.5 text-xs text-slate-800 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                    </div>
+                                    <p class="text-xs text-slate-400">Rate charged to MSP/client</p>
+                                </div>
+                                <div id="field-pay-type" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Pay Type <span class="text-red-500">*</span></label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option selected>PAYE</option>
+                                        <option>Umbrella</option>
+                                        <option>Ltd Company</option>
+                                        <option>CIS</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Rate Breakdown -->
+                            <div id="rate-breakdown-panel" class="p-4 rounded-xl bg-slate-50 border border-slate-200 flex flex-col gap-2">
+                                <p class="text-xs font-bold text-slate-700 flex items-center gap-1.5 mb-1"><i class="fa-solid fa-calculator text-blue-500 text-xs"></i> Rate Breakdown</p>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs text-slate-400">Candidate Pay</span>
+                                        <span class="text-sm font-bold text-slate-800">£13.50/hr</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs text-slate-400">Agency Charge</span>
+                                        <span class="text-sm font-bold text-slate-800">£14.50/hr</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs text-slate-400">Agency Margin</span>
+                                        <span class="text-sm font-bold text-emerald-600">£1.00/hr</span>
+                                    </div>
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-xs text-slate-400">Est. Weekly (40 hrs)</span>
+                                        <span class="text-sm font-bold text-blue-700">£580.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submission Notes -->
+                    <div id="submission-notes-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-comment-dots text-blue-500 text-xs"></i>
+                                Submission Notes & Supporting Info
+                            </h3>
+                        </div>
+                        <div class="p-5 flex flex-col gap-4">
+                            <div id="field-submission-notes" class="flex flex-col gap-1.5">
+                                <label class="text-xs font-semibold text-slate-600">Submission Notes <span class="text-red-500">*</span></label>
+                                <textarea rows="4" placeholder="Include a compelling reason why this candidate is a strong fit for the role. Mention specific licences, warehouse experience, and relevant site history..." class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all resize-none">James is an experienced Forklift Driver with 4+ years operating Reach and Counterbalance trucks across large-scale distribution centres. He holds a valid RTITB licence and has worked at DHL, XPO Logistics, and Wincanton sites. James is available immediately for morning shifts and is PAYE compliant. He has a strong H&S record with no reported incidents across his last three placements.</textarea>
+                            </div>
+
+                            <!-- Interview Preference -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div id="field-interview-availability" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Candidate Availability for Assessment</label>
+                                    <input type="text" placeholder="e.g. Mon–Fri mornings from 2 Jun" class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-800 placeholder-slate-400 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all"/>
+                                </div>
+                                <div id="field-site-preference" class="flex flex-col gap-1.5">
+                                    <label class="text-xs font-semibold text-slate-600">Preferred Site / Warehouse</label>
+                                    <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white">
+                                        <option>No preference</option>
+                                        <option selected>Coventry DC (Main)</option>
+                                        <option>Rugby Fulfilment Centre</option>
+                                        <option>Birmingham Hub</option>
+                                        <option>Northampton DC</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Compliance Checklist -->
+                            <div id="compliance-checklist" class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+                                <p class="text-xs font-bold text-slate-700 mb-3 flex items-center gap-1.5"><i class="fa-solid fa-shield-check text-emerald-500 text-xs"></i> Pre-Submission Compliance Checklist</p>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    <label id="check-rtw" class="flex items-center gap-2.5 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-3.5 h-3.5 accent-blue-600 rounded"/>
+                                        <span class="text-xs text-slate-700 group-hover:text-slate-900 transition-colors">Right to Work verified</span>
+                                        <span class="ml-auto text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full">Done</span>
+                                    </label>
+                                    <label id="check-cv-updated" class="flex items-center gap-2.5 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-3.5 h-3.5 accent-blue-600 rounded"/>
+                                        <span class="text-xs text-slate-700 group-hover:text-slate-900 transition-colors">Manual handling training confirmed</span>
+                                        <span class="ml-auto text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full">Done</span>
+                                    </label>
+                                    <label id="check-consent" class="flex items-center gap-2.5 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-3.5 h-3.5 accent-blue-600 rounded"/>
+                                        <span class="text-xs text-slate-700 group-hover:text-slate-900 transition-colors">Candidate consent obtained (GDPR)</span>
+                                        <span class="ml-auto text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full">Done</span>
+                                    </label>
+                                    <label id="check-references" class="flex items-center gap-2.5 cursor-pointer group">
+                                        <input type="checkbox" class="w-3.5 h-3.5 accent-blue-600 rounded"/>
+                                        <span class="text-xs text-slate-700 group-hover:text-slate-900 transition-colors">References available on request</span>
+                                        <span class="ml-auto text-xs font-semibold text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded-full">Pending</span>
+                                    </label>
+                                    <label id="check-forklift-licence" class="flex items-center gap-2.5 cursor-pointer group">
+                                        <input type="checkbox" checked class="w-3.5 h-3.5 accent-blue-600 rounded"/>
+                                        <span class="text-xs text-slate-700 group-hover:text-slate-900 transition-colors">Forklift licence valid & in-date</span>
+                                        <span class="ml-auto text-xs font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded-full">Done</span>
+                                    </label>
+                                    <label id="check-hs" class="flex items-center gap-2.5 cursor-pointer group">
+                                        <input type="checkbox" class="w-3.5 h-3.5 accent-blue-600 rounded"/>
+                                        <span class="text-xs text-slate-700 group-hover:text-slate-900 transition-colors">Health & Safety induction completed</span>
+                                        <span class="ml-auto text-xs font-semibold text-slate-400 bg-slate-100 border border-slate-200 px-1.5 py-0.5 rounded-full">Pending</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Action Row -->
+                    <div id="form-bottom-actions" class="flex items-center justify-between py-2">
+                        <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-600 font-semibold hover:border-red-300 hover:text-red-500 transition-all shadow-sm">
+                            <i class="fa-solid fa-xmark text-xs"></i>
+                            Cancel Submission
+                        </button>
+                        <div class="flex items-center gap-2">
+                            <button class="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs text-slate-600 font-semibold hover:border-blue-300 hover:text-blue-600 transition-all shadow-sm">
+                                <i class="fa-regular fa-floppy-disk text-xs"></i>
+                                Save as Draft
+                            </button>
+                            <button class="flex items-center gap-2 px-6 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-md" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                                <i class="fa-solid fa-paper-plane text-xs"></i>
+                                Submit Candidate to MSP
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Context Panel -->
+                <div id="submission-right-col" class="w-72 xl:w-80 flex-shrink-0 flex flex-col gap-4">
+
+                    <!-- Vacancy Summary Card -->
+                    <div id="vacancy-summary-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-briefcase text-blue-500 text-xs"></i>
+                                Vacancy Summary
+                            </h4>
+                            <button class="text-xs text-blue-600 font-medium hover:text-blue-700 transition-colors">View full</button>
+                        </div>
+                        <div class="p-4 flex flex-col gap-3">
+                            <div class="flex items-start gap-3">
+                                <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.12), rgba(91,46,145,0.12));">
+                                    <i class="fa-solid fa-warehouse text-blue-600 text-sm"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-slate-800">Forklift Driver (Reach/Counterbalance)</p>
+                                    <p class="text-xs text-slate-400 font-mono">#VAC-1043</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-2 border-t border-slate-100 pt-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-building text-slate-300 text-xs"></i> Client</span>
+                                    <span class="text-xs font-medium text-slate-700">Amazon Logistics</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-slate-300 text-xs"></i> Site</span>
+                                    <span class="text-xs font-medium text-slate-700">Coventry DC · On-site</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sterling-sign text-slate-300 text-xs"></i> Max Rate</span>
+                                    <span class="text-xs font-bold text-slate-800">£14.50/hr</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-clock text-slate-300 text-xs"></i> Shift Pattern</span>
+                                    <span class="text-xs font-semibold text-blue-700">Morning (06:00–14:00)</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-hourglass-half text-slate-300 text-xs"></i> Deadline</span>
+                                    <span class="text-xs font-semibold text-red-600">30 May 2026</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-user-group text-slate-300 text-xs"></i> Submissions</span>
+                                    <span class="text-xs font-semibold text-amber-600">4 / 3 max</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills Required -->
+                    <div id="skills-required-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                        <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-tags text-blue-500 text-xs"></i>
+                            Required Skills & Licences
+                        </h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-lg">Reach Truck</span>
+                            <span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-lg">Counterbalance</span>
+                            <span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-lg">LLOP</span>
+                            <span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-lg">Scanner Operation</span>
+                            <span class="text-xs font-medium text-blue-700 bg-blue-50 border border-blue-100 px-2 py-1 rounded-lg">Manual Handling</span>
+                            <span class="text-xs font-medium text-purple-700 bg-purple-50 border border-purple-100 px-2 py-1 rounded-lg">Health & Safety</span>
+                            <span class="text-xs font-medium text-purple-700 bg-purple-50 border border-purple-100 px-2 py-1 rounded-lg">RTITB Licence</span>
+                            <span class="text-xs font-medium text-slate-600 bg-slate-50 border border-slate-200 px-2 py-1 rounded-lg">Stock Control</span>
+                            <span class="text-xs font-medium text-slate-600 bg-slate-50 border border-slate-200 px-2 py-1 rounded-lg">Picker/Packer</span>
+                            <span class="text-xs font-medium text-slate-600 bg-slate-50 border border-slate-200 px-2 py-1 rounded-lg">Goods-In/Out</span>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-slate-100">
+                            <p class="text-xs text-slate-400 mb-2">Nice to have:</p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded-lg">Logistics exp.</span>
+                                <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded-lg">WMS Systems</span>
+                                <span class="text-xs font-medium text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-1 rounded-lg">First Aid</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Existing Submissions for this Vacancy -->
+                    <div id="existing-submissions-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
+                                <i class="fa-solid fa-users text-blue-500 text-xs"></i>
+                                Your Submissions
+                            </h4>
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-100 px-1.5 py-0.5 rounded-full">4 submitted</span>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <div id="existing-sub-1" class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-100 bg-slate-50">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-7 h-7 rounded-full object-cover flex-shrink-0" alt=""/>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-800 truncate">Alex Chen</p>
+                                    <p class="text-xs text-slate-400">£13.50/hr · Morning</p>
+                                </div>
+                                <span class="text-xs font-semibold text-blue-600 bg-blue-50 border border-blue-100 px-1.5 py-0.5 rounded-full flex-shrink-0">Submitted</span>
+                            </div>
+                            <div id="existing-sub-2" class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-100 bg-slate-50">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-7 h-7 rounded-full object-cover flex-shrink-0" alt=""/>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-800 truncate">Emma Clarke</p>
+                                    <p class="text-xs text-slate-400">£14.00/hr · Late</p>
+                                </div>
+                                <span class="text-xs font-semibold text-amber-600 bg-amber-50 border border-amber-100 px-1.5 py-0.5 rounded-full flex-shrink-0">Offered</span>
+                            </div>
+                            <div id="existing-sub-3" class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-100 bg-slate-50">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-7 h-7 rounded-full object-cover flex-shrink-0" alt=""/>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-800 truncate">Ravi Patel</p>
+                                    <p class="text-xs text-slate-400">£13.00/hr · Night</p>
+                                </div>
+                                <span class="text-xs font-semibold text-red-500 bg-red-50 border border-red-100 px-1.5 py-0.5 rounded-full flex-shrink-0">Rejected</span>
+                            </div>
+                            <div id="existing-sub-4" class="flex items-center gap-2.5 p-2.5 rounded-xl border border-slate-100 bg-slate-50">
+                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" class="w-7 h-7 rounded-full object-cover flex-shrink-0" alt=""/>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-xs font-semibold text-slate-800 truncate">Daniel Okafor</p>
+                                    <p class="text-xs text-slate-400">£14.20/hr · Morning</p>
+                                </div>
+                                <span class="text-xs font-semibold text-purple-600 bg-purple-50 border border-purple-100 px-1.5 py-0.5 rounded-full flex-shrink-0">Shortlisted</span>
+                            </div>
+                        </div>
+                        <div class="mt-3 p-3 rounded-xl bg-amber-50 border border-amber-100 flex items-start gap-2">
+                            <i class="fa-solid fa-triangle-exclamation text-amber-500 text-xs mt-0.5"></i>
+                            <p class="text-xs text-amber-700">Submission limit (3) exceeded. Admin approval required for additional submissions.</p>
+                        </div>
+                    </div>
+
+                    <!-- Submission Tips -->
+                    <div id="submission-tips-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                        <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-lightbulb text-amber-500 text-xs"></i>
+                            Submission Tips
+                        </h4>
+                        <div class="flex flex-col gap-2.5">
+                            <div class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full flex items-center justify-center bg-blue-100 flex-shrink-0 mt-0.5">
+                                    <span class="text-blue-700 font-bold" style="font-size: 9px;">1</span>
+                                </div>
+                                <p class="text-xs text-slate-600">Ensure the candidate's forklift licence (RTITB/ITSSAR) is valid and not expired before submitting.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full flex items-center justify-center bg-blue-100 flex-shrink-0 mt-0.5">
+                                    <span class="text-blue-700 font-bold" style="font-size: 9px;">2</span>
+                                </div>
+                                <p class="text-xs text-slate-600">Confirm the candidate's preferred shift pattern and site location match the vacancy requirements.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full flex items-center justify-center bg-blue-100 flex-shrink-0 mt-0.5">
+                                    <span class="text-blue-700 font-bold" style="font-size: 9px;">3</span>
+                                </div>
+                                <p class="text-xs text-slate-600">Right to Work documentation must be verified before a booking can be confirmed.</p>
+                            </div>
+                            <div class="flex items-start gap-2">
+                                <div class="w-5 h-5 rounded-full flex items-center justify-center bg-blue-100 flex-shrink-0 mt-0.5">
+                                    <span class="text-blue-700 font-bold" style="font-size: 9px;">4</span>
+                                </div>
+                                <p class="text-xs text-slate-600">Include H&S induction status and any relevant warehouse site experience in your submission notes.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Select Different Vacancy -->
+                    <div id="change-vacancy-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                        <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2 mb-3">
+                            <i class="fa-solid fa-arrows-rotate text-blue-500 text-xs"></i>
+                            Submit to Different Vacancy
+                        </h4>
+                        <select class="w-full border border-slate-200 rounded-lg px-3 py-2.5 text-xs text-slate-700 outline-none focus:border-blue-400 focus:ring-2 focus:ring-blue-50 transition-all appearance-none bg-white mb-2">
+                            <option selected>#VAC-1043 · Forklift Driver (Reach/Counterbalance)</option>
+                            <option>#VAC-1044 · Warehouse Operative (Nights)</option>
+                            <option>#VAC-1045 · Picker/Packer (Morning Shift)</option>
+                            <option>#VAC-1046 · Loader · Northampton DC</option>
+                            <option>#VAC-1040 · LLOP Driver · Birmingham Hub</option>
+                        </select>
+                        <button class="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                            Switch Vacancy
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+</body>
+</html>
