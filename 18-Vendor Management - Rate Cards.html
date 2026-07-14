@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Cards</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { inter: ['Inter', 'sans-serif'], },
+                    colors: {
+                        navy: { DEFAULT: '#172554', 50: '#EEF1FB', 100: '#D4DCF5', 200: '#A9B9EB', 300: '#7E96E1', 400: '#5373D7', 500: '#2850CD', 600: '#1D3FA4', 700: '#162F7B', 800: '#0F1F52', 900: '#172554', },
+                        brand: { blue: '#1D4ED8', purple: '#5B2E91', navy: '#172554', }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">MAIN</p>
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FULFILMENT</p>
+            <a id="nav-worker-pool" href="13-Vendor Management - Worker Pool.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-users-gear text-white/40 w-4 text-center"></i>
+                <span>Worker Pool</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">AGENCY</p>
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+            <a id="nav-approved-suppliers" href="17-Vendor Management - Approved Su.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-circle-check text-white/40 w-4 text-center"></i>
+                <span>Approved Suppliers</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">COMPLIANCE</p>
+            <a id="nav-awr" href="16-Vendor Management - AWR Trackin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-hourglass-half text-white/40 w-4 text-center"></i>
+                <span>AWR Tracking</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FINANCE</p>
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Timesheets</span>
+            </a>
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+            <a id="nav-rate-cards" href="18-Vendor Management - Rate Cards.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-sterling-sign text-blue-400 w-4 text-center"></i>
+                <span>Rate Cards</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+            <a id="nav-reports" href="20-Vendor Management - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-line text-white/40 w-4 text-center"></i>
+                <span>Reports</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SYSTEM</p>
+            <a id="nav-audit-log" href="19-Vendor Management - Audit Log.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-list text-white/40 w-4 text-center"></i>
+                <span>Audit Log</span>
+            </a>
+
+        </nav>
+
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">Super Admin</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors"><i class="fa-solid fa-bars text-slate-600 text-sm"></i></button>
+                <div>
+                    <h1 class="text-lg font-bold text-slate-900">Rate Cards</h1>
+                    <p class="text-xs text-slate-500 hidden sm:block">Charge &amp; pay rates, statutory breakdown, and effective-dating per job role</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-3">
+                <button class="hidden md:flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg px-3 py-2 text-xs font-semibold transition-colors"><i class="fa-solid fa-file-csv text-xs"></i> CSV Bulk Upload</button>
+                <button class="hidden md:flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-colors"><i class="fa-solid fa-plus text-xs"></i> New Rate Card</button>
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors"><i class="fa-regular fa-bell text-slate-600 text-sm"></i><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span></button>
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block"><p class="text-xs font-semibold text-slate-700">Sarah M.</p><p class="text-xs text-slate-400">Super Admin</p></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 overflow-y-auto px-6 xl:px-8 py-6 bg-slate-100">
+
+            <!-- Info banner -->
+            <div class="rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 mb-6 flex items-start gap-3">
+                <i class="fa-solid fa-lock text-blue-500 mt-0.5"></i>
+                <p class="text-sm text-blue-800">Rate cards are visible only to Abstract Admin and Abstract Finance <span class="font-semibold">(RT-014)</span>. Clients see charge rates only; agencies see pay rates only <span class="font-semibold">(RV-001, RV-002)</span>. Abstract's remuneration is the <span class="font-semibold">spread</span> (Charge &minus; Pay) plus its statutory breakdown.</p>
+            </div>
+
+            <!-- Master table -->
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6">
+                <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                    <div><h3 class="text-sm font-bold text-slate-800">Job Role Rate Cards</h3><p class="text-xs text-slate-400 mt-0.5">Standard-hour rates shown &middot; expand a role for the full hour-type matrix</p></div>
+                    <div class="flex items-center gap-2">
+                        <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2"><i class="fa-regular fa-building text-slate-400 text-xs"></i><select class="bg-transparent text-xs font-medium text-slate-600 outline-none"><option>All Clients</option><option>Coventry Logistics Ltd</option><option>HSBC Group</option></select></div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm min-w-[900px]">
+                        <thead>
+                            <tr class="bg-slate-50 text-left">
+                                <th class="px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Job Role</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Client</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Business Unit</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Effective From</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Charge</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Pay</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Margin</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
+                                <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="bg-blue-50/40 hover:bg-blue-50/60">
+                                <td class="px-5 py-3"><div class="flex items-center gap-2"><i class="fa-solid fa-chevron-down text-blue-500 text-xs"></i><span class="font-semibold text-slate-800">Warehouse Operative</span></div></td>
+                                <td class="px-4 py-3 text-slate-600">Coventry Logistics</td>
+                                <td class="px-4 py-3 text-slate-600">Coventry DC</td>
+                                <td class="px-4 py-3 text-slate-600">01 Apr 2026</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;15.80</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;12.60</td>
+                                <td class="px-4 py-3 text-right"><span class="font-semibold text-emerald-600">&pound;3.20</span> <span class="text-xs text-slate-400">20.3%</span></td>
+                                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span></td>
+                                <td class="px-4 py-3 text-right"><button class="text-slate-400 hover:text-blue-600 px-1.5"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/60">
+                                <td class="px-5 py-3"><div class="flex items-center gap-2"><i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i><span class="font-semibold text-slate-800">Forklift Driver (Reach)</span></div></td>
+                                <td class="px-4 py-3 text-slate-600">Coventry Logistics</td>
+                                <td class="px-4 py-3 text-slate-600">Coventry DC</td>
+                                <td class="px-4 py-3 text-slate-600">01 Apr 2026</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;18.40</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;14.90</td>
+                                <td class="px-4 py-3 text-right"><span class="font-semibold text-emerald-600">&pound;3.50</span> <span class="text-xs text-slate-400">19.0%</span></td>
+                                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span></td>
+                                <td class="px-4 py-3 text-right"><button class="text-slate-400 hover:text-blue-600 px-1.5"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/60">
+                                <td class="px-5 py-3"><div class="flex items-center gap-2"><i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i><span class="font-semibold text-slate-800">Picker / Packer</span></div></td>
+                                <td class="px-4 py-3 text-slate-600">Nationwide Retail</td>
+                                <td class="px-4 py-3 text-slate-600">All Units</td>
+                                <td class="px-4 py-3 text-slate-600">01 May 2026</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;14.20</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;11.90</td>
+                                <td class="px-4 py-3 text-right"><span class="font-semibold text-emerald-600">&pound;2.30</span> <span class="text-xs text-slate-400">16.2%</span></td>
+                                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span></td>
+                                <td class="px-4 py-3 text-right"><button class="text-slate-400 hover:text-blue-600 px-1.5"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/60">
+                                <td class="px-5 py-3"><div class="flex items-center gap-2"><i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i><span class="font-semibold text-slate-800">HGV Class 2 Driver</span></div></td>
+                                <td class="px-4 py-3 text-slate-600">BT Enterprise</td>
+                                <td class="px-4 py-3 text-slate-600">Fleet North</td>
+                                <td class="px-4 py-3 text-slate-600">01 Aug 2026</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;21.50</td>
+                                <td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;17.20</td>
+                                <td class="px-4 py-3 text-right"><span class="font-semibold text-emerald-600">&pound;4.30</span> <span class="text-xs text-slate-400">20.0%</span></td>
+                                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">Scheduled</span></td>
+                                <td class="px-4 py-3 text-right"><button class="text-slate-400 hover:text-blue-600 px-1.5"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50/60">
+                                <td class="px-5 py-3"><div class="flex items-center gap-2"><i class="fa-solid fa-chevron-right text-slate-300 text-xs"></i><span class="font-semibold text-slate-500">Warehouse Operative</span></div></td>
+                                <td class="px-4 py-3 text-slate-400">Coventry Logistics</td>
+                                <td class="px-4 py-3 text-slate-400">Coventry DC</td>
+                                <td class="px-4 py-3 text-slate-400">01 Jan 2026</td>
+                                <td class="px-4 py-3 text-right text-slate-400">&pound;15.20</td>
+                                <td class="px-4 py-3 text-right text-slate-400">&pound;12.20</td>
+                                <td class="px-4 py-3 text-right text-slate-400">&pound;3.00 &middot; 19.7%</td>
+                                <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Superseded</span></td>
+                                <td class="px-4 py-3 text-right"><button class="text-slate-400 hover:text-blue-600 px-1.5"><i class="fa-regular fa-eye"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Detail panels grid -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 mb-6">
+
+                <!-- Rate Card detail: hour-type matrix -->
+                <div class="xl:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                        <div><h3 class="text-sm font-bold text-slate-800">Rate Card &middot; Warehouse Operative</h3><p class="text-xs text-slate-400 mt-0.5">Coventry Logistics &middot; Coventry DC &middot; effective 01 Apr 2026</p></div>
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-slate-50 text-left">
+                                    <th class="px-5 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider">Hour Type</th>
+                                    <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Charge Rate</th>
+                                    <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Pay Rate</th>
+                                    <th class="px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider text-right">Spread</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-slate-50/60"><td class="px-5 py-3 font-medium text-slate-700">Standard</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;15.80</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;12.60</td><td class="px-4 py-3 text-right font-semibold text-emerald-600">&pound;3.20</td></tr>
+                                <tr class="hover:bg-slate-50/60"><td class="px-5 py-3 font-medium text-slate-700">Overtime (1.5&times;)</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;23.70</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;18.90</td><td class="px-4 py-3 text-right font-semibold text-emerald-600">&pound;4.80</td></tr>
+                                <tr class="hover:bg-slate-50/60"><td class="px-5 py-3 font-medium text-slate-700">Weekend</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;21.30</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;17.00</td><td class="px-4 py-3 text-right font-semibold text-emerald-600">&pound;4.30</td></tr>
+                                <tr class="hover:bg-slate-50/60"><td class="px-5 py-3 font-medium text-slate-700">Bank Holiday (2&times;)</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;31.60</td><td class="px-4 py-3 text-right font-semibold text-slate-800">&pound;25.20</td><td class="px-4 py-3 text-right font-semibold text-emerald-600">&pound;6.40</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="px-5 py-4 border-t border-slate-100 bg-slate-50 flex flex-wrap items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-hourglass-half text-slate-400 text-xs"></i>
+                            <span class="text-xs text-slate-500">Post-AWR pay rate (standard)</span>
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-sm font-semibold text-slate-800">&pound;13.45 / hr</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Post-AWR</span>
+                        </div>
+                        <span class="text-xs text-slate-400">Applied after 12 qualifying weeks (RT-009, AW-005)</span>
+                    </div>
+                </div>
+
+                <!-- Statutory breakdown -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-100"><h3 class="text-sm font-bold text-slate-800">Statutory Breakdown</h3><p class="text-xs text-slate-400 mt-0.5">Per standard hour &middot; Abstract view only (RV-003)</p></div>
+                    <div class="p-5 flex flex-col gap-2.5 text-sm">
+                        <div class="flex items-center justify-between"><span class="text-slate-500">Base Pay</span><span class="font-semibold text-slate-800">&pound;12.60</span></div>
+                        <div class="flex items-center justify-between"><span class="text-slate-500">Employer's NI <span class="text-xs text-slate-400">(13.8%)</span></span><span class="font-semibold text-slate-800">&pound;1.74</span></div>
+                        <div class="flex items-center justify-between"><span class="text-slate-500">WTR / Holiday Accrual <span class="text-xs text-slate-400">(12.07%)</span></span><span class="font-semibold text-slate-800">&pound;1.52</span></div>
+                        <div class="flex items-center justify-between"><span class="text-slate-500">Pension <span class="text-xs text-slate-400">(3.0%)</span></span><span class="font-semibold text-slate-800">&pound;0.38</span></div>
+                        <div class="flex items-center justify-between"><span class="text-slate-500">Apprenticeship Levy <span class="text-xs text-slate-400">(0.5%)</span></span><span class="font-semibold text-slate-800">&pound;0.06</span></div>
+                        <div class="border-t border-slate-200 my-1"></div>
+                        <div class="flex items-center justify-between"><span class="text-slate-500">Fully-loaded cost</span><span class="font-semibold text-slate-800">&pound;16.30</span></div>
+                        <div class="flex items-center justify-between"><span class="text-slate-500">Charge Rate</span><span class="font-semibold text-slate-800">&pound;15.80</span></div>
+                        <div class="rounded-xl bg-slate-50 border border-slate-200 px-3 py-2.5 mt-1 flex items-center justify-between">
+                            <span class="text-xs font-semibold text-slate-600">Net Margin</span>
+                            <span class="text-sm font-bold text-slate-500">&minus;&pound;0.50 &middot; &minus;3.2%</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">Net Margin = Charge Rate &minus; (Base Pay + NI + WTR + Pension + Levy). This standard-hour role runs at a small statutory loss recovered on overtime and weekend spreads (BRD &sect;7.6.2).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Version history + CSV upload -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-4">
+
+                <!-- Version history timeline -->
+                <div class="xl:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+                        <div><h3 class="text-sm font-bold text-slate-800">Version History &middot; Warehouse Operative</h3><p class="text-xs text-slate-400 mt-0.5">Effective-dated rate versions (RT-007, RT-012)</p></div>
+                        <button class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-colors"><i class="fa-regular fa-calendar-plus text-xs"></i> Schedule future-dated change</button>
+                    </div>
+                    <div class="p-5">
+                        <div class="relative pl-6">
+                            <div class="absolute left-[7px] top-2 bottom-2 w-px bg-slate-200"></div>
+
+                            <div class="relative mb-5">
+                                <div class="absolute -left-[22px] top-1 w-3.5 h-3.5 rounded-full bg-amber-400 border-2 border-white"></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="text-sm font-semibold text-slate-800">01 Aug 2026 &rarr; open</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">Scheduled</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Charge &pound;16.20 &middot; Pay &pound;12.90 &middot; spread &pound;3.30 &middot; scheduled by Sarah Mitchell</p>
+                            </div>
+
+                            <div class="relative mb-5">
+                                <div class="absolute -left-[22px] top-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white"></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="text-sm font-semibold text-slate-800">01 Apr 2026 &rarr; 31 Jul 2026</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Charge &pound;15.80 &middot; Pay &pound;12.60 &middot; spread &pound;3.20 &middot; NMW increase applied</p>
+                            </div>
+
+                            <div class="relative mb-5">
+                                <div class="absolute -left-[22px] top-1 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white"></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="text-sm font-semibold text-slate-500">01 Jan 2026 &rarr; 31 Mar 2026</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Superseded</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Charge &pound;15.20 &middot; Pay &pound;12.20 &middot; spread &pound;3.00</p>
+                            </div>
+
+                            <div class="relative">
+                                <div class="absolute -left-[22px] top-1 w-3.5 h-3.5 rounded-full bg-slate-300 border-2 border-white"></div>
+                                <div class="flex items-center gap-2 flex-wrap">
+                                    <span class="text-sm font-semibold text-slate-500">01 Oct 2025 &rarr; 31 Dec 2025</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Superseded</span>
+                                </div>
+                                <p class="text-xs text-slate-400 mt-1">Charge &pound;14.80 &middot; Pay &pound;11.85 &middot; spread &pound;2.95</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CSV bulk upload -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-100"><h3 class="text-sm font-bold text-slate-800">CSV Bulk Upload</h3><p class="text-xs text-slate-400 mt-0.5">Validation preview before commit (RT-013)</p></div>
+                    <div class="p-5">
+                        <div class="border-2 border-dashed border-slate-200 rounded-xl p-6 text-center hover:border-blue-300 transition-colors cursor-pointer">
+                            <i class="fa-solid fa-cloud-arrow-up text-slate-300 text-2xl mb-2"></i>
+                            <p class="text-sm font-semibold text-slate-600">Drop rate-card CSV here</p>
+                            <p class="text-xs text-slate-400 mt-1">or click to browse &middot; .csv up to 5MB</p>
+                        </div>
+                        <div class="mt-4 rounded-xl border border-slate-200 overflow-hidden">
+                            <div class="px-4 py-2.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between"><span class="text-xs font-semibold text-slate-600">rates_q3_2026.csv</span><span class="text-xs text-slate-400">42 rows</span></div>
+                            <div class="p-4 flex flex-col gap-2 text-xs">
+                                <div class="flex items-center gap-2 text-emerald-600"><i class="fa-solid fa-circle-check"></i><span>38 rows valid &amp; ready to import</span></div>
+                                <div class="flex items-center gap-2 text-amber-600"><i class="fa-solid fa-triangle-exclamation"></i><span>3 rows warning &middot; effective date in the past</span></div>
+                                <div class="flex items-center gap-2 text-red-600"><i class="fa-solid fa-circle-xmark"></i><span>1 row error &middot; pay &gt; charge (negative spread)</span></div>
+                            </div>
+                            <div class="px-4 py-3 border-t border-slate-100 flex gap-2">
+                                <button class="flex-1 bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-colors">Commit 38 rows</button>
+                                <button class="bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-lg px-3 py-2 text-xs font-semibold transition-colors">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div>
+</body>
+</html>

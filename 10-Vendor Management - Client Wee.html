@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Weekly Timesheet Entry</title>
+    <title>Timesheets — Abstract Oversight</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -50,7 +50,7 @@
 
     <!-- Sidebar -->
     <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
-        
+
         <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
             <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
                 <i class="fa-solid fa-layer-group text-white text-sm"></i>
@@ -63,67 +63,71 @@
 
         <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
 
-            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">Main</p>
-
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">MAIN</p>
             <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
                 <span>Admin Dashboard</span>
             </a>
-
             <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
                 <span>Vacancy List</span>
             </a>
-
             <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
                 <span>Create Vacancy Wizard</span>
             </a>
 
-            <a id="nav-vacancy-detail" href="5-Vendor Management - Vacancy De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
-                <i class="fa-solid fa-file-lines text-white/40 w-4 text-center"></i>
-                <span>Vacancy Detail</span>
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FULFILMENT</p>
+            <a id="nav-worker-pool" href="13-Vendor Management - Worker Pool.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-users-gear text-white/40 w-4 text-center"></i>
+                <span>Worker Pool</span>
             </a>
 
-            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Agency</p>
-
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">AGENCY</p>
             <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
                 <span>Agency Dashboard</span>
             </a>
-
-            <a id="nav-candidate-submission" href="7-Vendor Management - Agency Can.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
-                <i class="fa-solid fa-user-plus text-white/40 w-4 text-center"></i>
-                <span>Agency Candidate Submission</span>
+            <a id="nav-approved-suppliers" href="17-Vendor Management - Approved Su.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-circle-check text-white/40 w-4 text-center"></i>
+                <span>Approved Suppliers</span>
             </a>
 
-            <a id="nav-proposal-review" href="8-Vendor Management - Proposal R.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
-                <i class="fa-solid fa-clipboard-check text-white/40 w-4 text-center"></i>
-                <span>Proposal Review</span>
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">COMPLIANCE</p>
+            <a id="nav-awr" href="16-Vendor Management - AWR Trackin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-hourglass-half text-white/40 w-4 text-center"></i>
+                <span>AWR Tracking</span>
             </a>
 
-            <a id="nav-booking-detail" href="9-Vendor Management - Booking De.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
-                <i class="fa-solid fa-calendar-check text-white/40 w-4 text-center"></i>
-                <span>Booking Detail</span>
-            </a>
-
-            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">Finance</p>
-
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FINANCE</p>
             <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
                 <i class="fa-solid fa-clock text-blue-400 w-4 text-center"></i>
-                <span>Client Weekly Timesheet</span>
+                <span>Timesheets</span>
                 <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
             </a>
-
             <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
                 <span>Invoicing / Self-Bill</span>
             </a>
-
             <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
                 <span>Abstract Backing Report</span>
             </a>
+            <a id="nav-rate-cards" href="18-Vendor Management - Rate Cards.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-sterling-sign text-white/40 w-4 text-center"></i>
+                <span>Rate Cards</span>
+            </a>
+            <a id="nav-reports" href="20-Vendor Management - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-line text-white/40 w-4 text-center"></i>
+                <span>Reports</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SYSTEM</p>
+            <a id="nav-audit-log" href="19-Vendor Management - Audit Log.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-list text-white/40 w-4 text-center"></i>
+                <span>Audit Log</span>
+            </a>
+
         </nav>
 
         <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
@@ -151,20 +155,17 @@
                     <div>
                         <div class="flex items-center gap-2">
                             <nav class="flex items-center gap-1.5 text-xs text-slate-400">
-                                <a href="#" class="hover:text-blue-600 transition-colors">Booking Detail</a>
+                                <span class="hover:text-blue-600 transition-colors">Finance</span>
                                 <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
-                                <a href="#" class="hover:text-blue-600 transition-colors">#BKG-2091</a>
-                                <i class="fa-solid fa-chevron-right text-slate-300" style="font-size: 9px;"></i>
-                                <span class="text-slate-700 font-semibold">Client Weekly Timesheet</span>
+                                <span class="text-slate-700 font-semibold">Timesheets</span>
                             </nav>
                         </div>
                         <div class="flex items-center gap-2 mt-0.5">
-                            <h1 class="text-lg font-bold text-slate-900">Client Weekly Timesheet Entry</h1>
-                            <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 inline-block"></span>
-                                Pending Approval
+                            <h1 class="text-lg font-bold text-slate-900">Timesheets</h1>
+                            <span class="text-xs font-semibold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-full flex items-center gap-1">
+                                <i class="fa-solid fa-layer-group text-[10px]"></i>
+                                Cross-client oversight
                             </span>
-                            <span class="text-xs font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">#TS-W23-2026</span>
                         </div>
                     </div>
                 </div>
@@ -173,13 +174,13 @@
             <div class="flex items-center gap-3">
                 <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 cursor-pointer hover:border-blue-300 transition-colors">
                     <i class="fa-regular fa-calendar text-slate-400 text-xs"></i>
-                    <span class="text-xs font-medium text-slate-600">W/E 06 Jun 2026</span>
+                    <span class="text-xs font-medium text-slate-600">Week of 8–14 Jun 2026</span>
                     <i class="fa-solid fa-chevron-down text-slate-400 text-xs"></i>
                 </div>
 
                 <div class="hidden sm:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 w-48 xl:w-56">
                     <i class="fa-solid fa-magnifying-glass text-slate-400 text-xs"></i>
-                    <input type="text" placeholder="Search timesheets..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
+                    <input type="text" placeholder="Search candidate or booking..." class="bg-transparent text-xs text-slate-700 placeholder-slate-400 outline-none w-full"/>
                 </div>
 
                 <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
@@ -204,875 +205,743 @@
         <!-- Main Body -->
         <main id="timesheet-main" class="flex-1 overflow-y-auto bg-slate-100">
 
-            <!-- Action Bar -->
-            <div id="timesheet-action-bar" class="bg-white border-b border-slate-200 px-6 xl:px-8 py-3 flex items-center justify-between flex-shrink-0 flex-wrap gap-2">
-                <div class="flex items-center gap-2 flex-wrap">
-                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium" style="background: linear-gradient(135deg, rgba(15,26,62,0.08), rgba(23,37,84,0.06)); border: 1px solid rgba(23,37,84,0.12);">
-                        <i class="fa-solid fa-warehouse text-blue-600 text-xs"></i>
-                        <span class="text-slate-800 font-semibold">#BKG-2091 · Daniel Okafor</span>
-                    </div>
-                    <div class="w-px h-4 bg-slate-200 mx-1"></div>
-                    <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-600 font-medium">
-                        <i class="fa-solid fa-building text-slate-400 text-xs"></i>
-                        <span>HSBC Logistics Hub</span>
-                    </div>
-                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-100 text-xs text-blue-700 font-medium">
-                        <i class="fa-solid fa-calendar-week text-xs"></i>
-                        <span>Week 23 · 02 Jun – 06 Jun 2026</span>
-                    </div>
-                    <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-100 text-xs text-amber-700 font-medium">
-                        <i class="fa-solid fa-clock text-xs"></i>
-                        <span>Approver: James Hartley</span>
-                    </div>
+            <!-- ============================================================= -->
+            <!-- PART A — CROSS-CLIENT / CROSS-AGENCY OVERSIGHT LIST (TS-025..026) -->
+            <!-- ============================================================= -->
+
+            <!-- Page Intro -->
+            <div class="px-6 xl:px-8 pt-6 pb-1 flex items-end justify-between flex-wrap gap-3">
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900">Timesheets</h2>
+                    <p class="text-xs text-slate-500 mt-0.5">All candidates · all clients · week of 8–14 Jun 2026 (Mon–Sun)</p>
                 </div>
                 <div class="flex items-center gap-2">
-                    <button id="export-ts-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
+                    <button class="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-200 bg-white text-xs text-slate-600 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
                         <i class="fa-solid fa-arrow-down-to-bracket text-xs"></i>
-                        <span>Export PDF</span>
+                        <span>Export week</span>
                     </button>
-                    <button id="save-draft-btn" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 bg-white text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
-                        <i class="fa-solid fa-floppy-disk text-xs"></i>
-                        <span>Save Draft</span>
-                    </button>
-                    <button id="submit-approval-btn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
-                        <i class="fa-solid fa-paper-plane text-xs"></i>
-                        <span>Submit for Approval</span>
+                    <button class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                        <i class="fa-solid fa-table-cells-large text-xs"></i>
+                        <span>Rapid entry grid</span>
                     </button>
                 </div>
             </div>
 
-            <!-- KPI Strip -->
-            <div id="timesheet-kpi-strip" class="px-6 xl:px-8 pt-5 pb-0 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-3">
-                <div id="kpi-ts-status" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
-                        <i class="fa-solid fa-hourglass-half text-amber-500 text-sm"></i>
+            <!-- Segregation Filter Bar (TS-026) -->
+            <div id="oversight-filter-bar" class="px-6 xl:px-8 pt-4">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="fa-solid fa-filter text-blue-600 text-xs"></i>
+                        <p class="text-xs font-bold text-slate-700 uppercase tracking-wider">Segregate the week</p>
+                        <span class="text-xs text-slate-400">— filter by client and agency for a clean per-client / per-agency picture</span>
                     </div>
-                    <div>
-                        <p class="text-xs text-slate-400">Status</p>
-                        <p class="text-sm font-bold text-amber-600">Pending Approval</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-7 gap-3">
+                        <!-- Client — prominent -->
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="text-xs font-bold text-slate-600 flex items-center gap-1.5 mb-1"><i class="fa-solid fa-building text-blue-500 text-[10px]"></i> Client</label>
+                            <select class="w-full border-2 border-blue-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-blue-50/50 font-semibold focus:outline-none focus:border-blue-400 transition-colors">
+                                <option>All clients</option>
+                                <option>HSBC Logistics Hub</option>
+                                <option>Barratt Developments</option>
+                                <option>Greggs Distribution</option>
+                            </select>
+                        </div>
+                        <!-- Agency — prominent -->
+                        <div class="col-span-2 md:col-span-1">
+                            <label class="text-xs font-bold text-slate-600 flex items-center gap-1.5 mb-1"><i class="fa-solid fa-building-user text-purple-500 text-[10px]"></i> Agency</label>
+                            <select class="w-full border-2 border-purple-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-purple-50/50 font-semibold focus:outline-none focus:border-purple-400 transition-colors">
+                                <option>All agencies</option>
+                                <option>TechForce Agency</option>
+                                <option>Prime Staffing</option>
+                                <option>Blue Arrow</option>
+                                <option>Meridian Recruitment</option>
+                                <option>Abstract (worker pool)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-500 mb-1 block">Business Unit</label>
+                            <select class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
+                                <option>All units</option>
+                                <option>Midlands Logistics</option>
+                                <option>South East Sites</option>
+                                <option>Nationwide Distribution</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-500 mb-1 block">Job Role</label>
+                            <select class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
+                                <option>All roles</option>
+                                <option>Warehouse Operative</option>
+                                <option>Site Labourer</option>
+                                <option>Forklift Driver</option>
+                                <option>Line Operative</option>
+                                <option>Site Administrator</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-500 mb-1 block">Week</label>
+                            <select class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
+                                <option>Wk 24 · 8–14 Jun 2026</option>
+                                <option>Wk 23 · 1–7 Jun 2026</option>
+                                <option>Wk 22 · 25–31 May 2026</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-500 mb-1 block">Status</label>
+                            <select class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
+                                <option>All statuses</option>
+                                <option>Draft</option>
+                                <option>Submitted</option>
+                                <option>Approved</option>
+                                <option>Invoiced</option>
+                                <option>Adjusted</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-medium text-slate-500 mb-1 block">Booking Source</label>
+                            <select class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
+                                <option>All sources</option>
+                                <option>Abstract-sourced</option>
+                                <option>Agency-sourced</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div id="kpi-ts-total-hours" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+            </div>
+
+            <!-- Summary Stat Cards -->
+            <div id="oversight-stats" class="px-6 xl:px-8 pt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.1), rgba(91,46,145,0.1));">
                         <i class="fa-solid fa-clock text-blue-600 text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-400">Total Hours</p>
-                        <p class="text-lg font-bold text-slate-900">37.5<span class="text-xs text-slate-400 font-normal"> hrs</span></p>
+                        <p class="text-xs text-slate-400">Timesheets this week</p>
+                        <p class="text-lg font-bold text-slate-900">42</p>
                     </div>
                 </div>
-                <div id="kpi-ts-days" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
-                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-purple-50">
-                        <i class="fa-solid fa-calendar-days text-purple-600 text-sm"></i>
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-blue-50">
+                        <i class="fa-solid fa-paper-plane text-blue-600 text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-400">Shifts Worked</p>
-                        <p class="text-lg font-bold text-slate-900">5<span class="text-xs text-slate-400 font-normal"> shifts</span></p>
+                        <p class="text-xs text-slate-400">Submitted</p>
+                        <p class="text-lg font-bold text-blue-700">18</p>
                     </div>
                 </div>
-                <div id="kpi-ts-charge-value" class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-emerald-50">
-                        <i class="fa-solid fa-sterling-sign text-emerald-600 text-sm"></i>
+                        <i class="fa-solid fa-circle-check text-emerald-600 text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-400">Client Charge</p>
-                        <p class="text-lg font-bold text-emerald-700">£2,575</p>
+                        <p class="text-xs text-slate-400">Approved</p>
+                        <p class="text-lg font-bold text-emerald-700">15</p>
                     </div>
                 </div>
-                <div id="kpi-ts-margin" class="hidden xl:flex bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 items-center gap-3">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
-                        <i class="fa-solid fa-percent text-amber-500 text-sm"></i>
+                        <i class="fa-solid fa-notes-medical text-amber-600 text-sm"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-slate-400">Week Margin</p>
-                        <p class="text-lg font-bold text-amber-600">£325</p>
+                        <p class="text-xs text-slate-400">Candidates with absences</p>
+                        <p class="text-lg font-bold text-amber-700">6</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm px-4 py-3 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 bg-amber-50">
+                        <i class="fa-solid fa-hourglass-half text-amber-500 text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-slate-400">Absences awaiting agency</p>
+                        <p class="text-lg font-bold text-amber-700">3</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Main Content Grid -->
-            <div class="px-6 xl:px-8 py-4 flex gap-5">
-
-                <!-- Left: Timesheet Entry + History -->
-                <div id="timesheet-content-left" class="flex-1 min-w-0 flex flex-col gap-4">
-
-                    <!-- Week Selector & Entry Card -->
-                    <div id="timesheet-entry-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
-                            <div class="flex items-center gap-3">
-                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
-                                    <i class="fa-solid fa-table-cells text-blue-300 text-sm"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-bold text-white">Weekly Shift Hours Entry</p>
-                                    <p class="text-xs text-white/40">Week 23 · 02 Jun – 06 Jun 2026 · Booking #BKG-2091 · Warehouse Operative</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <button class="w-7 h-7 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors">
-                                    <i class="fa-solid fa-chevron-left text-white/60 text-xs"></i>
-                                </button>
-                                <span class="text-xs font-semibold text-white/80 px-2">Week 23</span>
-                                <button class="w-7 h-7 rounded-lg flex items-center justify-center bg-white/10 hover:bg-white/20 transition-colors">
-                                    <i class="fa-solid fa-chevron-right text-white/60 text-xs"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Timesheet Table -->
-                        <div class="p-5">
-                            <div class="overflow-x-auto rounded-xl border border-slate-200">
-                                <table class="w-full text-xs">
-                                    <thead>
-                                        <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.05), rgba(23,37,84,0.04));">
-                                            <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200 w-32">Day</th>
-                                            <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Date</th>
-                                            <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Shift Start</th>
-                                            <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Shift End</th>
-                                            <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Break (hrs)</th>
-                                            <th class="text-center px-4 py-3 text-blue-700 font-bold border-b border-slate-200">Total Hrs</th>
-                                            <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Shift Type</th>
-                                            <th class="text-left px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Notes / Exception</th>
-                                            <th class="text-center px-4 py-3 text-slate-500 font-semibold border-b border-slate-200">Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="timesheet-table-body">
-                                        <!-- Monday -->
-                                        <tr id="ts-row-mon" class="border-b border-slate-100 hover:bg-blue-50/30 transition-colors">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center gap-2">
-                                                    <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91); font-size: 9px;">M</div>
-                                                    <span class="font-semibold text-slate-700">Monday</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-slate-500">02 Jun 2026</td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="06:00" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="14:30" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="number" value="1.0" min="0" max="3" step="0.5" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-16 text-center"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-lg">7.5</span>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <select class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
-                                                    <option>Morning Shift</option>
-                                                    <option>Late Shift</option>
-                                                    <option>Night Shift</option>
-                                                    <option>Overtime</option>
-                                                    <option>Bank Holiday</option>
-                                                </select>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <input type="text" placeholder="Add note..." class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-full min-w-28"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Approved</span>
-                                            </td>
-                                        </tr>
-                                        <!-- Tuesday -->
-                                        <tr id="ts-row-tue" class="border-b border-slate-100 hover:bg-blue-50/30 transition-colors">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center gap-2">
-                                                    <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91); font-size: 9px;">T</div>
-                                                    <span class="font-semibold text-slate-700">Tuesday</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-slate-500">03 Jun 2026</td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="06:00" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="14:30" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="number" value="1.0" min="0" max="3" step="0.5" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-16 text-center"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-lg">7.5</span>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <select class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
-                                                    <option>Late Shift</option>
-                                                    <option>Morning Shift</option>
-                                                    <option>Night Shift</option>
-                                                    <option>Overtime</option>
-                                                    <option>Bank Holiday</option>
-                                                </select>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <input type="text" placeholder="Add note..." class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-full min-w-28"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Approved</span>
-                                            </td>
-                                        </tr>
-                                        <!-- Wednesday -->
-                                        <tr id="ts-row-wed" class="border-b border-slate-100 hover:bg-blue-50/30 transition-colors">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center gap-2">
-                                                    <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91); font-size: 9px;">W</div>
-                                                    <span class="font-semibold text-slate-700">Wednesday</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-slate-500">04 Jun 2026</td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="06:00" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="16:00" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-amber-50 focus:outline-none focus:border-amber-400 transition-colors w-24 border-amber-300"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="number" value="1.0" min="0" max="3" step="0.5" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-16 text-center"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="font-bold text-amber-700 bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg">9.0</span>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <select class="border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-700 bg-amber-50 focus:outline-none focus:border-amber-400 transition-colors">
-                                                    <option>Overtime</option>
-                                                    <option>Morning Shift</option>
-                                                    <option>Late Shift</option>
-                                                    <option>Night Shift</option>
-                                                    <option>Bank Holiday</option>
-                                                </select>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <input type="text" value="Peak despatch – overtime authorised" class="border border-amber-300 rounded-lg px-2 py-1.5 text-xs text-amber-700 bg-amber-50 focus:outline-none focus:border-amber-400 transition-colors w-full min-w-28"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full flex items-center gap-1 whitespace-nowrap"><i class="fa-solid fa-triangle-exclamation text-xs"></i> Exception</span>
-                                            </td>
-                                        </tr>
-                                        <!-- Thursday -->
-                                        <tr id="ts-row-thu" class="border-b border-slate-100 hover:bg-blue-50/30 transition-colors">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center gap-2">
-                                                    <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91); font-size: 9px;">T</div>
-                                                    <span class="font-semibold text-slate-700">Thursday</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-slate-500">05 Jun 2026</td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="14:00" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="22:30" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="number" value="1.0" min="0" max="3" step="0.5" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-16 text-center"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-lg">7.5</span>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <select class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
-                                                    <option>Late Shift</option>
-                                                    <option>Morning Shift</option>
-                                                    <option>Night Shift</option>
-                                                    <option>Overtime</option>
-                                                    <option>Bank Holiday</option>
-                                                </select>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <input type="text" placeholder="Add note..." class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-full min-w-28"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span>
-                                            </td>
-                                        </tr>
-                                        <!-- Friday -->
-                                        <tr id="ts-row-fri" class="hover:bg-blue-50/30 transition-colors">
-                                            <td class="px-4 py-3">
-                                                <div class="flex items-center gap-2">
-                                                    <div class="w-6 h-6 rounded-lg flex items-center justify-center text-white font-bold" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91); font-size: 9px;">F</div>
-                                                    <span class="font-semibold text-slate-700">Friday</span>
-                                                </div>
-                                            </td>
-                                            <td class="px-4 py-3 text-slate-500">06 Jun 2026</td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="06:00" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="time" value="12:30" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-24"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <input type="number" value="0.5" min="0" max="3" step="0.5" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-16 text-center"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="font-bold text-blue-700 bg-blue-50 border border-blue-100 px-2.5 py-1 rounded-lg">6.0</span>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <select class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors">
-                                                    <option>Morning Shift</option>
-                                                    <option>Late Shift</option>
-                                                    <option>Night Shift</option>
-                                                    <option>Overtime</option>
-                                                    <option>Bank Holiday</option>
-                                                </select>
-                                            </td>
-                                            <td class="px-4 py-3">
-                                                <input type="text" value="Early finish – agreed with site manager" class="border border-slate-200 rounded-lg px-2 py-1.5 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-blue-400 focus:bg-white transition-colors w-full min-w-28"/>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!-- Totals Row -->
-                                    <tfoot id="ts-totals-row">
-                                        <tr style="background: linear-gradient(135deg, rgba(15,26,62,0.06), rgba(23,37,84,0.04));">
-                                            <td colspan="5" class="px-4 py-3 text-right">
-                                                <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Weekly Totals</span>
-                                            </td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-sm font-bold text-blue-800 bg-blue-100 border border-blue-200 px-3 py-1 rounded-lg">37.5 hrs</span>
-                                            </td>
-                                            <td colspan="2" class="px-4 py-3"></td>
-                                            <td class="px-4 py-3 text-center">
-                                                <span class="text-xs font-semibold text-slate-500">2 approved · 2 pending · 1 exception</span>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-
-                            <!-- Exception Notice -->
-                            <div id="exception-notice" class="mt-4 flex items-start gap-3 p-4 rounded-xl bg-amber-50 border border-amber-200">
-                                <div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-triangle-exclamation text-amber-600 text-sm"></i>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-xs font-bold text-amber-800">Exception Detected – Wednesday 04 Jun 2026</p>
-                                    <p class="text-xs text-amber-700 mt-0.5">9.0 hours recorded exceeds the standard 7.5 hour shift. This has been flagged as overtime and requires client approval before submission. Please ensure the shift type is set to <span class="font-semibold">Overtime</span> and a reason is provided.</p>
-                                </div>
-                                <button class="flex-shrink-0 text-xs font-semibold text-amber-700 hover:text-amber-900 transition-colors px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-100 hover:bg-amber-200">
-                                    Resolve
-                                </button>
-                            </div>
-                        </div>
+            <!-- Oversight Table -->
+            <div class="px-6 xl:px-8 pt-4">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between flex-wrap gap-2">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-list-check text-blue-600 text-sm"></i>
+                            Weekly timesheets across all clients &amp; agencies
+                        </h3>
+                        <span class="text-xs text-slate-400 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-full">8 shown · 3 clients · 4 agencies + Abstract</span>
                     </div>
-
-                    <!-- Financial Summary for Week -->
-                    <div id="ts-financial-summary-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
-                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-calculator text-blue-600 text-sm"></i>
-                                Week 23 Financial Breakdown
-                            </h3>
-                            <span class="text-xs text-slate-400 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-full">Based on 37.5 hrs · 5 shifts</span>
-                        </div>
-                        <div class="p-5">
-                            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                                <!-- Client Invoice -->
-                                <div id="ts-client-invoice" class="flex flex-col gap-2 p-4 rounded-xl bg-blue-50 border border-blue-100">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <div class="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center">
-                                            <i class="fa-solid fa-file-invoice-dollar text-blue-600 text-xs"></i>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-200">
+                                    <th class="text-left px-5 py-3 text-slate-500 font-semibold">Candidate</th>
+                                    <th class="text-left px-4 py-3 text-slate-500 font-semibold">Client</th>
+                                    <th class="text-left px-4 py-3 text-slate-500 font-semibold">Agency / Source</th>
+                                    <th class="text-left px-4 py-3 text-slate-500 font-semibold">Business Unit</th>
+                                    <th class="text-center px-4 py-3 text-slate-500 font-semibold">Worked Hrs</th>
+                                    <th class="text-center px-4 py-3 text-slate-500 font-semibold">Absences</th>
+                                    <th class="text-center px-4 py-3 text-slate-500 font-semibold">Status</th>
+                                    <th class="text-center px-4 py-3 text-slate-500 font-semibold">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Row 1 -->
+                                <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Daniel Okafor</p>
+                                                <p class="text-slate-400">Warehouse Operative · #BKG-2091</p>
+                                            </div>
                                         </div>
-                                        <p class="text-xs font-bold text-blue-800">Client Invoice</p>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-blue-600">Shifts Charged</span>
-                                        <span class="font-semibold text-slate-700">5.0 shifts</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-blue-600">Charge Rate</span>
-                                        <span class="font-semibold text-slate-700">£515/shift</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-blue-600">Overtime Premium</span>
-                                        <span class="font-semibold text-amber-700">+£154 (1.5x)</span>
-                                    </div>
-                                    <div class="h-px bg-blue-200 my-1"></div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-bold text-blue-800">Total Charge</span>
-                                        <span class="text-sm font-bold text-blue-800">£2,729</span>
-                                    </div>
-                                </div>
-                                <!-- Agency Self-Bill -->
-                                <div id="ts-agency-selfbill" class="flex flex-col gap-2 p-4 rounded-xl bg-purple-50 border border-purple-100">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <div class="w-7 h-7 rounded-lg bg-purple-100 flex items-center justify-center">
-                                            <i class="fa-solid fa-hand-holding-dollar text-purple-600 text-xs"></i>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">HSBC Logistics Hub</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">TechForce Agency</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
                                         </div>
-                                        <p class="text-xs font-bold text-purple-800">Agency Self-Bill</p>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-purple-600">Shifts Payable</span>
-                                        <span class="font-semibold text-slate-700">5.0 shifts</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-purple-600">Pay Rate</span>
-                                        <span class="font-semibold text-slate-700">£450/shift</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-purple-600">Overtime Pay</span>
-                                        <span class="font-semibold text-amber-700">+£135 (1.5x)</span>
-                                    </div>
-                                    <div class="h-px bg-purple-200 my-1"></div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-bold text-purple-800">Total Pay</span>
-                                        <span class="text-sm font-bold text-purple-800">£2,385</span>
-                                    </div>
-                                </div>
-                                <!-- Abstract Margin -->
-                                <div id="ts-abstract-margin" class="flex flex-col gap-2 p-4 rounded-xl bg-amber-50 border border-amber-100">
-                                    <div class="flex items-center gap-2 mb-1">
-                                        <div class="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center">
-                                            <i class="fa-solid fa-percent text-amber-600 text-xs"></i>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">Midlands Logistics</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">37.5</td>
+                                    <td class="px-4 py-3 text-center text-slate-300">—</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">Submitted</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid('Daniel Okafor')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 2 -->
+                                <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-6.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Aisha Khan</p>
+                                                <p class="text-slate-400">Warehouse Operative · #BKG-2104</p>
+                                            </div>
                                         </div>
-                                        <p class="text-xs font-bold text-amber-800">Abstract Margin</p>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-amber-700">Base Margin</span>
-                                        <span class="font-semibold text-slate-700">£325 (5 × £65)</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-amber-700">Overtime Margin</span>
-                                        <span class="font-semibold text-slate-700">+£19</span>
-                                    </div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="text-amber-700">Margin %</span>
-                                        <span class="font-semibold text-emerald-700">12.62%</span>
-                                    </div>
-                                    <div class="h-px bg-amber-200 my-1"></div>
-                                    <div class="flex items-center justify-between">
-                                        <span class="text-xs font-bold text-amber-800">Total Margin</span>
-                                        <span class="text-sm font-bold text-amber-800">£344</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Approval Chain for Timesheet -->
-                    <div id="ts-approval-chain-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
-                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-stamp text-blue-600 text-sm"></i>
-                                Timesheet Approval Chain
-                            </h3>
-                            <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full flex items-center gap-1">
-                                <i class="fa-solid fa-hourglass-half text-xs"></i> Awaiting Site Manager
-                            </span>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-0">
-                                <!-- Step 1 -->
-                                <div id="ts-approval-1" class="flex-1 flex flex-col items-center text-center">
-                                    <div class="w-10 h-10 rounded-full bg-emerald-500 flex items-center justify-center border-2 border-white shadow-sm mb-2">
-                                        <i class="fa-solid fa-check text-white text-sm"></i>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-800">Operative Entry</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Daniel Okafor</p>
-                                    <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full mt-1.5">Submitted</span>
-                                    <p class="text-xs text-slate-400 mt-1">06 Jun, 17:45</p>
-                                </div>
-                                <div class="hidden md:block h-px flex-1 bg-slate-200 mx-2 mt-[-20px]"></div>
-                                <!-- Step 2 -->
-                                <div id="ts-approval-2" class="flex-1 flex flex-col items-center text-center">
-                                    <div class="w-10 h-10 rounded-full bg-amber-400 flex items-center justify-center border-2 border-white shadow-sm mb-2">
-                                        <i class="fa-solid fa-hourglass-half text-white text-sm"></i>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-800">Site Manager Approval</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">James Hartley · HSBC Logistics</p>
-                                    <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full mt-1.5">Awaiting</span>
-                                    <p class="text-xs text-slate-400 mt-1">Due: 09 Jun</p>
-                                </div>
-                                <div class="hidden md:block h-px flex-1 bg-slate-200 mx-2 mt-[-20px]"></div>
-                                <!-- Step 3 -->
-                                <div id="ts-approval-3" class="flex-1 flex flex-col items-center text-center">
-                                    <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center border-2 border-white shadow-sm mb-2">
-                                        <i class="fa-solid fa-building-user text-slate-400 text-sm"></i>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-500">MSP Review</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Sarah Mitchell</p>
-                                    <span class="text-xs font-semibold text-slate-400 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-full mt-1.5">Not Started</span>
-                                    <p class="text-xs text-slate-400 mt-1">—</p>
-                                </div>
-                                <div class="hidden md:block h-px flex-1 bg-slate-200 mx-2 mt-[-20px]"></div>
-                                <!-- Step 4 -->
-                                <div id="ts-approval-4" class="flex-1 flex flex-col items-center text-center">
-                                    <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center border-2 border-white shadow-sm mb-2">
-                                        <i class="fa-solid fa-file-invoice-dollar text-slate-400 text-sm"></i>
-                                    </div>
-                                    <p class="text-xs font-bold text-slate-500">Invoice Generated</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Auto-generated</p>
-                                    <span class="text-xs font-semibold text-slate-400 bg-slate-50 border border-slate-200 px-2 py-0.5 rounded-full mt-1.5">Pending</span>
-                                    <p class="text-xs text-slate-400 mt-1">—</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Previous Timesheets History -->
-                    <div id="ts-history-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between">
-                            <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                                <i class="fa-solid fa-clock-rotate-left text-blue-600 text-sm"></i>
-                                Timesheet History · Booking #BKG-2091
-                            </h3>
-                            <button class="text-xs text-blue-600 font-medium hover:text-blue-700 transition-colors flex items-center gap-1">
-                                <span>View All</span>
-                                <i class="fa-solid fa-arrow-right text-xs"></i>
-                            </button>
-                        </div>
-                        <div class="overflow-x-auto">
-                            <table class="w-full text-xs">
-                                <thead>
-                                    <tr class="bg-slate-50 border-b border-slate-200">
-                                        <th class="text-left px-5 py-3 text-slate-500 font-semibold">Timesheet Ref</th>
-                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Week</th>
-                                        <th class="text-left px-4 py-3 text-slate-500 font-semibold">Period</th>
-                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Total Hrs</th>
-                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Client Charge</th>
-                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Agency Pay</th>
-                                        <th class="text-right px-4 py-3 text-slate-500 font-semibold">Margin</th>
-                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Status</th>
-                                        <th class="text-center px-4 py-3 text-slate-500 font-semibold">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr id="ts-hist-1" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
-                                        <td class="px-5 py-3">
-                                            <span class="font-mono font-semibold text-blue-700 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-lg">#TS-W23-2026</span>
-                                        </td>
-                                        <td class="px-4 py-3 font-semibold text-slate-700">Week 23</td>
-                                        <td class="px-4 py-3 text-slate-500">02–06 Jun 2026</td>
-                                        <td class="px-4 py-3 text-center font-semibold text-slate-700">37.5</td>
-                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,729</td>
-                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£2,385</td>
-                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£344</td>
-                                        <td class="px-4 py-3 text-center">
-                                            <span class="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">Pending</span>
-                                        </td>
-                                        <td class="px-4 py-3 text-center">
-                                            <div class="flex items-center justify-center gap-1.5">
-                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
-                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
-                                                </button>
-                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
-                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
-                                                </button>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">HSBC Logistics Hub</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">Prime Staffing</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">Midlands Logistics</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">30.0</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1 text-amber-700" title="1 Sick Leave day"><i class="fa-solid fa-notes-medical text-[11px]"></i> 1</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">Submitted</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid('Aisha Khan')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 3 -->
+                                <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-7.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Liam O'Connor</p>
+                                                <p class="text-slate-400">Site Labourer · #BKG-2088</p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr id="ts-hist-2" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors bg-slate-50/40">
-                                        <td class="px-5 py-3">
-                                            <span class="font-mono font-semibold text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-lg">#TS-W22-2026</span>
-                                        </td>
-                                        <td class="px-4 py-3 font-semibold text-slate-700">Week 22</td>
-                                        <td class="px-4 py-3 text-slate-500">26–30 May 2026</td>
-                                        <td class="px-4 py-3 text-center font-semibold text-slate-700">37.5</td>
-                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,575</td>
-                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£2,250</td>
-                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£325</td>
-                                        <td class="px-4 py-3 text-center">
-                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Approved</span>
-                                        </td>
-                                        <td class="px-4 py-3 text-center">
-                                            <div class="flex items-center justify-center gap-1.5">
-                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
-                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
-                                                </button>
-                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
-                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
-                                                </button>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">Barratt Developments</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">Blue Arrow</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">South East Sites</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">40.0</td>
+                                    <td class="px-4 py-3 text-center text-slate-300">—</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Approved</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid(&quot;Liam O'Connor&quot;)" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 4 — Abstract-sourced -->
+                                <tr class="border-b border-slate-100 hover:bg-indigo-50/30 transition-colors bg-indigo-50/20">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Sophie Bennett</p>
+                                                <p class="text-slate-400">Site Administrator · #BKG-2112</p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr id="ts-hist-3" class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
-                                        <td class="px-5 py-3">
-                                            <span class="font-mono font-semibold text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-lg">#TS-W21-2026</span>
-                                        </td>
-                                        <td class="px-4 py-3 font-semibold text-slate-700">Week 21</td>
-                                        <td class="px-4 py-3 text-slate-500">19–23 May 2026</td>
-                                        <td class="px-4 py-3 text-center font-semibold text-slate-700">30.0</td>
-                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,060</td>
-                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£1,800</td>
-                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£260</td>
-                                        <td class="px-4 py-3 text-center">
-                                            <span class="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full">Approved</span>
-                                        </td>
-                                        <td class="px-4 py-3 text-center">
-                                            <div class="flex items-center justify-center gap-1.5">
-                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
-                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
-                                                </button>
-                                                <button class="w-6 h-6 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center hover:bg-slate-100 transition-colors" title="Download">
-                                                    <i class="fa-solid fa-download text-slate-500" style="font-size: 9px;"></i>
-                                                </button>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">Barratt Developments</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">Abstract</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 w-fit"><i class="fa-solid fa-building-shield text-[9px]"></i> Abstract-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">South East Sites</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">37.5</td>
+                                    <td class="px-4 py-3 text-center text-slate-300">—</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Draft</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid('Sophie Bennett')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 5 — selected drill-down candidate -->
+                                <tr class="border-b border-slate-100 bg-blue-50/40 hover:bg-blue-50/50 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" class="w-7 h-7 rounded-full object-cover border-2 border-blue-300 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Marcus Reid <span class="ml-1 text-[10px] font-semibold text-blue-600 bg-blue-100 border border-blue-200 px-1.5 py-0.5 rounded-full">Open below</span></p>
+                                                <p class="text-slate-400">Forklift Driver · #BKG-2077</p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    <tr id="ts-hist-4" class="hover:bg-blue-50/20 transition-colors bg-slate-50/40">
-                                        <td class="px-5 py-3">
-                                            <span class="font-mono font-semibold text-slate-500 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded-lg">#TS-W20-2026</span>
-                                        </td>
-                                        <td class="px-4 py-3 font-semibold text-slate-700">Week 20</td>
-                                        <td class="px-4 py-3 text-slate-500">12–16 May 2026</td>
-                                        <td class="px-4 py-3 text-center font-semibold text-slate-700">37.5</td>
-                                        <td class="px-4 py-3 text-right font-bold text-blue-700">£2,575</td>
-                                        <td class="px-4 py-3 text-right font-semibold text-slate-700">£2,250</td>
-                                        <td class="px-4 py-3 text-right font-bold text-amber-700">£325</td>
-                                        <td class="px-4 py-3 text-center">
-                                            <span class="text-xs font-semibold text-red-600 bg-red-50 border border-red-200 px-2 py-0.5 rounded-full">Disputed</span>
-                                        </td>
-                                        <td class="px-4 py-3 text-center">
-                                            <div class="flex items-center justify-center gap-1.5">
-                                                <button class="w-6 h-6 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center hover:bg-blue-100 transition-colors" title="View">
-                                                    <i class="fa-solid fa-eye text-blue-500" style="font-size: 9px;"></i>
-                                                </button>
-                                                <button class="w-6 h-6 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center hover:bg-red-100 transition-colors" title="Resolve">
-                                                    <i class="fa-solid fa-flag text-red-500" style="font-size: 9px;"></i>
-                                                </button>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">Greggs Distribution</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">Meridian Recruitment</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">Nationwide Distribution</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">22.5</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <div class="flex items-center justify-center gap-1.5">
+                                            <span class="inline-flex items-center gap-1 text-blue-700" title="1 Holiday day"><i class="fa-solid fa-umbrella-beach text-[11px]"></i> 1</span>
+                                            <span class="inline-flex items-center gap-1 text-red-600" title="1 No-show day"><i class="fa-solid fa-user-xmark text-[11px]"></i> 1</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">Submitted</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="document.getElementById('drilldown-panel').scrollIntoView({behavior:'smooth'})" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-white text-xs font-semibold hover:opacity-90 transition-opacity" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">Open <i class="fa-solid fa-arrow-down text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 6 -->
+                                <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-10.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Priya Sharma</p>
+                                                <p class="text-slate-400">Line Operative · #BKG-2069</p>
                                             </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">Greggs Distribution</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">TechForce Agency</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">Nationwide Distribution</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">37.5</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1 text-amber-700" title="1 Sick Leave · awaiting agency"><i class="fa-solid fa-notes-medical text-[11px]"></i> 1</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Approved</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid('Priya Sharma')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 7 -->
+                                <tr class="border-b border-slate-100 hover:bg-blue-50/20 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-1.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Callum Fraser</p>
+                                                <p class="text-slate-400">Warehouse Operative · #BKG-2055</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">HSBC Logistics Hub</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">Blue Arrow</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">Midlands Logistics</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">30.0</td>
+                                    <td class="px-4 py-3 text-center text-slate-300">—</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Invoiced</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid('Callum Fraser')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                                <!-- Row 8 -->
+                                <tr class="hover:bg-blue-50/20 transition-colors">
+                                    <td class="px-5 py-3">
+                                        <div class="flex items-center gap-2.5">
+                                            <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-7 h-7 rounded-full object-cover border border-slate-200 flex-shrink-0" alt=""/>
+                                            <div>
+                                                <p class="font-semibold text-slate-800">Grace Adeyemi</p>
+                                                <p class="text-slate-400">Site Labourer · #BKG-2041</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 font-medium text-slate-700">Barratt Developments</td>
+                                    <td class="px-4 py-3">
+                                        <div class="flex flex-col gap-1">
+                                            <span class="font-medium text-slate-700">Prime Staffing</span>
+                                            <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-700 border border-teal-200 w-fit"><i class="fa-solid fa-handshake-angle text-[9px]"></i> Agency-sourced</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-3 text-slate-500">South East Sites</td>
+                                    <td class="px-4 py-3 text-center font-bold text-slate-800">34.0</td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1 text-blue-700" title="1 Holiday day"><i class="fa-solid fa-umbrella-beach text-[11px]"></i> 1</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Adjusted</span>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <button onclick="openGrid('Grace Adeyemi')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors">Open <i class="fa-solid fa-arrow-right text-[10px]"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-
-                    <div class="h-4"></div>
-                </div>
-
-                <!-- Right Panel -->
-                <div id="timesheet-right-panel" class="w-72 xl:w-80 flex-shrink-0 flex flex-col gap-4">
-
-                    <!-- Booking Context Card -->
-                    <div id="ts-booking-context" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
-                            <div class="flex items-center gap-2">
-                                <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
-                                    <i class="fa-solid fa-calendar-check text-blue-300 text-xs"></i>
-                                </div>
-                                <div>
-                                    <p class="text-xs font-bold text-white">Booking #BKG-2091</p>
-                                    <p class="text-xs text-white/40">Week 23 Timesheet</p>
-                                </div>
-                            </div>
-                            <span class="text-xs font-semibold text-emerald-400 bg-emerald-400/10 border border-emerald-400/20 px-1.5 py-0.5 rounded-full">Active</span>
-                        </div>
-                        <div class="p-4 flex flex-col gap-2.5">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-user-helmet-safety text-slate-300 text-xs"></i> Operative</span>
-                                <div class="flex items-center gap-1.5">
-                                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-9.jpg" class="w-5 h-5 rounded-full object-cover border border-emerald-300 flex-shrink-0" alt="Daniel"/>
-                                    <span class="text-xs font-bold text-slate-800">Daniel Okafor</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-briefcase text-slate-300 text-xs"></i> Role</span>
-                                <span class="text-xs font-semibold text-slate-700">Warehouse Operative</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-warehouse text-slate-300 text-xs"></i> Site / Warehouse</span>
-                                <span class="text-xs font-semibold text-slate-700">HSBC Logistics Hub</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-building-user text-slate-300 text-xs"></i> Agency</span>
-                                <span class="text-xs font-semibold text-slate-700">TechForce Agency</span>
-                            </div>
-                            <div class="h-px bg-slate-100 my-0.5"></div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sterling-sign text-slate-300 text-xs"></i> Charge Rate</span>
-                                <span class="text-xs font-bold text-blue-700">£515/shift</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sterling-sign text-slate-300 text-xs"></i> Pay Rate</span>
-                                <span class="text-xs font-semibold text-slate-700">£450/shift</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-percent text-slate-300 text-xs"></i> Margin</span>
-                                <span class="text-xs font-bold text-amber-600">£65/shift · 12.62%</span>
-                            </div>
-                            <div class="h-px bg-slate-100 my-0.5"></div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-sun text-slate-300 text-xs"></i> Shift Pattern</span>
-                                <span class="text-xs font-semibold text-slate-700">Morning / Late</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-receipt text-slate-300 text-xs"></i> Timesheet Freq.</span>
-                                <span class="text-xs font-semibold text-slate-700">Weekly</span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-file-invoice text-slate-300 text-xs"></i> Payment Terms</span>
-                                <span class="text-xs font-semibold text-slate-700">Net 30 / Net 14</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Submission Status Card -->
-                    <div id="ts-submission-status" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-4 py-3 border-b border-slate-100">
-                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-circle-info text-blue-500 text-xs"></i>
-                                Submission Status
-                            </h4>
-                        </div>
-                        <div class="p-4 flex flex-col gap-3">
-                            <div class="flex items-center justify-between p-3 rounded-xl bg-amber-50 border border-amber-100">
-                                <div class="flex items-center gap-2">
-                                    <i class="fa-solid fa-hourglass-half text-amber-500 text-sm"></i>
-                                    <div>
-                                        <p class="text-xs font-bold text-amber-800">Pending Site Manager Approval</p>
-                                        <p class="text-xs text-amber-600 mt-0.5">Submitted 06 Jun, 17:45</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-2">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-500">Submission Deadline</span>
-                                    <span class="font-semibold text-slate-700">Mon 09 Jun</span>
-                                </div>
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-500">Site Approval Due</span>
-                                    <span class="font-semibold text-slate-700">Tue 10 Jun</span>
-                                </div>
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-500">Invoice Generation</span>
-                                    <span class="font-semibold text-slate-700">Wed 11 Jun</span>
-                                </div>
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-500">Agency Payment Due</span>
-                                    <span class="font-semibold text-slate-700">25 Jun (Net 14)</span>
-                                </div>
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-500">Client Payment Due</span>
-                                    <span class="font-semibold text-slate-700">11 Jul (Net 30)</span>
-                                </div>
-                            </div>
-                            <div class="h-px bg-slate-100"></div>
-                            <div class="flex flex-col gap-2">
-                                <p class="text-xs font-bold text-slate-600">Exceptions Requiring Action</p>
-                                <div class="flex items-start gap-2 p-2.5 rounded-xl bg-amber-50 border border-amber-100">
-                                    <i class="fa-solid fa-triangle-exclamation text-amber-500 text-xs mt-0.5 flex-shrink-0"></i>
-                                    <div>
-                                        <p class="text-xs font-semibold text-amber-800">Wed 04 Jun – Overtime Shift</p>
-                                        <p class="text-xs text-amber-600 mt-0.5">9.0 hrs · Site manager approval required</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Cumulative Stats -->
-                    <div id="ts-cumulative-stats" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-4 py-3 border-b border-slate-100">
-                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-chart-line text-emerald-500 text-xs"></i>
-                                Cumulative Stats · To Date
-                            </h4>
-                        </div>
-                        <div class="p-4 flex flex-col gap-3">
-                            <div class="grid grid-cols-2 gap-2">
-                                <div class="flex flex-col items-center p-3 rounded-xl bg-blue-50 border border-blue-100 text-center">
-                                    <p class="text-base font-bold text-blue-700">4</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Weeks Billed</p>
-                                </div>
-                                <div class="flex flex-col items-center p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
-                                    <p class="text-base font-bold text-slate-700">142.5</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Total Hours</p>
-                                </div>
-                                <div class="flex flex-col items-center p-3 rounded-xl bg-emerald-50 border border-emerald-100 text-center">
-                                    <p class="text-base font-bold text-emerald-700">£10,939</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Charged to Client</p>
-                                </div>
-                                <div class="flex flex-col items-center p-3 rounded-xl bg-amber-50 border border-amber-100 text-center">
-                                    <p class="text-base font-bold text-amber-700">£1,254</p>
-                                    <p class="text-xs text-slate-400 mt-0.5">Total Margin</p>
-                                </div>
-                            </div>
-                            <div class="flex flex-col gap-1.5">
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-500">Placement Progress</span>
-                                    <span class="font-semibold text-slate-700">3.1% complete</span>
-                                </div>
-                                <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden">
-                                    <div class="h-full rounded-full" style="width: 3.1%; background: linear-gradient(90deg, #1D4ED8, #5B2E91);"></div>
-                                </div>
-                                <div class="flex items-center justify-between text-xs">
-                                    <span class="text-slate-400">19 shifts elapsed</span>
-                                    <span class="text-slate-400">111 shifts remaining</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Approver Contact -->
-                    <div id="ts-approver-contact" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-4 py-3 border-b border-slate-100">
-                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-user-tie text-blue-500 text-xs"></i>
-                                Site Manager / Approver
-                            </h4>
-                        </div>
-                        <div class="p-4 flex flex-col gap-3">
-                            <div class="flex items-center gap-3">
-                                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-8.jpg" class="w-10 h-10 rounded-full object-cover border-2 border-blue-100 flex-shrink-0" alt="James"/>
-                                <div class="flex-1 min-w-0">
-                                    <p class="text-xs font-bold text-slate-800">James Hartley</p>
-                                    <p class="text-xs text-slate-400">Site Manager · HSBC Logistics Hub</p>
-                                    <p class="text-xs text-blue-600 mt-0.5">j.hartley@hsbc.com</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-blue-200 bg-blue-50 text-xs font-semibold text-blue-700 hover:bg-blue-100 transition-colors">
-                                    <i class="fa-solid fa-envelope text-xs"></i>
-                                    <span>Email</span>
-                                </button>
-                                <button class="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-semibold text-slate-700 hover:bg-slate-100 transition-colors">
-                                    <i class="fa-solid fa-paper-plane text-xs"></i>
-                                    <span>Remind</span>
-                                </button>
-                            </div>
-                            <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-200">
-                                <i class="fa-solid fa-bell text-slate-400 text-xs flex-shrink-0"></i>
-                                <p class="text-xs text-slate-500">Auto-reminder scheduled for <span class="font-semibold text-slate-700">Mon 09 Jun, 09:00</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Quick Actions -->
-                    <div id="ts-quick-actions" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-                        <div class="px-4 py-3 border-b border-slate-100">
-                            <h4 class="text-xs font-bold text-slate-700 flex items-center gap-2">
-                                <i class="fa-solid fa-bolt text-amber-500 text-xs"></i>
-                                Quick Actions
-                            </h4>
-                        </div>
-                        <div class="p-4 flex flex-col gap-2">
-                            <button id="qa-submit-btn" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-white text-xs font-semibold transition-all hover:opacity-90 shadow-sm" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
-                                <i class="fa-solid fa-paper-plane text-xs"></i>
-                                <span>Submit for Site Approval</span>
-                            </button>
-                            <button id="qa-save-btn" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-xs text-slate-700 font-medium hover:border-blue-300 hover:text-blue-600 transition-colors">
-                                <i class="fa-solid fa-floppy-disk text-xs"></i>
-                                <span>Save as Draft</span>
-                            </button>
-                            <button id="qa-dispute-btn" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-red-200 bg-red-50 text-xs text-red-700 font-medium hover:border-red-300 hover:bg-red-100 transition-colors">
-                                <i class="fa-solid fa-flag text-xs"></i>
-                                <span>Raise Dispute</span>
-                            </button>
-                            <button id="qa-invoice-btn" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border border-purple-200 bg-purple-50 text-xs text-purple-700 font-medium hover:border-purple-300 hover:bg-purple-100 transition-colors">
-                                <i class="fa-solid fa-file-invoice-dollar text-xs"></i>
-                                <span>Preview Invoice</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="h-4"></div>
                 </div>
             </div>
+
+            <!-- ============================================================= -->
+            <!-- PART B — ADMIN-ON-BEHALF WEEKLY GRID (drill-down, TS-027..029) -->
+            <!-- ============================================================= -->
+            <div id="drilldown-panel" class="px-6 xl:px-8 pt-6 pb-2 flex items-center gap-2">
+                <i class="fa-solid fa-turn-down text-slate-400 rotate-90"></i>
+                <h2 class="text-base font-bold text-slate-900">Admin-on-behalf entry — Marcus Reid</h2>
+                <span class="text-xs text-slate-400">Greggs Distribution · Meridian Recruitment · Forklift Driver · #BKG-2077</span>
+            </div>
+
+            <!-- Attribution / audit banner (TS-028) -->
+            <div class="px-6 xl:px-8">
+                <div class="flex items-start gap-3 p-4 rounded-2xl border border-purple-200" style="background: linear-gradient(135deg, rgba(29,78,216,0.06), rgba(91,46,145,0.08));">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                        <i class="fa-solid fa-user-shield text-white text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-bold text-slate-800">Editing on the client's behalf</p>
+                        <p class="text-xs text-slate-600 mt-0.5">All changes are attributed to you and recorded in the audit trail (actor, timestamp, before/after values) — <span class="font-semibold">TS-028</span>.</p>
+                    </div>
+                    <div class="flex items-center gap-2 pl-3 border-l border-purple-200 flex-shrink-0">
+                        <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-4.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-white shadow-sm" alt="Sarah"/>
+                        <div class="hidden sm:block">
+                            <p class="text-xs font-bold text-slate-800">Sarah Mitchell</p>
+                            <p class="text-xs text-slate-400">Abstract · MSP Admin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weekly grid card -->
+            <div class="px-6 xl:px-8 pt-4">
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between flex-wrap gap-3" style="background: linear-gradient(135deg, #0f1a3e, #172554);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4));">
+                                <i class="fa-solid fa-table-cells text-blue-300 text-sm"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm font-bold text-white">Weekly Day-Status Grid · Mon–Sun</p>
+                                <p class="text-xs text-white/40">Week 24 · 8–14 Jun 2026 · booking #BKG-2077 · Forklift Driver</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="fillAdminWeek()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-white/90 text-xs font-semibold hover:bg-white/20 transition-colors">
+                                <i class="fa-solid fa-wand-magic-sparkles text-xs"></i> Fill week from shift pattern
+                            </button>
+                            <button onclick="fillAdminWeek()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 text-white/90 text-xs font-semibold hover:bg-white/20 transition-colors">
+                                <i class="fa-solid fa-copy text-xs"></i> Copy previous week
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-5">
+                        <!-- Day-status legend -->
+                        <div class="flex items-center flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-semibold text-slate-500 mr-1">Day status:</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-clock text-[10px]"></i> Worked</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200"><i class="fa-solid fa-notes-medical text-[10px]"></i> Sick Leave</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200"><i class="fa-solid fa-umbrella-beach text-[10px]"></i> Holiday</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"><i class="fa-solid fa-user-xmark text-[10px]"></i> No-show</span>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-400 border border-slate-200"><i class="fa-solid fa-minus text-[10px]"></i> Not Booked</span>
+                        </div>
+
+                        <!-- Mon–Sun grid -->
+                        <div id="admin-day-grid" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2.5"></div>
+
+                        <!-- Absence detail rows -->
+                        <div class="mt-5 flex flex-col gap-3">
+                            <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">Absence detail</p>
+                            <div id="admin-absence-detail" class="flex flex-col gap-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Week financial summary (full rate visibility — Abstract portal only) + adjust-after-invoicing -->
+            <div class="px-6 xl:px-8 pt-4">
+                <div id="ts-financial-summary-card" class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="px-5 py-3.5 border-b border-slate-100 flex items-center justify-between flex-wrap gap-2">
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-calculator text-blue-600 text-sm"></i>
+                            Week 24 financial breakdown — full rate visibility
+                        </h3>
+                        <span class="text-xs text-indigo-700 bg-indigo-50 border border-indigo-200 px-2 py-0.5 rounded-full flex items-center gap-1"><i class="fa-solid fa-eye text-[10px]"></i> Charge, pay &amp; margin visible in the Abstract portal only</span>
+                    </div>
+                    <div class="p-5">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            <!-- Client Invoice (charge) -->
+                            <div class="flex flex-col gap-2 p-4 rounded-xl bg-blue-50 border border-blue-100">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <div class="w-7 h-7 rounded-lg bg-blue-100 flex items-center justify-center"><i class="fa-solid fa-file-invoice-dollar text-blue-600 text-xs"></i></div>
+                                    <p class="text-xs font-bold text-blue-800">Client Charge</p>
+                                </div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-blue-600">Worked hours</span><span class="font-semibold text-slate-700"><span id="fin-charge-hrs">22.5</span> hrs</span></div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-blue-600">Charge rate</span><span class="font-semibold text-slate-700">£18.40/hr</span></div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-blue-600" id="fin-charge-abslabel">Paid absence (1 day)</span><span class="font-semibold text-slate-700" id="fin-charge-absval">£138.00</span></div>
+                                <div class="h-px bg-blue-200 my-1"></div>
+                                <div class="flex items-center justify-between"><span class="text-xs font-bold text-blue-800">Total charge</span><span class="text-sm font-bold text-blue-800" id="fin-charge-total">£552.00</span></div>
+                            </div>
+                            <!-- Agency Self-Bill (pay) -->
+                            <div class="flex flex-col gap-2 p-4 rounded-xl bg-purple-50 border border-purple-100">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <div class="w-7 h-7 rounded-lg bg-purple-100 flex items-center justify-center"><i class="fa-solid fa-hand-holding-dollar text-purple-600 text-xs"></i></div>
+                                    <p class="text-xs font-bold text-purple-800">Agency Self-Bill</p>
+                                </div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-purple-600">Worked hours</span><span class="font-semibold text-slate-700"><span id="fin-pay-hrs">22.5</span> hrs</span></div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-purple-600">Pay rate</span><span class="font-semibold text-slate-700">£13.80/hr</span></div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-purple-600" id="fin-pay-abslabel">Paid absence (1 day)</span><span class="font-semibold text-slate-700" id="fin-pay-absval">£103.50</span></div>
+                                <div class="h-px bg-purple-200 my-1"></div>
+                                <div class="flex items-center justify-between"><span class="text-xs font-bold text-purple-800">Total pay</span><span class="text-sm font-bold text-purple-800" id="fin-pay-total">£414.00</span></div>
+                            </div>
+                            <!-- Abstract Margin (spread) -->
+                            <div class="flex flex-col gap-2 p-4 rounded-xl bg-amber-50 border border-amber-100">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <div class="w-7 h-7 rounded-lg bg-amber-100 flex items-center justify-center"><i class="fa-solid fa-percent text-amber-600 text-xs"></i></div>
+                                    <p class="text-xs font-bold text-amber-800">Abstract Margin</p>
+                                </div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-amber-700">Spread (charge − pay)</span><span class="font-semibold text-slate-700">£4.60/hr</span></div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-amber-700">Statutory (NI, WTR, Pension, Levy)</span><span class="font-semibold text-slate-700" id="fin-statutory">−£31.05</span></div>
+                                <div class="flex items-center justify-between text-xs"><span class="text-amber-700">Margin %</span><span class="font-semibold text-emerald-700" id="fin-marginpct">25.0%</span></div>
+                                <div class="h-px bg-amber-200 my-1"></div>
+                                <div class="flex items-center justify-between"><span class="text-xs font-bold text-amber-800">Net margin</span><span class="text-sm font-bold text-amber-800" id="fin-netmargin">£106.95</span></div>
+                            </div>
+                        </div>
+
+                        <!-- Adjust after invoicing (TS-010 / TS-027) -->
+                        <div class="mt-5 flex items-start gap-3 p-4 rounded-xl bg-slate-50 border border-slate-200">
+                            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-pen-to-square text-slate-500 text-sm"></i></div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs font-bold text-slate-700">Adjust after invoicing</p>
+                                <p class="text-xs text-slate-500 mt-0.5">This timesheet is <span class="font-semibold text-blue-700">Submitted</span>. If you adjust it once it has been <span class="font-semibold">Invoiced</span>, the status moves to <span class="font-semibold">Adjusted</span> and a credit/debit note is queued for the next invoice cycle (TS-010). Every adjustment is audited to you.</p>
+                            </div>
+                            <div class="flex items-center gap-2 flex-shrink-0">
+                                <button class="flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-200 bg-white text-xs font-semibold text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors"><i class="fa-solid fa-clock-rotate-left text-xs"></i> View audit</button>
+                                <button class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-white text-xs font-semibold hover:opacity-90 transition-opacity" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);"><i class="fa-solid fa-floppy-disk text-xs"></i> Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-6"></div>
         </main>
     </div>
 </div>
+
+<script>
+    // ===== Admin-on-behalf weekly grid (Marcus Reid) — fully editable, live financials =====
+    const A_DAYS  = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+    const A_DATES = ['8 Jun','9 Jun','10 Jun','11 Jun','12 Jun','13 Jun','14 Jun'];
+    const admin = {
+        name:'Marcus Reid', charge:18.40, pay:13.80, shift:7.5, statFactor:0.075, workDays:[0,1,2,3,4],
+        days:[
+            {status:'worked', hours:7.5},
+            {status:'worked', hours:7.5},
+            {status:'holiday', pay:'Paid', confirm:'Justified', reason:'Booked annual leave.', agency:'Agency justification (Meridian Recruitment): "Annual leave approved in advance on 22 May 2026."'},
+            {status:'noshow', pay:'Unpaid', confirm:'Awaiting agency', reason:'Did not attend, no prior notice.'},
+            {status:'worked', hours:7.5},
+            {status:'notbooked'},
+            {status:'notbooked'}
+        ]
+    };
+    let aEditing = null;
+
+    const money = n => '£' + n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+    const isAbs = d => d.status==='holiday' || d.status==='sick' || d.status==='noshow';
+    const A_META = {
+        holiday:{icon:'fa-umbrella-beach text-blue-500', lbl:'Holiday', pillCls:'bg-blue-50 text-blue-700 border-blue-200', card:'border-blue-200 bg-blue-50/40', hdr:'bg-blue-50 border-blue-100'},
+        sick:{icon:'fa-notes-medical text-amber-500', lbl:'Sick Leave', pillCls:'bg-amber-50 text-amber-700 border-amber-200', card:'border-amber-200 bg-amber-50/40', hdr:'bg-amber-50 border-amber-100'},
+        noshow:{icon:'fa-user-xmark text-red-500', lbl:'No-show', pillCls:'bg-red-50 text-red-700 border-red-200', card:'border-2 border-red-300 bg-red-50/40 ring-2 ring-red-100', hdr:'bg-red-50 border-red-100'}
+    };
+    const payPill = p => p==='Unpaid'
+        ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-700 border border-slate-200">Unpaid</span>'
+        : '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Paid</span>';
+    const confPill = c => c==='Justified'
+        ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-circle-check text-[9px]"></i> Justified</span>'
+        : (c ? '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-700 border border-amber-200"><i class="fa-solid fa-hourglass-half text-[9px]"></i> Awaiting agency</span>' : '');
+
+    function aHeader(d){ return '<div class="px-3 py-1.5 flex items-center justify-between border-b"><span class="text-xs font-bold text-slate-600">'+A_DAYS[d]+'</span><span class="text-[10px] text-slate-400">'+A_DATES[d]+'</span></div>'; }
+
+    function aCard(d){
+        const day = admin.days[d];
+        if(aEditing===d){
+            const cur = day.status==='worked' ? day.hours : '';
+            return '<div class="rounded-xl border-2 border-blue-400 overflow-hidden bg-white">'
+                + '<div class="px-3 py-1.5 bg-blue-50 border-b border-blue-100 flex items-center justify-between"><span class="text-xs font-bold text-slate-600">'+A_DAYS[d]+'</span><span class="text-[10px] text-slate-400">'+A_DATES[d]+'</span></div>'
+                + '<div class="p-2 flex flex-col items-center gap-1.5">'
+                +   '<input id="a-cell-input" type="number" step="0.5" min="0" value="'+cur+'" class="w-16 h-8 text-center text-sm font-bold text-slate-800 border-2 border-blue-400 rounded-md focus:outline-none" onblur="aCommit(this.value)" onkeydown="if(event.key===\'Enter\'){aCommit(this.value)}else if(event.key===\'Escape\'){aCancel()}">'
+                +   '<div class="flex gap-0.5">'
+                +     '<button type="button" title="Sick Leave" onmousedown="event.preventDefault()" onclick="aPick(\'sick\')" class="w-5 h-5 rounded text-[9px] font-bold bg-amber-100 text-amber-700 hover:bg-amber-200">S</button>'
+                +     '<button type="button" title="Holiday" onmousedown="event.preventDefault()" onclick="aPick(\'holiday\')" class="w-5 h-5 rounded text-[9px] font-bold bg-blue-100 text-blue-700 hover:bg-blue-200">H</button>'
+                +     '<button type="button" title="No-show" onmousedown="event.preventDefault()" onclick="aPick(\'noshow\')" class="w-5 h-5 rounded text-[9px] font-bold bg-red-100 text-red-700 hover:bg-red-200">N</button>'
+                +     '<button type="button" title="Not booked" onmousedown="event.preventDefault()" onclick="aPick(\'nb\')" class="w-5 h-5 rounded text-[9px] font-bold bg-slate-100 text-slate-500 hover:bg-slate-200">—</button>'
+                +     '<button type="button" title="Apply" onmousedown="event.preventDefault()" onclick="aCommit(document.getElementById(\'a-cell-input\').value)" class="w-5 h-5 rounded text-[9px] bg-emerald-100 text-emerald-700 hover:bg-emerald-200"><i class="fa-solid fa-check"></i></button>'
+                +   '</div>'
+                + '</div></div>';
+        }
+        const open = 'onclick="aEdit('+d+')"';
+        if(day.status==='worked'){
+            return '<div class="rounded-xl border border-emerald-200 bg-white overflow-hidden">'
+                + '<div class="px-3 py-1.5 bg-emerald-50 border-b border-emerald-100 flex items-center justify-between"><span class="text-xs font-bold text-slate-600">'+A_DAYS[d]+'</span><span class="text-[10px] text-slate-400">'+A_DATES[d]+'</span></div>'
+                + '<button '+open+' class="w-full p-3 flex flex-col items-center gap-1.5 hover:bg-emerald-50/60 transition-colors"><p class="text-xl font-bold text-emerald-700">'+day.hours.toFixed(1)+'</p>'
+                + '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-clock text-[9px]"></i> Worked</span></button></div>';
+        }
+        if(day.status==='notbooked'){
+            return '<div class="rounded-xl border border-slate-200 overflow-hidden bg-slate-50">'
+                + '<div class="px-3 py-1.5 bg-slate-100 border-b border-slate-200 flex items-center justify-between"><span class="text-xs font-bold text-slate-500">'+A_DAYS[d]+'</span><span class="text-[10px] text-slate-400">'+A_DATES[d]+'</span></div>'
+                + '<button '+open+' class="w-full p-3 flex flex-col items-center gap-1.5 hover:bg-slate-100 transition-colors"><i class="fa-solid fa-minus text-slate-300 text-lg"></i>'
+                + '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-slate-100 text-slate-400 border border-slate-200">Not Booked</span></button></div>';
+        }
+        const m = A_META[day.status];
+        return '<div class="rounded-xl '+m.card+' overflow-hidden">'
+            + '<div class="px-3 py-1.5 '+m.hdr+' border-b flex items-center justify-between"><span class="text-xs font-bold text-slate-600">'+A_DAYS[d]+'</span><span class="text-[10px] text-slate-400">'+A_DATES[d]+'</span></div>'
+            + '<button '+open+' class="w-full p-3 flex flex-col items-center gap-1.5 hover:opacity-90 transition-opacity"><i class="fa-solid '+m.icon+' text-lg"></i>'
+            + '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold '+m.pillCls+' border">'+m.lbl+'</span>'
+            + payPill(day.pay) + confPill(day.confirm) + '</button></div>';
+    }
+
+    function computeFin(){
+        const worked = admin.days.reduce((t,d)=> t + (d.status==='worked' ? d.hours : 0), 0);
+        const paidAbs = admin.days.filter(d=> isAbs(d) && d.pay==='Paid').length;
+        const chargeTotal = worked*admin.charge + paidAbs*admin.shift*admin.charge;
+        const payTotal = worked*admin.pay + paidAbs*admin.shift*admin.pay;
+        const gross = chargeTotal - payTotal;
+        const stat = payTotal*admin.statFactor;
+        const net = gross - stat;
+        const pct = chargeTotal>0 ? (gross/chargeTotal*100) : 0;
+        const workedDays = admin.days.filter(d=>d.status==='worked').length;
+        return {worked, paidAbs, chargeTotal, payTotal, gross, stat, net, pct, workedDays};
+    }
+
+    function renderAdmin(){
+        // day grid
+        let cells = '';
+        for(let d=0; d<7; d++) cells += aCard(d);
+        const f = computeFin();
+        cells += '<div class="rounded-xl border border-blue-200 overflow-hidden" style="background: linear-gradient(135deg, rgba(29,78,216,0.06), rgba(91,46,145,0.06));">'
+            + '<div class="px-3 py-1.5 border-b border-blue-100 flex items-center justify-center"><span class="text-xs font-bold text-blue-700">Week total</span></div>'
+            + '<div class="p-3 flex flex-col items-center gap-1"><p class="text-xl font-bold text-blue-800">'+f.worked.toFixed(1)+'</p><p class="text-[10px] text-slate-500">worked hrs · '+f.workedDays+' days</p></div></div>';
+        document.getElementById('admin-day-grid').innerHTML = cells;
+
+        // absence detail
+        let abs = '';
+        admin.days.forEach((day,d)=>{
+            if(!isAbs(day)) return;
+            const m = A_META[day.status];
+            const paid = day.pay==='Paid';
+            abs += '<div class="flex items-start gap-3 p-4 rounded-xl '+(day.status==='noshow'?'bg-red-50/40 border-red-100':(day.status==='sick'?'bg-amber-50/50 border-amber-100':'bg-blue-50/50 border-blue-100'))+' border">'
+                + '<div class="w-8 h-8 rounded-lg '+(day.status==='noshow'?'bg-red-100':(day.status==='sick'?'bg-amber-100':'bg-blue-100'))+' flex items-center justify-center flex-shrink-0"><i class="fa-solid '+m.icon.split(' ')[0]+' '+(day.status==='noshow'?'text-red-600':(day.status==='sick'?'text-amber-600':'text-blue-600'))+' text-sm"></i></div>'
+                + '<div class="flex-1 min-w-0">'
+                +   '<div class="flex items-center gap-2 flex-wrap"><p class="text-xs font-bold text-slate-800">'+A_DAYS[d]+' '+A_DATES[d]+' · '+m.lbl+'</p>'+payPill(day.pay)+confPill(day.confirm)+'</div>'
+                +   '<p class="text-xs text-slate-600 mt-1">Reason: '+(day.reason||'—')+(day.agency?' <span class="text-slate-500 italic">'+day.agency+'</span>':'')+'</p>'
+                +   '<div class="mt-3 p-3 rounded-lg bg-white border border-slate-200">'
+                +     '<div class="flex items-center justify-between flex-wrap gap-2">'
+                +       '<div class="flex items-center gap-2"><i class="fa-solid fa-user-shield text-purple-600 text-xs"></i><p class="text-xs font-bold text-slate-700">Override pay impact <span class="font-normal text-slate-400">(admin only · TS-018)</span></p></div>'
+                +       '<div class="flex items-center gap-2"><span class="text-[10px] font-semibold text-slate-500">Unpaid</span>'
+                +         '<button onclick="toggleAdminPay('+d+')" role="switch" aria-checked="'+(paid?'true':'false')+'" class="relative w-11 h-6 rounded-full '+(paid?'bg-emerald-500':'bg-slate-300')+' transition-colors"><span class="absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow transition-transform'+(paid?' translate-x-5':'')+'"></span></button>'
+                +         '<span class="text-[10px] font-semibold text-emerald-600">Paid</span></div>'
+                +     '</div>'
+                +     '<div class="mt-2.5"><label class="text-[10px] font-medium text-slate-500 mb-1 block">Override reason (required — audited to you)</label><input type="text" placeholder="e.g. Company sick pay applies — line manager confirmed by phone" class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-purple-400 focus:bg-white transition-colors"/></div>'
+                +     '<p class="text-[10px] text-slate-400 mt-1.5"><i class="fa-solid fa-clipboard-list"></i> This change is recorded in the audit trail with before/after values (TS-028).</p>'
+                +   '</div>'
+                + '</div></div>';
+        });
+        if(!abs) abs = '<p class="text-xs text-slate-400 italic px-1">No absences recorded this week.</p>';
+        document.getElementById('admin-absence-detail').innerHTML = abs;
+
+        // financial summary
+        const absDays = f.paidAbs;
+        const lbl = 'Paid absence ('+absDays+(absDays===1?' day':' days')+')';
+        document.getElementById('fin-charge-hrs').textContent = f.worked.toFixed(1);
+        document.getElementById('fin-pay-hrs').textContent = f.worked.toFixed(1);
+        document.getElementById('fin-charge-abslabel').textContent = lbl;
+        document.getElementById('fin-pay-abslabel').textContent = lbl;
+        document.getElementById('fin-charge-absval').textContent = money(absDays*admin.shift*admin.charge);
+        document.getElementById('fin-pay-absval').textContent = money(absDays*admin.shift*admin.pay);
+        document.getElementById('fin-charge-total').textContent = money(f.chargeTotal);
+        document.getElementById('fin-pay-total').textContent = money(f.payTotal);
+        document.getElementById('fin-statutory').textContent = '−' + money(f.stat);
+        document.getElementById('fin-marginpct').textContent = f.pct.toFixed(1) + '%';
+        document.getElementById('fin-netmargin').textContent = money(f.net);
+
+        if(aEditing!==null){ const i=document.getElementById('a-cell-input'); if(i){ i.focus(); i.select(); } }
+    }
+
+    function aEdit(d){ aEditing=d; renderAdmin(); }
+    function aCancel(){ aEditing=null; renderAdmin(); }
+    function aCommit(v){
+        if(aEditing===null) return;
+        const n=parseFloat(v);
+        admin.days[aEditing] = (v==='' || isNaN(n) || n<=0) ? {status:'notbooked'} : {status:'worked', hours:n};
+        aEditing=null; renderAdmin();
+    }
+    function aPick(status){
+        if(aEditing===null) return;
+        const d=aEditing;
+        if(status==='nb'){ admin.days[d]={status:'notbooked'}; }
+        else {
+            const pay = (status==='noshow') ? 'Unpaid' : 'Paid';
+            admin.days[d] = {status, pay, confirm:null, reason:'Recorded by Abstract on the client\'s behalf.'};
+        }
+        aEditing=null; renderAdmin();
+    }
+    function toggleAdminPay(d){
+        const day=admin.days[d];
+        if(!isAbs(day)) return;
+        day.pay = (day.pay==='Paid') ? 'Unpaid' : 'Paid';
+        renderAdmin();
+    }
+    function fillAdminWeek(){
+        for(let d=0; d<7; d++) admin.days[d] = admin.workDays.includes(d) ? {status:'worked', hours:admin.shift} : {status:'notbooked'};
+        aEditing=null; renderAdmin();
+    }
+
+    function openGrid(name){ document.getElementById('drilldown-panel').scrollIntoView({ behavior:'smooth' }); }
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ aCancel(); } });
+    renderAdmin();
+</script>
 
 </body>
 </html>
