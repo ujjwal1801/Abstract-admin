@@ -122,6 +122,24 @@
                 <span>Reports</span>
             </a>
 
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SETUP</p>
+            <a id="nav-onboard-client" href="21-Vendor Management - Onboard Client.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-circle-arrow-right text-white/40 w-4 text-center"></i>
+                <span>Onboard Client</span>
+            </a>
+            <a id="nav-onboard-agency" href="22-Vendor Management - Onboard Agency.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-user-tie text-white/40 w-4 text-center"></i>
+                <span>Onboard Agency</span>
+            </a>
+            <a id="nav-org-config" href="23-Vendor Management - Configuration.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-sliders text-white/40 w-4 text-center"></i>
+                <span>Configuration</span>
+            </a>
+            <a id="nav-system-config" href="24-Vendor Management - System Config.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gears text-white/40 w-4 text-center"></i>
+                <span>System Configuration</span>
+            </a>
+
             <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SYSTEM</p>
             <a id="nav-audit-log" href="19-Vendor Management - Audit Log.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
                 <i class="fa-solid fa-clipboard-list text-white/40 w-4 text-center"></i>
@@ -779,7 +797,7 @@
         days:[
             {status:'worked', hours:7.5},
             {status:'worked', hours:7.5},
-            {status:'holiday', pay:'Paid', confirm:'Justified', reason:'Booked annual leave.', agency:'Agency justification (Meridian Recruitment): "Annual leave approved in advance on 22 May 2026."'},
+            {status:'holiday', pay:'Paid', costBearer:'Client', confirm:'Justified', reason:'Booked annual leave.', agency:'Agency justification (Meridian Recruitment): "Annual leave approved in advance on 22 May 2026."'},
             {status:'noshow', pay:'Unpaid', confirm:'Awaiting agency', reason:'Did not attend, no prior notice.'},
             {status:'worked', hours:7.5},
             {status:'notbooked'},
@@ -842,17 +860,45 @@
             + payPill(day.pay) + confPill(day.confirm) + '</button></div>';
     }
 
+    const CB_META = {
+        Client:   {desc:'Client absorbs — billed at charge, paid at pay (pass-through).'},
+        Agency:   {desc:'Agency absorbs — not billed to client, not reimbursed by Abstract.'},
+        Abstract: {desc:'Abstract absorbs — paid to agency, not billed to client (reduces margin).'}
+    };
+    function costBearerControl(d, cur){
+        const opts = ['Client','Agency','Abstract'].map(function(o){
+            const on = (o===cur);
+            return '<button type="button" onclick="setCostBearer('+d+',\''+o+'\')" class="px-2.5 py-1 rounded-md text-[10px] font-semibold transition-colors '
+                + (on ? 'bg-purple-600 text-white' : 'bg-white text-slate-600 border border-slate-200 hover:border-purple-300') + '">'+o+'</button>';
+        }).join('');
+        return '<div class="mt-2.5 pt-2.5 border-t border-slate-100">'
+            + '<div class="flex items-center justify-between flex-wrap gap-2">'
+            +   '<div class="flex items-center gap-2"><i class="fa-solid fa-scale-balanced text-purple-600 text-xs"></i><p class="text-xs font-bold text-slate-700">Paid-absence cost bearer <span class="font-normal text-slate-400">(TS-035)</span></p></div>'
+            +   '<div class="flex items-center gap-1">'+opts+'</div>'
+            + '</div>'
+            + '<p class="text-[10px] text-slate-500 mt-1.5">'+CB_META[cur].desc+'</p>'
+            + '</div>';
+    }
     function computeFin(){
         const worked = admin.days.reduce((t,d)=> t + (d.status==='worked' ? d.hours : 0), 0);
-        const paidAbs = admin.days.filter(d=> isAbs(d) && d.pay==='Paid').length;
-        const chargeTotal = worked*admin.charge + paidAbs*admin.shift*admin.charge;
-        const payTotal = worked*admin.pay + paidAbs*admin.shift*admin.pay;
+        const paidAbsDays = admin.days.filter(d=> isAbs(d) && d.pay==='Paid');
+        const paidAbs = paidAbsDays.length;
+        // Paid-absence cost bearer (TS-035/TS-036): Client → +charge & +pay; Abstract → +pay only; Agency → neither.
+        let chargeAbs = 0, payAbs = 0;
+        paidAbsDays.forEach(d=>{
+            const cb = d.costBearer || 'Client';
+            if(cb==='Client'){ chargeAbs += admin.shift*admin.charge; payAbs += admin.shift*admin.pay; }
+            else if(cb==='Abstract'){ payAbs += admin.shift*admin.pay; }        // cost hits Abstract margin
+            // 'Agency' → agency absorbs: neither charged nor reimbursed
+        });
+        const chargeTotal = worked*admin.charge + chargeAbs;
+        const payTotal = worked*admin.pay + payAbs;
         const gross = chargeTotal - payTotal;
         const stat = payTotal*admin.statFactor;
         const net = gross - stat;
         const pct = chargeTotal>0 ? (gross/chargeTotal*100) : 0;
         const workedDays = admin.days.filter(d=>d.status==='worked').length;
-        return {worked, paidAbs, chargeTotal, payTotal, gross, stat, net, pct, workedDays};
+        return {worked, paidAbs, chargeAbs, payAbs, chargeTotal, payTotal, gross, stat, net, pct, workedDays};
     }
 
     function renderAdmin(){
@@ -884,6 +930,7 @@
                 +         '<span class="text-[10px] font-semibold text-emerald-600">Paid</span></div>'
                 +     '</div>'
                 +     '<div class="mt-2.5"><label class="text-[10px] font-medium text-slate-500 mb-1 block">Override reason (required — audited to you)</label><input type="text" placeholder="e.g. Company sick pay applies — line manager confirmed by phone" class="w-full border border-slate-200 rounded-lg px-2.5 py-2 text-xs text-slate-700 bg-slate-50 focus:outline-none focus:border-purple-400 focus:bg-white transition-colors"/></div>'
+                +     (paid ? costBearerControl(d, day.costBearer||'Client') : '')
                 +     '<p class="text-[10px] text-slate-400 mt-1.5"><i class="fa-solid fa-clipboard-list"></i> This change is recorded in the audit trail with before/after values (TS-028).</p>'
                 +   '</div>'
                 + '</div></div>';
@@ -898,8 +945,8 @@
         document.getElementById('fin-pay-hrs').textContent = f.worked.toFixed(1);
         document.getElementById('fin-charge-abslabel').textContent = lbl;
         document.getElementById('fin-pay-abslabel').textContent = lbl;
-        document.getElementById('fin-charge-absval').textContent = money(absDays*admin.shift*admin.charge);
-        document.getElementById('fin-pay-absval').textContent = money(absDays*admin.shift*admin.pay);
+        document.getElementById('fin-charge-absval').textContent = money(f.chargeAbs);
+        document.getElementById('fin-pay-absval').textContent = money(f.payAbs);
         document.getElementById('fin-charge-total').textContent = money(f.chargeTotal);
         document.getElementById('fin-pay-total').textContent = money(f.payTotal);
         document.getElementById('fin-statutory').textContent = '−' + money(f.stat);
@@ -923,7 +970,9 @@
         if(status==='nb'){ admin.days[d]={status:'notbooked'}; }
         else {
             const pay = (status==='noshow') ? 'Unpaid' : 'Paid';
-            admin.days[d] = {status, pay, confirm:null, reason:'Recorded by Abstract on the client\'s behalf.'};
+            const day = {status, pay, confirm:null, reason:'Recorded by Abstract on the client\'s behalf.'};
+            if(pay==='Paid') day.costBearer = 'Client';
+            admin.days[d] = day;
         }
         aEditing=null; renderAdmin();
     }
@@ -931,6 +980,13 @@
         const day=admin.days[d];
         if(!isAbs(day)) return;
         day.pay = (day.pay==='Paid') ? 'Unpaid' : 'Paid';
+        if(day.pay==='Paid' && !day.costBearer) day.costBearer = 'Client';
+        renderAdmin();
+    }
+    function setCostBearer(d, val){
+        const day=admin.days[d];
+        if(!isAbs(day) || day.pay!=='Paid') return;
+        day.costBearer = val;
         renderAdmin();
     }
     function fillAdminWeek(){

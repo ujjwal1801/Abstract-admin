@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboard Agency</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-3.1.1.min.js"></script>
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+
+        <!-- Logo -->
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <!-- Nav (injected centrally) -->
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">MAIN</p>
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FULFILMENT</p>
+            <a id="nav-worker-pool" href="13-Vendor Management - Worker Pool.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-users-gear text-white/40 w-4 text-center"></i>
+                <span>Worker Pool</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">AGENCY</p>
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+            <a id="nav-approved-suppliers" href="17-Vendor Management - Approved Su.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-circle-check text-white/40 w-4 text-center"></i>
+                <span>Approved Suppliers</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">COMPLIANCE</p>
+            <a id="nav-awr" href="16-Vendor Management - AWR Trackin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-hourglass-half text-white/40 w-4 text-center"></i>
+                <span>AWR Tracking</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FINANCE</p>
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Timesheets</span>
+            </a>
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+            <a id="nav-rate-cards" href="18-Vendor Management - Rate Cards.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-sterling-sign text-white/40 w-4 text-center"></i>
+                <span>Rate Cards</span>
+            </a>
+            <a id="nav-reports" href="20-Vendor Management - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-line text-white/40 w-4 text-center"></i>
+                <span>Reports</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SETUP</p>
+            <a id="nav-onboard-client" href="21-Vendor Management - Onboard Client.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-circle-arrow-right text-white/40 w-4 text-center"></i>
+                <span>Onboard Client</span>
+            </a>
+            <a id="nav-onboard-agency" href="22-Vendor Management - Onboard Agency.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-user-tie text-blue-400 w-4 text-center"></i>
+                <span>Onboard Agency</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+            <a id="nav-org-config" href="23-Vendor Management - Configuration.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-sliders text-white/40 w-4 text-center"></i>
+                <span>Configuration</span>
+            </a>
+            <a id="nav-system-config" href="24-Vendor Management - System Config.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gears text-white/40 w-4 text-center"></i>
+                <span>System Configuration</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SYSTEM</p>
+            <a id="nav-audit-log" href="19-Vendor Management - Audit Log.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-list text-white/40 w-4 text-center"></i>
+                <span>Audit Log</span>
+            </a>
+
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">Super Admin</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-lg font-bold text-slate-900">Onboard Agency</h1>
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                                <i class="fa-solid fa-circle-half-stroke text-[10px]"></i> In Setup
+                            </span>
+                        </div>
+                        <p class="text-xs text-slate-500 hidden sm:block">TechForce Recruitment Ltd · Abstract-led agency onboarding</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <div class="hidden md:flex items-center gap-2">
+                    <div class="w-32 h-2 rounded-full bg-slate-200 overflow-hidden">
+                        <div class="h-full rounded-full" style="width:55%; background: linear-gradient(90deg,#1D4ED8,#5B2E91);"></div>
+                    </div>
+                    <span class="text-xs font-semibold text-slate-700">55% complete</span>
+                </div>
+                <button class="hidden sm:flex items-center gap-2 px-3 py-2 rounded-lg border border-slate-200 text-slate-600 hover:border-blue-300 hover:text-blue-600 transition-colors text-xs font-semibold">
+                    <i class="fa-regular fa-floppy-disk text-xs"></i> Save &amp; exit
+                </button>
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">Sarah M.</p>
+                        <p class="text-xs text-slate-400">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Onboard Body -->
+        <main id="onboard-agency-main" class="flex-1 overflow-y-auto bg-slate-100">
+            <div class="px-6 xl:px-8 py-6">
+
+                <!-- Org summary banner -->
+                <div class="rounded-2xl p-5 xl:p-6 mb-6 flex items-center justify-between flex-wrap gap-4" style="background: linear-gradient(135deg, #172554 0%, #1D4ED8 55%, #5B2E91 100%);">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center">
+                            <i class="fa-solid fa-building-user text-white text-lg"></i>
+                        </div>
+                        <div>
+                            <p class="text-white/60 text-xs font-medium mb-0.5">New agency (supplier)</p>
+                            <h2 class="text-white font-bold text-xl">TechForce Recruitment Ltd</h2>
+                            <p class="text-white/60 text-xs mt-0.5">Step 3 of 9 · Started 11 Jul 2026 by Sarah Mitchell · Resumable per step (ONB-001, ONB-013)</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-center">
+                            <p class="text-white font-bold text-lg">55%</p>
+                            <p class="text-white/60 text-xs">Completeness</p>
+                        </div>
+                        <div class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-center">
+                            <p class="text-white font-bold text-lg">1</p>
+                            <p class="text-white/60 text-xs">Gate outstanding</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 xl:grid-cols-4 gap-6">
+
+                    <!-- LEFT: Step rail -->
+                    <aside class="xl:col-span-1">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sticky top-0">
+                            <p class="text-xs font-bold text-slate-800 mb-3 px-1">Onboarding steps</p>
+                            <nav id="step-rail" class="flex flex-col gap-1"></nav>
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-xs text-slate-400 px-1">
+                                <i class="fa-solid fa-circle-info mt-0.5"></i>
+                                <span>Steps 2 &amp; 3 are activation gates. Progress is saved per step (ONB-006).</span>
+                            </div>
+                        </div>
+                    </aside>
+
+                    <!-- CENTER: Step panels -->
+                    <section class="xl:col-span-3">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+
+                            <!-- ========== STEP 1 ========== -->
+                            <div data-panel="1" class="step-panel p-6">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center"><i class="fa-solid fa-file-contract text-blue-600 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Company &amp; contract</h3>
+                                        <p class="text-xs text-slate-500">Legal identity and contract terms with Abstract (AM-001, AM-006, CFG-009)</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Legal (registered) name</label>
+                                        <input value="TechForce Recruitment Ltd" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Trading name</label>
+                                        <input value="TechForce" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Company registration no.</label>
+                                        <input value="09842317" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">VAT registration no.</label>
+                                        <input value="GB 284 1179 55" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                    <div class="md:col-span-2">
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Registered address</label>
+                                        <input value="14 Kingsway House, Coventry, CV1 2LH" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Primary contact</label>
+                                        <input value="David Kaur — Operations Director" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contact email</label>
+                                        <input value="ops@techforce.co.uk" class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                    </div>
+                                </div>
+
+                                <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50/60 p-4">
+                                    <p class="text-xs font-bold text-slate-700 mb-3 flex items-center gap-2"><i class="fa-solid fa-handshake text-slate-400"></i> Contract terms with Abstract (CFG-009)</p>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-xs font-semibold text-slate-600 mb-1.5">Payment terms (net days)</label>
+                                            <div class="flex items-center gap-2">
+                                                <input value="30" class="w-24 px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400"/>
+                                                <span class="text-xs text-slate-500">days from self-bill date</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-semibold text-slate-600 mb-1.5">Agreed margin basis</label>
+                                            <select class="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 outline-none focus:border-blue-400 bg-white">
+                                                <option>Spread (Charge Rate − Pay Rate) + statutory</option>
+                                                <option>Fixed margin per hour</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <p class="mt-3 text-xs text-slate-400 flex items-start gap-1.5"><i class="fa-solid fa-circle-info mt-0.5"></i> Abstract's remuneration is the spread (charge − pay) plus its statutory breakdown — not a percentage fee.</p>
+                                </div>
+                            </div>
+
+                            <!-- ========== STEP 2 (GATE) ========== -->
+                            <div data-panel="2" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center"><i class="fa-solid fa-shield-halved text-emerald-600 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Compliance &amp; accreditation</h3>
+                                        <p class="text-xs text-slate-500">Insurance, certifications, accreditations with expiries &amp; documents (AM-005)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-3 rounded-lg bg-emerald-50 border border-emerald-100 px-3 py-2 flex items-center gap-2">
+                                    <i class="fa-solid fa-lock text-emerald-600 text-xs"></i>
+                                    <span class="text-xs font-semibold text-emerald-700">Activation gate</span>
+                                    <span class="text-xs text-emerald-700/80">Valid, non-expired insurance must be on file before the agency can be activated (ONB-010).</span>
+                                </div>
+
+                                <div class="mt-5 space-y-3">
+                                    <!-- EL insurance -->
+                                    <div class="rounded-xl border border-slate-200 p-4 flex items-center justify-between gap-4 flex-wrap">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <div class="w-9 h-9 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-user-shield text-slate-500 text-sm"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-semibold text-slate-800">Employer's Liability insurance</p>
+                                                <p class="text-xs text-slate-500">Zurich · Policy EL-88214 · Expires 31 Mar 2027</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-circle-check text-[10px]"></i> Compliant</span>
+                                            <button class="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"><i class="fa-solid fa-paperclip text-[10px]"></i> View doc</button>
+                                        </div>
+                                    </div>
+                                    <!-- PL insurance - expiring soon (amber) -->
+                                    <div class="rounded-xl border border-amber-200 bg-amber-50/40 p-4 flex items-center justify-between gap-4 flex-wrap">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <div class="w-9 h-9 rounded-lg bg-amber-100 border border-amber-200 flex items-center justify-center"><i class="fa-solid fa-umbrella text-amber-600 text-sm"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-semibold text-slate-800">Public Liability insurance</p>
+                                                <p class="text-xs text-amber-700 font-medium">AXA · Policy PL-40027 · Expires 09 Aug 2026 — 26 days</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200"><i class="fa-solid fa-clock text-[10px]"></i> Pending</span>
+                                            <button class="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"><i class="fa-solid fa-arrow-up-from-bracket text-[10px]"></i> Upload renewal</button>
+                                        </div>
+                                    </div>
+                                    <!-- Certification -->
+                                    <div class="rounded-xl border border-slate-200 p-4 flex items-center justify-between gap-4 flex-wrap">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <div class="w-9 h-9 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-certificate text-slate-500 text-sm"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-semibold text-slate-800">REC Corporate Membership</p>
+                                                <p class="text-xs text-slate-500">Cert REC-2026-1174 · Expires 01 Jan 2027</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-circle-check text-[10px]"></i> Compliant</span>
+                                            <button class="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"><i class="fa-solid fa-paperclip text-[10px]"></i> View doc</button>
+                                        </div>
+                                    </div>
+                                    <!-- Accreditation - expired -->
+                                    <div class="rounded-xl border border-slate-200 p-4 flex items-center justify-between gap-4 flex-wrap">
+                                        <div class="flex items-center gap-3 min-w-0">
+                                            <div class="w-9 h-9 rounded-lg bg-slate-50 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-award text-slate-500 text-sm"></i></div>
+                                            <div class="min-w-0">
+                                                <p class="text-sm font-semibold text-slate-800">Stronger Together accreditation</p>
+                                                <p class="text-xs text-slate-500">Ref ST-9921 · Expired 30 Jun 2026</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center gap-3">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200"><i class="fa-solid fa-circle-xmark text-[10px]"></i> Expired</span>
+                                            <button class="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"><i class="fa-solid fa-arrow-up-from-bracket text-[10px]"></i> Re-upload</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 hover:text-blue-700"><i class="fa-solid fa-plus"></i> Add compliance item</button>
+                            </div>
+
+                            <!-- ========== STEP 3 (GATE) ========== -->
+                            <div data-panel="3" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-purple-50 border border-purple-100 flex items-center justify-center"><i class="fa-solid fa-file-signature text-purple-600 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Self-billing agreement</h3>
+                                        <p class="text-xs text-slate-500">Signed VAT self-billing agreement with review/expiry tracking (CFG-009)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-3 rounded-lg bg-purple-50 border border-purple-100 px-3 py-2 flex items-start gap-2">
+                                    <i class="fa-solid fa-lock text-purple-600 text-xs mt-0.5"></i>
+                                    <span class="text-xs text-purple-800">A self-bill cannot be generated for this agency without a signed, in-date agreement (XR-019, CFG-009). This is an activation gate (ONB-010).</span>
+                                </div>
+
+                                <div class="mt-5 rounded-xl border border-slate-200 p-5">
+                                    <div class="flex items-center justify-between flex-wrap gap-3 mb-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-10 h-10 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center"><i class="fa-solid fa-file-circle-check text-emerald-600"></i></div>
+                                            <div>
+                                                <p class="text-sm font-semibold text-slate-800">VAT Self-Billing Agreement</p>
+                                                <p class="text-xs text-slate-500">Between Abstract Workforce Ltd and TechForce Recruitment Ltd</p>
+                                            </div>
+                                        </div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-circle-check text-[10px]"></i> Signed &amp; in-date</span>
+                                    </div>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <div><p class="text-xs text-slate-400 mb-0.5">Reference</p><p class="text-sm font-semibold text-slate-800">SBA-2026-0417</p></div>
+                                        <div><p class="text-xs text-slate-400 mb-0.5">Signed date</p><p class="text-sm font-semibold text-slate-800">03 Jul 2026</p></div>
+                                        <div><p class="text-xs text-slate-400 mb-0.5">Review / expiry date</p><p class="text-sm font-semibold text-slate-800">03 Jul 2027</p></div>
+                                        <div><p class="text-xs text-slate-400 mb-0.5">Term</p><p class="text-sm font-semibold text-slate-800">12 months</p></div>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-slate-100 flex items-center gap-3">
+                                        <button class="text-xs font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"><i class="fa-solid fa-paperclip text-[10px]"></i> View signed PDF</button>
+                                        <button class="text-xs font-semibold text-slate-500 hover:text-slate-700 flex items-center gap-1"><i class="fa-solid fa-arrow-up-from-bracket text-[10px]"></i> Replace</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ========== STEP 4 ========== -->
+                            <div data-panel="4" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-code-branch text-slate-500 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Branches</h3>
+                                        <p class="text-xs text-slate-500">Operating branches under this agency (AM-002)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-5 divide-y divide-slate-100 border border-slate-200 rounded-xl">
+                                    <div class="flex items-center justify-between px-4 py-3">
+                                        <div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-slate-400"></i><div><p class="text-sm font-semibold text-slate-800">Coventry (Head Office)</p><p class="text-xs text-slate-500">14 Kingsway House, CV1 2LH</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-3">
+                                        <div class="flex items-center gap-3"><i class="fa-solid fa-location-dot text-slate-400"></i><div><p class="text-sm font-semibold text-slate-800">Milton Keynes</p><p class="text-xs text-slate-500">Unit 6, Fenny Lock, MK1 1EW</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span>
+                                    </div>
+                                </div>
+                                <button class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 hover:text-blue-700"><i class="fa-solid fa-plus"></i> Add branch</button>
+                                <p class="mt-3 text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> At least one branch required for activation — met (ONB-010).</p>
+                            </div>
+
+                            <!-- ========== STEP 5 ========== -->
+                            <div data-panel="5" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-users text-slate-500 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Users &amp; roles</h3>
+                                        <p class="text-xs text-slate-500">Agency user accounts, assigned to branches (AM-003, AM-004)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-5 divide-y divide-slate-100 border border-slate-200 rounded-xl">
+                                    <div class="flex items-center justify-between px-4 py-3 flex-wrap gap-2">
+                                        <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-xs font-bold text-blue-700">DK</div><div><p class="text-sm font-semibold text-slate-800">David Kaur</p><p class="text-xs text-slate-500">david.kaur@techforce.co.uk · Coventry</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">Agency Admin</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-3 flex-wrap gap-2">
+                                        <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center text-xs font-bold text-purple-700">RM</div><div><p class="text-sm font-semibold text-slate-800">Rachel Moss</p><p class="text-xs text-slate-500">rachel.moss@techforce.co.uk · Milton Keynes</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Recruiter</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-3 flex-wrap gap-2">
+                                        <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-xs font-bold text-emerald-700">TN</div><div><p class="text-sm font-semibold text-slate-800">Tomasz Nowak</p><p class="text-xs text-slate-500">finance@techforce.co.uk · Coventry</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Finance</span>
+                                    </div>
+                                </div>
+                                <button class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 hover:text-blue-700"><i class="fa-solid fa-paper-plane"></i> Invite user</button>
+                                <p class="mt-3 text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> At least one Agency Admin required for activation — met (ONB-010).</p>
+                            </div>
+
+                            <!-- ========== STEP 6 ========== -->
+                            <div data-panel="6" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-sterling-sign text-slate-500 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Pay rate cards</h3>
+                                        <p class="text-xs text-slate-500">Pay rates payable to this agency's workers (agencies see pay rates only)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-3 rounded-lg bg-red-50 border border-red-100 px-3 py-2 flex items-start gap-2">
+                                    <i class="fa-solid fa-triangle-exclamation text-red-500 text-xs mt-0.5"></i>
+                                    <span class="text-xs text-red-700">No effective pay rate card yet — at least one is required for activation (ONB-010).</span>
+                                </div>
+                                <div class="mt-5 overflow-x-auto border border-slate-200 rounded-xl">
+                                    <table class="w-full text-sm">
+                                        <thead class="bg-slate-50 text-xs text-slate-500">
+                                            <tr><th class="text-left px-4 py-2.5 font-semibold">Role</th><th class="text-left px-4 py-2.5 font-semibold">Pay rate (£/hr)</th><th class="text-left px-4 py-2.5 font-semibold">Effective from</th><th class="text-left px-4 py-2.5 font-semibold">Status</th></tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-100">
+                                            <tr><td class="px-4 py-3 font-medium text-slate-800">Warehouse Operative</td><td class="px-4 py-3 text-slate-700">£12.60</td><td class="px-4 py-3 text-slate-500">Not set</td><td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Draft</span></td></tr>
+                                            <tr><td class="px-4 py-3 font-medium text-slate-800">Forklift Driver (Reach)</td><td class="px-4 py-3 text-slate-700">£14.85</td><td class="px-4 py-3 text-slate-500">Not set</td><td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Draft</span></td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <button class="mt-4 flex items-center gap-2 text-xs font-semibold text-blue-600 hover:text-blue-700"><i class="fa-solid fa-plus"></i> Add pay rate card</button>
+                                <p class="mt-3 text-xs text-slate-400 flex items-start gap-1.5"><i class="fa-solid fa-circle-info mt-0.5"></i> Statutory percentages (NI, WTR, Pension, Apprenticeship Levy) are sourced from System Configuration (SYS-001) and are not re-keyed here. Client charge rates are never shown in an agency pay-rate context.</p>
+                            </div>
+
+                            <!-- ========== STEP 7 ========== -->
+                            <div data-panel="7" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-circle-check text-slate-500 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Client approvals</h3>
+                                        <p class="text-xs text-slate-500">Which clients this agency may supply — Approved Supplier Matrix (AB-003)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-5 divide-y divide-slate-100 border border-slate-200 rounded-xl">
+                                    <div class="flex items-center justify-between px-4 py-3">
+                                        <div class="flex items-center gap-3"><i class="fa-solid fa-building text-slate-400"></i><div><p class="text-sm font-semibold text-slate-800">Meridian Logistics</p><p class="text-xs text-slate-500">Effective 12 Jul 2026</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200"><i class="fa-solid fa-circle-check text-[10px]"></i> Approved</span>
+                                    </div>
+                                    <div class="flex items-center justify-between px-4 py-3">
+                                        <div class="flex items-center gap-3"><i class="fa-solid fa-building text-slate-400"></i><div><p class="text-sm font-semibold text-slate-800">Northgate Retail Group</p><p class="text-xs text-slate-500">Not yet approved</p></div></div>
+                                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200"><i class="fa-solid fa-clock text-[10px]"></i> Pending</span>
+                                    </div>
+                                </div>
+                                <p class="mt-3 text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-check text-emerald-500"></i> Approved for at least one client — met (ONB-010).</p>
+                            </div>
+
+                            <!-- ========== STEP 8 ========== -->
+                            <div data-panel="8" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center"><i class="fa-solid fa-bell text-slate-500 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Notifications &amp; proposal limits</h3>
+                                        <p class="text-xs text-slate-500">Release alerts and per-vacancy proposal cap (CFG-009)</p>
+                                    </div>
+                                </div>
+                                <div class="mt-5 space-y-3">
+                                    <label class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                        <span class="text-sm text-slate-700">Notify on vacancy release to this agency</span>
+                                        <span class="inline-flex items-center h-5 w-9 rounded-full bg-emerald-500 relative"><span class="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white"></span></span>
+                                    </label>
+                                    <label class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                        <span class="text-sm text-slate-700">Notify on absence-confirmation requests</span>
+                                        <span class="inline-flex items-center h-5 w-9 rounded-full bg-emerald-500 relative"><span class="absolute right-0.5 top-0.5 w-4 h-4 rounded-full bg-white"></span></span>
+                                    </label>
+                                    <div class="rounded-xl border border-slate-200 px-4 py-3 flex items-center justify-between gap-4">
+                                        <div><p class="text-sm text-slate-700">Max proposals per vacancy</p><p class="text-xs text-slate-500">Caps how many candidates this agency may submit per vacancy.</p></div>
+                                        <input value="5" class="w-20 px-3 py-2 rounded-lg border border-slate-200 text-sm text-slate-800 text-center outline-none focus:border-blue-400"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ========== STEP 9 (Review & activate) ========== -->
+                            <div data-panel="9" class="step-panel p-6 hidden">
+                                <div class="flex items-center gap-3 mb-1">
+                                    <div class="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center"><i class="fa-solid fa-circle-play text-blue-600 text-sm"></i></div>
+                                    <div>
+                                        <h3 class="text-base font-bold text-slate-900">Review &amp; activate</h3>
+                                        <p class="text-xs text-slate-500">All activation gates must be met before the agency goes live (ONB-010)</p>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 rounded-xl border border-slate-200 overflow-hidden">
+                                    <div class="px-4 py-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                                        <p class="text-xs font-bold text-slate-700">Activation gates checklist</p>
+                                        <span class="text-xs font-semibold text-red-600">5 of 6 met · 1 outstanding</span>
+                                    </div>
+                                    <div class="divide-y divide-slate-100">
+                                        <div class="flex items-center justify-between px-4 py-3"><div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i><span class="text-sm text-slate-700">Valid (non-expired) insurance on file</span></div><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Met</span></div>
+                                        <div class="flex items-center justify-between px-4 py-3"><div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i><span class="text-sm text-slate-700">Signed, in-date self-billing agreement</span></div><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Met</span></div>
+                                        <div class="flex items-center justify-between px-4 py-3"><div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i><span class="text-sm text-slate-700">At least one branch</span></div><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Met</span></div>
+                                        <div class="flex items-center justify-between px-4 py-3"><div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i><span class="text-sm text-slate-700">At least one Agency Admin user</span></div><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Met</span></div>
+                                        <div class="flex items-center justify-between px-4 py-3 bg-red-50/40"><div class="flex items-center gap-3"><i class="fa-solid fa-circle-xmark text-red-500"></i><span class="text-sm font-semibold text-slate-800">At least one effective pay rate card</span></div><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">Not met</span></div>
+                                        <div class="flex items-center justify-between px-4 py-3"><div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-500"></i><span class="text-sm text-slate-700">Approved for at least one client</span></div><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Met</span></div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 flex items-center gap-3 flex-wrap">
+                                    <button disabled class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-slate-200 text-slate-400 text-sm font-semibold cursor-not-allowed"><i class="fa-solid fa-lock text-xs"></i> Activate agency</button>
+                                    <p class="text-xs text-red-600 font-medium flex items-center gap-1.5"><i class="fa-solid fa-triangle-exclamation"></i> 1 gate outstanding: add a pay rate card (go to Step 6).</p>
+                                </div>
+                            </div>
+
+                            <!-- Wizard footer -->
+                            <div class="px-6 py-4 border-t border-slate-200 flex items-center justify-between flex-wrap gap-3">
+                                <p class="text-xs text-slate-400 flex items-center gap-1.5"><i class="fa-solid fa-circle-info"></i> Abstract-led onboarding; resumable per step (ONB-001, ONB-013).</p>
+                                <div class="flex items-center gap-2">
+                                    <button class="px-4 py-2 rounded-lg border border-slate-200 text-slate-600 hover:border-slate-300 text-sm font-semibold">Save &amp; exit</button>
+                                    <button id="continue-btn" class="px-4 py-2 rounded-lg text-white text-sm font-semibold" style="background: linear-gradient(135deg,#1D4ED8,#5B2E91);">Save &amp; continue</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+(function(){
+    var steps = [
+        {n:1, label:'Company & contract',            icon:'fa-file-contract',   status:'done'},
+        {n:2, label:'Compliance & accreditation',    icon:'fa-shield-halved',   status:'done',    gate:true},
+        {n:3, label:'Self-billing agreement',        icon:'fa-file-signature',  status:'current', gate:true},
+        {n:4, label:'Branches',                       icon:'fa-code-branch',     status:'done'},
+        {n:5, label:'Users & roles',                  icon:'fa-users',           status:'done'},
+        {n:6, label:'Pay rate cards',                 icon:'fa-sterling-sign',   status:'blocked'},
+        {n:7, label:'Client approvals',               icon:'fa-circle-check',    status:'done'},
+        {n:8, label:'Notifications & proposal limits',icon:'fa-bell',            status:'todo'},
+        {n:9, label:'Review & activate',              icon:'fa-circle-play',     status:'todo'}
+    ];
+    var current = 3;
+    var rail = document.getElementById('step-rail');
+
+    function statusMark(s){
+        if(s==='done')    return '<i class="fa-solid fa-circle-check text-emerald-500"></i>';
+        if(s==='current') return '<i class="fa-solid fa-circle-dot text-blue-500"></i>';
+        if(s==='blocked') return '<i class="fa-solid fa-circle-exclamation text-red-500"></i>';
+        return '<i class="fa-regular fa-circle text-slate-300"></i>';
+    }
+
+    function render(){
+        rail.innerHTML = '';
+        steps.forEach(function(st){
+            var active = st.n === current;
+            var a = document.createElement('button');
+            a.className = 'w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-left transition-all ' +
+                (active ? 'bg-blue-50 border border-blue-200' : 'hover:bg-slate-50 border border-transparent');
+            a.innerHTML =
+                '<span class="w-5 text-center text-sm">'+statusMark(st.status)+'</span>' +
+                '<span class="w-6 h-6 rounded-md flex items-center justify-center flex-shrink-0 '+(active?'bg-blue-100':'bg-slate-100')+'"><i class="fa-solid '+st.icon+' text-[11px] '+(active?'text-blue-600':'text-slate-500')+'"></i></span>' +
+                '<span class="flex-1 min-w-0"><span class="block text-xs font-semibold '+(active?'text-blue-700':'text-slate-700')+' truncate">'+st.n+'. '+st.label+'</span></span>' +
+                (st.gate ? '<span class="text-[9px] font-bold uppercase tracking-wide text-amber-600 bg-amber-50 border border-amber-200 rounded px-1 py-0.5">Gate</span>' : '');
+            a.onclick = function(){ current = st.n; show(); };
+            rail.appendChild(a);
+        });
+    }
+
+    function show(){
+        document.querySelectorAll('.step-panel').forEach(function(p){
+            p.classList.toggle('hidden', parseInt(p.getAttribute('data-panel'),10) !== current);
+        });
+        var btn = document.getElementById('continue-btn');
+        btn.textContent = current >= 9 ? 'Finish setup' : 'Save & continue';
+        render();
+        document.getElementById('onboard-agency-main').scrollTop = 0;
+    }
+
+    document.getElementById('continue-btn').addEventListener('click', function(){
+        if(current < 9){ current++; show(); }
+    });
+
+    render();
+    show();
+})();
+</script>
+
+</body>
+</html>

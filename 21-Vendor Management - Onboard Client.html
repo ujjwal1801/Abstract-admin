@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboard Client</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script> window.FontAwesomeConfig = { autoReplaceSvg: 'nest'};</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>::-webkit-scrollbar { display: none;} * { scrollbar-width: none; }</style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            DEFAULT: '#172554',
+                            50: '#EEF1FB',
+                            100: '#D4DCF5',
+                            200: '#A9B9EB',
+                            300: '#7E96E1',
+                            400: '#5373D7',
+                            500: '#2850CD',
+                            600: '#1D3FA4',
+                            700: '#162F7B',
+                            800: '#0F1F52',
+                            900: '#172554',
+                        },
+                        brand: {
+                            blue: '#1D4ED8',
+                            purple: '#5B2E91',
+                            navy: '#172554',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-slate-100 overflow-hidden">
+
+<div id="app-root" class="flex w-full" style="height: 100vh;">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="hidden lg:flex flex-col w-64 xl:w-72 flex-shrink-0 overflow-y-auto" style="background: linear-gradient(180deg, #0f1a3e 0%, #172554 40%, #1e1a4a 100%);">
+
+        <!-- Logo -->
+        <div id="sidebar-logo" class="flex items-center gap-3 px-6 py-5 border-b border-white/10">
+            <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #1D4ED8, #5B2E91);">
+                <i class="fa-solid fa-layer-group text-white text-sm"></i>
+            </div>
+            <div>
+                <span class="text-white font-bold text-base tracking-tight block">Abstract VMS</span>
+                <span class="text-white/40 text-xs">Admin Portal</span>
+            </div>
+        </div>
+
+        <!-- Nav (injected centrally) -->
+        <nav id="sidebar-nav" class="flex-1 px-3 py-4 flex flex-col gap-1">
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2">MAIN</p>
+            <a id="nav-dashboard" href="2-Vendor Management - Admin Dash.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gauge-high text-white/40 w-4 text-center"></i>
+                <span>Admin Dashboard</span>
+            </a>
+            <a id="nav-vacancy-list" href="3-Vendor Management - Vacancy Li.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-list-check text-white/40 w-4 text-center"></i>
+                <span>Vacancy List</span>
+            </a>
+            <a id="nav-create-vacancy" href="4-Vendor Management - Create Vac.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-wand-magic-sparkles text-white/40 w-4 text-center"></i>
+                <span>Create Vacancy Wizard</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FULFILMENT</p>
+            <a id="nav-worker-pool" href="13-Vendor Management - Worker Pool.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-users-gear text-white/40 w-4 text-center"></i>
+                <span>Worker Pool</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">AGENCY</p>
+            <a id="nav-agency-dashboard" href="6-Vendor Management - Agency Das.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-building-user text-white/40 w-4 text-center"></i>
+                <span>Agency Dashboard</span>
+            </a>
+            <a id="nav-approved-suppliers" href="17-Vendor Management - Approved Su.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-circle-check text-white/40 w-4 text-center"></i>
+                <span>Approved Suppliers</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">COMPLIANCE</p>
+            <a id="nav-awr" href="16-Vendor Management - AWR Trackin.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-hourglass-half text-white/40 w-4 text-center"></i>
+                <span>AWR Tracking</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">FINANCE</p>
+            <a id="nav-timesheet" href="10-Vendor Management - Client Wee.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clock text-white/40 w-4 text-center"></i>
+                <span>Timesheets</span>
+            </a>
+            <a id="nav-invoicing" href="11-Vendor Management - Invoicing.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-file-invoice-dollar text-white/40 w-4 text-center"></i>
+                <span>Invoicing / Self-Bill</span>
+            </a>
+            <a id="nav-backing-report" href="12-Vendor Management - Abstract B.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-bar text-white/40 w-4 text-center"></i>
+                <span>Abstract Backing Report</span>
+            </a>
+            <a id="nav-rate-cards" href="18-Vendor Management - Rate Cards.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-sterling-sign text-white/40 w-4 text-center"></i>
+                <span>Rate Cards</span>
+            </a>
+            <a id="nav-reports" href="20-Vendor Management - Reports.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-chart-line text-white/40 w-4 text-center"></i>
+                <span>Reports</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SETUP</p>
+            <a id="nav-onboard-client" href="21-Vendor Management - Onboard Client.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white font-semibold text-sm transition-all duration-150" style="background: linear-gradient(135deg, rgba(29,78,216,0.5), rgba(91,46,145,0.4)); border: 1px solid rgba(255,255,255,0.15);">
+                <i class="fa-solid fa-building-circle-arrow-right text-blue-400 w-4 text-center"></i>
+                <span>Onboard Client</span>
+                <div class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>
+            </a>
+            <a id="nav-onboard-agency" href="22-Vendor Management - Onboard Agency.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-user-tie text-white/40 w-4 text-center"></i>
+                <span>Onboard Agency</span>
+            </a>
+            <a id="nav-org-config" href="23-Vendor Management - Configuration.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-sliders text-white/40 w-4 text-center"></i>
+                <span>Configuration</span>
+            </a>
+            <a id="nav-system-config" href="24-Vendor Management - System Config.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-gears text-white/40 w-4 text-center"></i>
+                <span>System Configuration</span>
+            </a>
+
+            <p class="text-white/30 text-xs font-semibold uppercase tracking-widest px-3 mb-2 mt-4">SYSTEM</p>
+            <a id="nav-audit-log" href="19-Vendor Management - Audit Log.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/60 hover:text-white hover:bg-white/8 text-sm transition-all duration-150">
+                <i class="fa-solid fa-clipboard-list text-white/40 w-4 text-center"></i>
+                <span>Audit Log</span>
+            </a>
+
+        </nav>
+
+        <!-- Sidebar Footer -->
+        <div id="sidebar-footer" class="px-4 py-4 border-t border-white/10">
+            <div class="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 cursor-pointer transition-all">
+                <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border border-white/20 flex-shrink-0" alt="avatar"/>
+                <div class="flex-1 min-w-0">
+                    <p class="text-white text-xs font-semibold truncate">Sarah Mitchell</p>
+                    <p class="text-white/40 text-xs truncate">Super Admin</p>
+                </div>
+                <a href="1-Vendor Management - Abstract L.html" title="Logout"><i class="fa-solid fa-arrow-right-from-bracket text-white/30 text-xs hover:text-white"></i></a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+        <!-- Top Header -->
+        <header id="header" class="flex items-center justify-between px-6 xl:px-8 py-4 bg-white border-b border-slate-200 flex-shrink-0">
+            <div class="flex items-center gap-4">
+                <button id="mobile-menu-btn" class="lg:hidden w-8 h-8 flex items-center justify-center rounded-lg hover:bg-slate-100 transition-colors">
+                    <i class="fa-solid fa-bars text-slate-600 text-sm"></i>
+                </button>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="text-lg font-bold text-slate-900">Onboard Client</h1>
+                            <span class="text-slate-300">/</span>
+                            <span class="text-lg font-semibold text-slate-700">Nexus Logistics Ltd</span>
+                        </div>
+                        <p class="text-xs text-slate-500 hidden sm:block">Abstract-led client onboarding · Draft ID CLI-ONB-0047</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <span class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                    <i class="fa-solid fa-circle-half-stroke text-[10px]"></i> In Setup
+                </span>
+                <div class="hidden md:flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2">
+                    <span class="text-xs font-medium text-slate-600">Completeness</span>
+                    <div class="w-24 h-1.5 bg-slate-200 rounded-full overflow-hidden">
+                        <div class="h-full rounded-full bg-emerald-500" style="width: 60%"></div>
+                    </div>
+                    <span class="text-xs font-bold text-slate-800">60%</span>
+                </div>
+                <button class="relative w-9 h-9 flex items-center justify-center rounded-lg bg-slate-50 border border-slate-200 hover:border-blue-300 transition-colors">
+                    <i class="fa-regular fa-bell text-slate-600 text-sm"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500"></span>
+                </button>
+                <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+                    <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" class="w-8 h-8 rounded-full object-cover border-2 border-blue-100" alt="avatar"/>
+                    <div class="hidden xl:block">
+                        <p class="text-xs font-semibold text-slate-700">Sarah M.</p>
+                        <p class="text-xs text-slate-400">Super Admin</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Body -->
+        <main id="onboard-client-main" class="flex-1 overflow-y-auto bg-slate-100">
+            <div class="flex flex-col xl:flex-row gap-6 px-6 xl:px-8 py-6">
+
+                <!-- LEFT: Step rail -->
+                <aside class="xl:w-72 flex-shrink-0">
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sticky top-0">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-sm font-bold text-slate-800">Onboarding steps</h3>
+                            <span class="text-xs font-semibold text-slate-500">6 / 10</span>
+                        </div>
+                        <div id="step-rail" class="flex flex-col gap-1"></div>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex items-start gap-2 text-xs text-slate-400">
+                            <i class="fa-solid fa-circle-info mt-0.5"></i>
+                            <span>Progress is saved per step and can be resumed (ONB-001).</span>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- CENTER: Active step panel -->
+                <section class="flex-1 min-w-0">
+
+                    <!-- STEP 1 — Company & contract -->
+                    <div data-panel="1" class="step-panel bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">1</span>
+                                <h2 class="text-base font-bold text-slate-900">Company &amp; contract</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Legal identity and the commercial agreement that governs this client (CM-001, CM-007).</p>
+                        </div>
+                        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Legal name</label>
+                                <input type="text" value="Nexus Logistics Ltd" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Company registration no.</label>
+                                <input type="text" value="09123456" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">VAT registration no.</label>
+                                <input type="text" value="GB 314 2765 09" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contract reference</label>
+                                <input type="text" value="MSA-NEX-2026-014" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Registered address</label>
+                                <textarea rows="2" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none">Nexus House, 4 Meridian Way, Coventry, CV6 5NX, United Kingdom</textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contract start</label>
+                                <input type="date" value="2026-08-01" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Contract end</label>
+                                <input type="date" value="2028-07-31" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Renewal</label>
+                                <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none bg-white">
+                                    <option>Auto-renew (12 months)</option>
+                                    <option>Manual review</option>
+                                    <option>No renewal</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-800">Purchase order (PO) required</p>
+                                    <p class="text-xs text-slate-500">When on, every booking must carry a valid PO before it can be invoiced.</p>
+                                </div>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)">
+                                    <span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2 — Business units & cost centres -->
+                    <div data-panel="2" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">2</span>
+                                <h2 class="text-base font-bold text-slate-900">Business units &amp; cost centres</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Hierarchical structure (Client → Region → Site → Department), each node carrying a cost-centre code (CM-002, CM-003, CM-006).</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex flex-wrap items-center gap-2 mb-4">
+                                <div class="flex items-end gap-2 flex-1 min-w-[240px]">
+                                    <div class="flex-1">
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Add business unit under</label>
+                                        <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2 bg-white focus:border-blue-400 outline-none">
+                                            <option>Nexus Logistics Ltd (root)</option>
+                                            <option>— Midlands Region</option>
+                                            <option>—— Coventry DC</option>
+                                            <option>—— Rugby Cross-Dock</option>
+                                            <option>— South East Region</option>
+                                        </select>
+                                    </div>
+                                    <button class="px-3 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700 whitespace-nowrap"><i class="fa-solid fa-plus mr-1"></i>Add business unit</button>
+                                </div>
+                                <button class="px-3 py-2 rounded-lg border border-slate-200 text-slate-600 text-xs font-semibold hover:border-blue-300 whitespace-nowrap"><i class="fa-solid fa-file-csv mr-1"></i>CSV import</button>
+                            </div>
+                            <div class="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 mb-4 flex items-start gap-2 text-xs text-amber-700">
+                                <i class="fa-solid fa-circle-check mt-0.5"></i>
+                                <span>CSV import runs a validation preview before commit — last upload: 24 rows, 22 valid, 2 flagged (duplicate cost-centre code) (ONB-007).</span>
+                            </div>
+
+                            <!-- Tree -->
+                            <div class="rounded-xl border border-slate-200 divide-y divide-slate-100 text-sm">
+                                <div class="flex items-center justify-between px-4 py-2.5 bg-slate-50">
+                                    <div class="flex items-center gap-2 font-semibold text-slate-800"><i class="fa-solid fa-sitemap text-slate-400"></i> Nexus Logistics Ltd</div>
+                                    <span class="text-xs font-mono text-slate-500">CC-NEX-000</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:2rem;">
+                                    <div class="flex items-center gap-2 text-slate-700"><i class="fa-solid fa-map-location-dot text-blue-400"></i> Midlands Region</div>
+                                    <span class="text-xs font-mono text-slate-500">CC-NEX-100</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:3.5rem;">
+                                    <div class="flex items-center gap-2 text-slate-700"><i class="fa-solid fa-warehouse text-purple-400"></i> Coventry DC</div>
+                                    <span class="text-xs font-mono text-slate-500">CC-NEX-110</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:5rem;">
+                                    <div class="flex items-center gap-2 text-slate-500"><i class="fa-solid fa-boxes-stacked text-slate-300"></i> Inbound / Goods-In</div>
+                                    <span class="text-xs font-mono text-slate-400">CC-NEX-111</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:5rem;">
+                                    <div class="flex items-center gap-2 text-slate-500"><i class="fa-solid fa-dolly text-slate-300"></i> Outbound / Despatch</div>
+                                    <span class="text-xs font-mono text-slate-400">CC-NEX-112</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:3.5rem;">
+                                    <div class="flex items-center gap-2 text-slate-700"><i class="fa-solid fa-warehouse text-purple-400"></i> Rugby Cross-Dock</div>
+                                    <span class="text-xs font-mono text-slate-500">CC-NEX-120</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:2rem;">
+                                    <div class="flex items-center gap-2 text-slate-700"><i class="fa-solid fa-map-location-dot text-blue-400"></i> South East Region</div>
+                                    <span class="text-xs font-mono text-slate-500">CC-NEX-200</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-2.5" style="padding-left:3.5rem;">
+                                    <div class="flex items-center gap-2 text-slate-700"><i class="fa-solid fa-warehouse text-purple-400"></i> Dartford Hub</div>
+                                    <span class="text-xs font-mono text-slate-500">CC-NEX-210</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3 — Users & roles -->
+                    <div data-panel="3" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">3</span>
+                                <h2 class="text-base font-bold text-slate-900">Users &amp; roles</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Client user accounts, each assigned to one or more business units (CM-004, CM-005).</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex justify-end mb-3">
+                                <button class="px-3 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700"><i class="fa-solid fa-user-plus mr-1"></i>Invite user</button>
+                            </div>
+                            <div class="overflow-x-auto rounded-xl border border-slate-200">
+                                <table class="w-full text-sm">
+                                    <thead class="bg-slate-50 text-xs text-slate-500">
+                                        <tr>
+                                            <th class="text-left font-semibold px-4 py-2.5">Name</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Email</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Role</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Business units</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        <tr>
+                                            <td class="px-4 py-3 font-semibold text-slate-800">David Okonkwo</td>
+                                            <td class="px-4 py-3 text-slate-600">d.okonkwo@nexuslogistics.co.uk</td>
+                                            <td class="px-4 py-3"><span class="text-xs font-semibold text-slate-700">Client Admin</span></td>
+                                            <td class="px-4 py-3 text-slate-600">All units</td>
+                                            <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Active</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-semibold text-slate-800">Rachel Adeyemi</td>
+                                            <td class="px-4 py-3 text-slate-600">r.adeyemi@nexuslogistics.co.uk</td>
+                                            <td class="px-4 py-3"><span class="text-xs font-semibold text-slate-700">Site Manager</span></td>
+                                            <td class="px-4 py-3 text-slate-600">Coventry DC</td>
+                                            <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-semibold text-slate-800">Tom Whitfield</td>
+                                            <td class="px-4 py-3 text-slate-600">t.whitfield@nexuslogistics.co.uk</td>
+                                            <td class="px-4 py-3"><span class="text-xs font-semibold text-slate-700">Timesheet Approver</span></td>
+                                            <td class="px-4 py-3 text-slate-600">Dartford Hub</td>
+                                            <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">Pending</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mt-3 text-xs text-slate-400"><i class="fa-solid fa-circle-info mr-1"></i>At least one Client Admin is required to activate (ONB-009).</p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4 — Charge rate cards -->
+                    <div data-panel="4" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">4</span>
+                                <h2 class="text-base font-bold text-slate-900">Charge rate cards</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Charge rates by role. Statutory percentages (NI, WTR, Pension, Levy) are read from System Configuration, not entered here (SYS-001).</p>
+                        </div>
+                        <div class="p-6">
+                            <div class="rounded-lg border border-blue-200 bg-blue-50 px-3 py-2 mb-4 flex items-start gap-2 text-xs text-blue-700">
+                                <i class="fa-solid fa-circle-info mt-0.5"></i>
+                                <span>Effective statutory rates (Employer's NI, WTR, Pension, Apprenticeship Levy) resolve from the central effective-dated table (SYS-001).</span>
+                            </div>
+                            <div class="overflow-x-auto rounded-xl border border-slate-200">
+                                <table class="w-full text-sm">
+                                    <thead class="bg-slate-50 text-xs text-slate-500">
+                                        <tr>
+                                            <th class="text-left font-semibold px-4 py-2.5">Role</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Charge (Standard)</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Charge (OT)</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Effective from</th>
+                                            <th class="text-left font-semibold px-4 py-2.5">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        <tr>
+                                            <td class="px-4 py-3 font-semibold text-slate-800">Warehouse Operative</td>
+                                            <td class="px-4 py-3 text-slate-700">£14.85 / hr</td>
+                                            <td class="px-4 py-3 text-slate-700">£22.28 / hr</td>
+                                            <td class="px-4 py-3 text-slate-600">01 Aug 2026</td>
+                                            <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Draft</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-4 py-3 font-semibold text-slate-800">Forklift Driver (Reach)</td>
+                                            <td class="px-4 py-3 text-slate-700">£17.40 / hr</td>
+                                            <td class="px-4 py-3 text-slate-700">£26.10 / hr</td>
+                                            <td class="px-4 py-3 text-slate-600">01 Aug 2026</td>
+                                            <td class="px-4 py-3"><span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200">Draft</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="mt-4 rounded-lg border border-red-200 bg-red-50 px-3 py-2 flex items-start gap-2 text-xs text-red-700">
+                                <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
+                                <span>No rate card is effective yet — all cards are Draft. At least one effective charge rate card is needed before activation (ONB-009).</span>
+                            </div>
+                            <button class="mt-3 px-3 py-2 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700"><i class="fa-solid fa-plus mr-1"></i>Add rate card</button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5 — Invoicing & VAT -->
+                    <div data-panel="5" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">5</span>
+                                <h2 class="text-base font-bold text-slate-900">Invoicing &amp; VAT</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Client invoicing policy — cadence, PO enforcement, terms, VAT treatment, grouping and delivery (CFG-004).</p>
+                        </div>
+                        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Invoice cadence</label>
+                                <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                    <option>Weekly — Monday PM (default)</option>
+                                    <option>Fortnightly — Monday PM</option>
+                                    <option>Monthly — 1st working day</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Payment terms (net days)</label>
+                                <input type="number" value="30" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">VAT treatment</label>
+                                <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                    <option>Standard 20% (system default)</option>
+                                    <option>Reduced 5%</option>
+                                    <option>Zero-rated</option>
+                                    <option>Exempt</option>
+                                </select>
+                                <p class="mt-1 text-xs text-amber-600"><i class="fa-solid fa-circle-info mr-1"></i>This overrides the system VAT default (SYS-004) for this client only.</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Invoice numbering scheme</label>
+                                <input type="text" value="NEX-INV-{YYYY}-{0000}" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 font-mono focus:border-blue-400 outline-none"/>
+                            </div>
+                            <div class="md:col-span-2 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-800">Enforce PO on invoices</p>
+                                    <p class="text-xs text-slate-500">Block invoicing of any booking that has no valid PO reference.</p>
+                                </div>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)">
+                                    <span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span>
+                                </button>
+                            </div>
+                            <div class="md:col-span-2 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-800">Group invoices by business unit</p>
+                                    <p class="text-xs text-slate-500">One invoice per business unit rather than a single consolidated invoice.</p>
+                                </div>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)">
+                                    <span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span>
+                                </button>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Delivery recipients</label>
+                                <input type="text" value="accountspayable@nexuslogistics.co.uk, d.okonkwo@nexuslogistics.co.uk" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 6 — Timesheet & absence policy -->
+                    <div data-panel="6" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">6</span>
+                                <h2 class="text-base font-bold text-slate-900">Timesheet &amp; absence policy</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Timesheet deadlines, approval mode, overtime, and the leave/absence policy this client uses (CFG-005, CFG-006).</p>
+                        </div>
+                        <div class="p-6 space-y-6">
+
+                            <!-- Timesheet config -->
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Submission deadline — day</label>
+                                    <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                        <option>Monday</option><option>Tuesday</option><option>Sunday</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Submission deadline — time</label>
+                                    <input type="time" value="12:00" class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Abstract approval</label>
+                                    <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                        <option>Mandatory</option>
+                                        <option>Optional</option>
+                                    </select>
+                                    <p class="mt-1 text-xs text-slate-400">Whether Abstract sign-off is required for this client (CFG-005).</p>
+                                </div>
+                                <div class="md:col-span-3">
+                                    <label class="block text-xs font-semibold text-slate-600 mb-1.5">Overtime ruleset</label>
+                                    <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                        <option>Standard Logistics OT (from System Configuration, SYS-005)</option>
+                                        <option>Enhanced Weekend / Bank Holiday (SYS-005)</option>
+                                    </select>
+                                    <p class="mt-1 text-xs text-slate-400">Overtime and premium rules are defined centrally and referenced here (SYS-005).</p>
+                                </div>
+                            </div>
+
+                            <!-- Leave / absence policy -->
+                            <div class="rounded-xl border border-slate-200 p-5">
+                                <div class="flex items-center gap-2 mb-4">
+                                    <i class="fa-solid fa-notes-medical text-purple-500"></i>
+                                    <h3 class="text-sm font-bold text-slate-800">Leave / absence policy</h3>
+                                    <span class="text-xs text-slate-400">(CFG-006 — client-scoped, BU-overridable)</span>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Paid sick allowance</label>
+                                        <div class="flex items-center gap-2">
+                                            <input type="number" value="2" class="w-20 text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 focus:border-blue-400 outline-none"/>
+                                            <span class="text-sm text-slate-600">paid sick days per</span>
+                                            <select class="text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                                <option>rolling month</option>
+                                                <option>rolling quarter</option>
+                                                <option>calendar year</option>
+                                            </select>
+                                        </div>
+                                        <p class="mt-1 text-xs text-slate-400">Reset window governs when the allowance replenishes.</p>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Holiday-pay rule</label>
+                                        <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                            <option>Accrued 12.07% (rolled-up)</option>
+                                            <option>Booked from accrued balance</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">No-show default pay</label>
+                                        <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                            <option>Unpaid</option>
+                                            <option>Paid</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-semibold text-slate-600 mb-1.5">Default Paid-absence cost bearer</label>
+                                        <select class="w-full text-sm text-slate-800 border border-slate-200 rounded-lg px-3 py-2.5 bg-white focus:border-blue-400 outline-none">
+                                            <option selected>Client (default)</option>
+                                            <option>Agency</option>
+                                            <option>Abstract</option>
+                                        </select>
+                                        <p class="mt-1 text-xs text-slate-400">Who bears the cost of a Paid absence day; Abstract can toggle per day later (TS-035 / CFG-006).</p>
+                                    </div>
+                                </div>
+                                <div class="mt-5 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                    <div>
+                                        <p class="text-sm font-semibold text-slate-800">Auto-request agency confirmation</p>
+                                        <p class="text-xs text-slate-500">Automatically ask the agency to justify a recorded absence (agency-sourced bookings only).</p>
+                                    </div>
+                                    <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)">
+                                        <span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 7 — Worker-compliance requirements -->
+                    <div data-panel="7" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">7</span>
+                                <h2 class="text-base font-bold text-slate-900">Worker-compliance requirements</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Which checks / licences this client mandates, and whether an expired one blocks a booking (CFG-008).</p>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" checked class="w-4 h-4 accent-blue-600"/> Right to Work check</label>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Mandatory</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" checked class="w-4 h-4 accent-blue-600"/> CSCS card</label>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Mandatory</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" checked class="w-4 h-4 accent-blue-600"/> Site induction</label>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Mandatory</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-500"><input type="checkbox" class="w-4 h-4 accent-blue-600"/> DBS (Basic)</label>
+                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-500 border border-slate-200">Not Applicable</span>
+                            </div>
+                            <div class="mt-4 flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                                <div>
+                                    <p class="text-sm font-semibold text-slate-800">Block booking if a mandated check is expired</p>
+                                    <p class="text-xs text-slate-500">A worker with an expired mandatory item cannot be booked to this client (CFG-008).</p>
+                                </div>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)">
+                                    <span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 8 — Approved agencies -->
+                    <div data-panel="8" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">8</span>
+                                <h2 class="text-base font-bold text-slate-900">Approved agencies</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">The agencies this client's vacancies may be released to. Only approved agencies can receive a release wave (AB-005).</p>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" checked class="w-4 h-4 accent-blue-600"/> TechForce Agency</label>
+                                <span class="text-xs text-slate-400">Approved for 6 clients</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" checked class="w-4 h-4 accent-blue-600"/> Nexus Talent</label>
+                                <span class="text-xs text-slate-400">Approved for 4 clients</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" class="w-4 h-4 accent-blue-600"/> PeopleBridge</label>
+                                <span class="text-xs text-slate-400">Approved for 3 clients</span>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <label class="flex items-center gap-3 text-sm font-semibold text-slate-800"><input type="checkbox" class="w-4 h-4 accent-blue-600"/> Apex Staffing</label>
+                                <span class="text-xs text-slate-400">Approved for 2 clients</span>
+                            </div>
+                            <p class="text-xs text-slate-400"><i class="fa-solid fa-circle-info mr-1"></i>2 of 4 agencies selected. The approved-agency list must be reviewed before activation (ONB-009).</p>
+                        </div>
+                    </div>
+
+                    <!-- STEP 9 — Notifications -->
+                    <div data-panel="9" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">9</span>
+                                <h2 class="text-base font-bold text-slate-900">Notifications</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">Which events notify this client's users.</p>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <span class="text-sm font-semibold text-slate-800">Timesheet submission deadline approaching</span>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)"><span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span></button>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <span class="text-sm font-semibold text-slate-800">New booking confirmed</span>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)"><span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span></button>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <span class="text-sm font-semibold text-slate-800">Invoice generated</span>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-emerald-500" data-on="true" onclick="flipToggle(this)"><span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 22px;"></span></button>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl border border-slate-200 px-4 py-3">
+                                <span class="text-sm font-semibold text-slate-800">Worker compliance item expiring</span>
+                                <button class="toggle relative w-11 h-6 rounded-full bg-slate-300" data-on="false" onclick="flipToggle(this)"><span class="dot absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white transition-all" style="left: 2px;"></span></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 10 — Review & activate -->
+                    <div data-panel="10" class="step-panel hidden bg-white rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="px-6 py-5 border-b border-slate-100">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 text-xs font-bold flex items-center justify-center">10</span>
+                                <h2 class="text-base font-bold text-slate-900">Review &amp; activate</h2>
+                            </div>
+                            <p class="text-xs text-slate-500">All activation gates must pass before Nexus Logistics Ltd can go Active (ONB-008, ONB-009).</p>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-sm font-bold text-slate-800 mb-3">Activation gates</h3>
+                            <div class="rounded-xl border border-slate-200 divide-y divide-slate-100">
+                                <div class="flex items-center justify-between px-4 py-3">
+                                    <span class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-emerald-500"></i> At least 1 business unit</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Passed</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-3">
+                                    <span class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-emerald-500"></i> At least 1 Client Admin user</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Passed</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-3 bg-red-50/40">
+                                    <span class="flex items-center gap-3 text-sm font-semibold text-slate-800"><i class="fa-solid fa-circle-xmark text-red-500"></i> At least 1 effective charge rate card</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-red-50 text-red-700 border border-red-200">Not met</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-3">
+                                    <span class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-emerald-500"></i> Invoicing + VAT configured</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Passed</span>
+                                </div>
+                                <div class="flex items-center justify-between px-4 py-3">
+                                    <span class="flex items-center gap-3 text-sm text-slate-700"><i class="fa-solid fa-circle-check text-emerald-500"></i> Approved-agency list reviewed</span>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Passed</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 rounded-xl border border-red-200 bg-red-50 px-4 py-3 flex items-start gap-2 text-sm text-red-700">
+                                <i class="fa-solid fa-lock mt-0.5"></i>
+                                <span><span class="font-semibold">1 gate outstanding:</span> add a charge rate card. Activation is blocked until every gate passes.</span>
+                            </div>
+
+                            <div class="mt-5 flex items-center gap-3">
+                                <button disabled class="px-5 py-2.5 rounded-lg bg-slate-200 text-slate-400 text-sm font-semibold cursor-not-allowed">
+                                    <i class="fa-solid fa-rocket mr-1.5"></i>Activate client
+                                </button>
+                                <span class="text-xs text-slate-400">Moves the client from <span class="font-semibold">In Setup</span> to <span class="font-semibold">Active</span> once all gates pass.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wizard footer -->
+                    <div class="mt-5 bg-white rounded-2xl border border-slate-200 shadow-sm px-6 py-4 flex flex-wrap items-center justify-between gap-3">
+                        <p class="text-xs text-slate-400 flex items-center gap-2 max-w-xl">
+                            <i class="fa-solid fa-circle-info"></i>
+                            Onboarding is saved per step and can be resumed (ONB-001). Abstract-led — clients do not self-onboard (ONB-013).
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <button class="px-4 py-2 rounded-lg border border-slate-200 text-slate-600 text-sm font-semibold hover:border-blue-300">Save &amp; exit</button>
+                            <button onclick="nextStep()" class="px-4 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700">Save &amp; continue</button>
+                        </div>
+                    </div>
+
+                </section>
+            </div>
+        </main>
+    </div>
+</div>
+
+<script>
+    // Step definitions
+    var steps = [
+        { n: 1,  label: 'Company & contract',              status: 'done' },
+        { n: 2,  label: 'Business units & cost centres',   status: 'done' },
+        { n: 3,  label: 'Users & roles',                   status: 'done' },
+        { n: 4,  label: 'Charge rate cards',               status: 'todo' },
+        { n: 5,  label: 'Invoicing & VAT',                 status: 'done' },
+        { n: 6,  label: 'Timesheet & absence policy',      status: 'current' },
+        { n: 7,  label: 'Worker-compliance requirements',  status: 'todo' },
+        { n: 8,  label: 'Approved agencies',               status: 'done' },
+        { n: 9,  label: 'Notifications',                   status: 'todo' },
+        { n: 10, label: 'Review & activate',               status: 'todo' }
+    ];
+    var currentStep = 1;
+
+    function iconFor(status, active) {
+        if (status === 'done')    return '<span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-check text-[10px]"></i></span>';
+        if (status === 'current' || active) return '<span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-pen text-[10px]"></i></span>';
+        return '<span class="w-6 h-6 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center flex-shrink-0 text-xs font-semibold"></span>';
+    }
+
+    function renderRail() {
+        var rail = document.getElementById('step-rail');
+        rail.innerHTML = '';
+        steps.forEach(function(s) {
+            var active = (s.n === currentStep);
+            var btn = document.createElement('button');
+            btn.className = 'w-full flex items-center gap-3 px-2.5 py-2 rounded-lg text-left transition-all ' +
+                (active ? 'bg-blue-50 border border-blue-200' : 'hover:bg-slate-50 border border-transparent');
+            var numHtml = iconFor(s.status, active);
+            if (s.status === 'todo' && !active) {
+                numHtml = '<span class="w-6 h-6 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center flex-shrink-0 text-xs font-semibold">' + s.n + '</span>';
+            }
+            btn.innerHTML = numHtml +
+                '<span class="text-sm ' + (active ? 'font-semibold text-slate-900' : 'text-slate-600') + ' truncate">' + s.n + '. ' + s.label + '</span>';
+            btn.onclick = function() { showStep(s.n); };
+            rail.appendChild(btn);
+        });
+    }
+
+    function showStep(n) {
+        currentStep = n;
+        document.querySelectorAll('.step-panel').forEach(function(p) {
+            p.classList.toggle('hidden', p.getAttribute('data-panel') !== String(n));
+        });
+        renderRail();
+        document.getElementById('onboard-client-main').scrollTop = 0;
+    }
+
+    function nextStep() {
+        if (currentStep < 10) showStep(currentStep + 1);
+    }
+
+    function flipToggle(btn) {
+        var on = btn.getAttribute('data-on') === 'true';
+        on = !on;
+        btn.setAttribute('data-on', on ? 'true' : 'false');
+        btn.classList.toggle('bg-emerald-500', on);
+        btn.classList.toggle('bg-slate-300', !on);
+        var dot = btn.querySelector('.dot');
+        dot.style.left = on ? '22px' : '2px';
+    }
+
+    renderRail();
+    showStep(1);
+</script>
+
+</body>
+</html>
